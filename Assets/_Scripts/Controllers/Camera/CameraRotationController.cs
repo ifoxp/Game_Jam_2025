@@ -13,6 +13,9 @@ namespace _Scripts.Controllers.Camera
         [Required]
         [SerializeField] private CinemachineOrbitalFollow _orbitalFollowCamera;
         private Vector2 _lastValues;
+
+        private Vector2 _defaultHorizontalRange;
+        private Vector2 _defaultVerticalRange;
         
         private IInput _input;
 
@@ -24,42 +27,88 @@ namespace _Scripts.Controllers.Camera
         
         private void Awake()
         {
-            EnsureComponentsNotNull();
+            InitializeCameraSettings();
+            SubscribeToInputEvents();
             
+            // Lock rotation when initialized
+            OnRightsToRotateCameraChanged(false);
+        }
+
+        private void InitializeCameraSettings()
+        {
+            EnsureComponentsNotNull();
             RecordLastValues();
+            CacheDefaultCameraRanges();
+        }
+
+        private void CacheDefaultCameraRanges()
+        {
+            _defaultHorizontalRange = _orbitalFollowCamera.HorizontalAxis.Range;
+            _defaultVerticalRange = _orbitalFollowCamera.VerticalAxis.Range;
+        }
+
+        private void SubscribeToInputEvents()
+        {
             _input.OnLeftMousePressed += OnRightsToRotateCameraChanged;
         }
-        
+
         private void EnsureComponentsNotNull()
         {
-            if(_input == null) throw new MissingComponentException("Input cannot be null!");
-            if(_orbitalFollowCamera == null) throw new MissingComponentException("Cinemachine orbital camera is null");
+            if (_input == null) throw new MissingComponentException("Input cannot be null!");
+            if (_orbitalFollowCamera == null) throw new MissingComponentException("Cinemachine orbital camera is null");
         }
 
         private void OnDestroy()
+        {
+            UnsubscribeFromInputEvents();
+        }
+
+        private void UnsubscribeFromInputEvents()
         {
             _input.OnLeftMousePressed -= OnRightsToRotateCameraChanged;
         }
 
         private void OnRightsToRotateCameraChanged(bool allowRotate)
         {
-            _orbitalFollowCamera.enabled = allowRotate;
-
-            // cursor states better to put it in some kind of 'event bus' or something
-            if(!allowRotate)
+            if (allowRotate)
             {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-
-                RecordLastValues();
+                EnableCameraRotation();
             }
             else
-            { 
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-
-                LoadValuesIntoCameraValues();
+            {
+                DisableCameraRotation();
             }
+        }
+
+        private void EnableCameraRotation()
+        {
+            Utilities.CursorStateChanger.SetCursorState(CursorLockMode.None, true);
+            
+            RestoreCameraRanges();
+            LoadValuesIntoCamera();
+        }
+
+        private void DisableCameraRotation()
+        {
+            Utilities.CursorStateChanger.SetCursorState(CursorLockMode.None, true);
+            
+            RecordLastValues();
+            LockCameraToCurrentView();
+        }
+
+        private void RestoreCameraRanges()
+        {
+            _orbitalFollowCamera.HorizontalAxis.Range = _defaultHorizontalRange;
+            _orbitalFollowCamera.VerticalAxis.Range = _defaultVerticalRange;
+        }
+
+        private void LockCameraToCurrentView()
+        {
+            _orbitalFollowCamera.HorizontalAxis.Range = new Vector2(_orbitalFollowCamera.HorizontalAxis.Value,
+                _orbitalFollowCamera.HorizontalAxis.Value);
+
+            _orbitalFollowCamera.VerticalAxis.Range = new Vector2(_orbitalFollowCamera.VerticalAxis.Value,
+                _orbitalFollowCamera.VerticalAxis.Value);
         }
 
         private void RecordLastValues()
@@ -68,9 +117,9 @@ namespace _Scripts.Controllers.Camera
             _lastValues.y = _orbitalFollowCamera.VerticalAxis.Value;
         }
 
-        private void LoadValuesIntoCameraValues()
+        private void LoadValuesIntoCamera()
         {
-            _orbitalFollowCamera.HorizontalAxis.Value = _lastValues.x; 
+            _orbitalFollowCamera.HorizontalAxis.Value = _lastValues.x;
             _orbitalFollowCamera.VerticalAxis.Value = _lastValues.y;
         }
     }

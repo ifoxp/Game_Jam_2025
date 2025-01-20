@@ -248,6 +248,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 299546173969784646, guid: 07dbb9e042893c446a01362bb8658e94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98836154
+      objectReference: {fileID: 0}
+    - target: {fileID: 299546173969784646, guid: 07dbb9e042893c446a01362bb8658e94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.15212336
+      objectReference: {fileID: 0}
+    - target: {fileID: 299546173969784646, guid: 07dbb9e042893c446a01362bb8658e94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000007356465
+      objectReference: {fileID: 0}
+    - target: {fileID: 299546173969784646, guid: 07dbb9e042893c446a01362bb8658e94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0000000113226815
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972376068387167530, guid: 07dbb9e042893c446a01362bb8658e94, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7611037941478953963, guid: 07dbb9e042893c446a01362bb8658e94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.55085135
@@ -291,6 +311,10 @@ PrefabInstance:
     - target: {fileID: 9163925739775951473, guid: 07dbb9e042893c446a01362bb8658e94, type: 3}
       propertyPath: m_Name
       value: ----CameraStuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221423897447447096, guid: 07dbb9e042893c446a01362bb8658e94, type: 3}
+      propertyPath: field of view
+      value: 60.000004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
