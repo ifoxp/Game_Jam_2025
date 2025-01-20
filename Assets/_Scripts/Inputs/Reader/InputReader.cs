@@ -9,7 +9,8 @@ namespace _Scripts.Inputs.Reader
     {
         public event Action<Vector2> OnMouseWheelScroll;
         public event Action<Vector2> OnMouseMove;
-        
+        public event Action<bool> OnLeftMousePressed;
+
         private PlayerInputMap _inputMap;
         
         public void Initialize()
@@ -27,6 +28,9 @@ namespace _Scripts.Inputs.Reader
 
             _inputMap.Player.PositionLook.performed += OnNotifyMouseMove;
             _inputMap.Player.PositionLook.canceled += OnNotifyMouseMove;
+
+            _inputMap.Player.LeftMouseButton.performed += OnLeftMouseButtonPressed;
+            _inputMap.Player.LeftMouseButton.canceled += OnLeftMouseButtonPressed;
         }
         
         public void Dispose()
@@ -34,6 +38,8 @@ namespace _Scripts.Inputs.Reader
             _inputMap.Disable();
             
             UnsubscribeInputs();
+            ClearActions();
+            
             _inputMap.Dispose();
         }
 
@@ -44,6 +50,16 @@ namespace _Scripts.Inputs.Reader
             
             _inputMap.Player.PositionLook.performed -= OnNotifyMouseMove;
             _inputMap.Player.PositionLook.canceled -= OnNotifyMouseMove;
+            
+            _inputMap.Player.LeftMouseButton.performed -= OnLeftMouseButtonPressed;
+            _inputMap.Player.LeftMouseButton.canceled -= OnLeftMouseButtonPressed;
+        }
+
+        private void ClearActions()
+        {
+            OnMouseWheelScroll = null;
+            OnMouseMove = null;
+            OnLeftMousePressed = null;
         }
 
         private void OnNotifyScrollLook(InputAction.CallbackContext context) => 
@@ -51,7 +67,10 @@ namespace _Scripts.Inputs.Reader
 
         private void OnNotifyMouseMove(InputAction.CallbackContext context) => 
             NotifyVector2Action(context, OnMouseMove);
-
+        
+        private void OnLeftMouseButtonPressed(InputAction.CallbackContext context) =>
+            OnLeftMousePressed?.Invoke(context.performed);
+            
         private void NotifyVector2Action(InputAction.CallbackContext context, Action<Vector2> action)
         {
             var vector2 = context.ReadValue<Vector2>();

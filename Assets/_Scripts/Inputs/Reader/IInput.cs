@@ -7,5 +7,7 @@ namespace _Scripts.Inputs.Reader
     {
         public event Action<Vector2> OnMouseWheelScroll;
         public event Action<Vector2> OnMouseMove;
+        
+        public event Action<bool> OnLeftMousePressed;
     }
 }

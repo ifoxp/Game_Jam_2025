@@ -28,6 +28,15 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
+                    ""name"": ""LeftMouseButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""8299f14f-605c-46d4-8bb8-a4581ed8b935"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""ZoomLook"",
                     ""type"": ""Value"",
                     ""id"": ""02cd3f7e-e003-4ab1-89cc-b5d3ca6f41d9"",
@@ -41,7 +50,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""a032915a-adab-4217-8dcf-cd2396e3ab6b"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": ""ScaleVector2(x=0.2,y=0.2),DeltaTimeScale"",
+                    ""processors"": ""ScaleVector2(x=0.02,y=0.02),DeltaTimeScale"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }
@@ -66,6 +75,17 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""PositionLook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc15ffe3-0b2c-48fd-afa5-6af3b2286ad3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""LeftMouseButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -653,6 +673,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_LeftMouseButton = m_Player.FindAction("LeftMouseButton", throwIfNotFound: true);
         m_Player_ZoomLook = m_Player.FindAction("ZoomLook", throwIfNotFound: true);
         m_Player_PositionLook = m_Player.FindAction("PositionLook", throwIfNotFound: true);
         // UI
@@ -734,12 +755,14 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_LeftMouseButton;
     private readonly InputAction m_Player_ZoomLook;
     private readonly InputAction m_Player_PositionLook;
     public struct PlayerActions
     {
         private @PlayerInputMap m_Wrapper;
         public PlayerActions(@PlayerInputMap wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftMouseButton => m_Wrapper.m_Player_LeftMouseButton;
         public InputAction @ZoomLook => m_Wrapper.m_Player_ZoomLook;
         public InputAction @PositionLook => m_Wrapper.m_Player_PositionLook;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -751,6 +774,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            @LeftMouseButton.started += instance.OnLeftMouseButton;
+            @LeftMouseButton.performed += instance.OnLeftMouseButton;
+            @LeftMouseButton.canceled += instance.OnLeftMouseButton;
             @ZoomLook.started += instance.OnZoomLook;
             @ZoomLook.performed += instance.OnZoomLook;
             @ZoomLook.canceled += instance.OnZoomLook;
@@ -761,6 +787,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
+            @LeftMouseButton.started -= instance.OnLeftMouseButton;
+            @LeftMouseButton.performed -= instance.OnLeftMouseButton;
+            @LeftMouseButton.canceled -= instance.OnLeftMouseButton;
             @ZoomLook.started -= instance.OnZoomLook;
             @ZoomLook.performed -= instance.OnZoomLook;
             @ZoomLook.canceled -= instance.OnZoomLook;
@@ -949,6 +978,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
+        void OnLeftMouseButton(InputAction.CallbackContext context);
         void OnZoomLook(InputAction.CallbackContext context);
         void OnPositionLook(InputAction.CallbackContext context);
     }

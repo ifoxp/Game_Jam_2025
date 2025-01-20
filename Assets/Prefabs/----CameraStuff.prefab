@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3212690195980202648}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212335, y: 0.00000006797432, z: -0.000000010462245, w: 0.98836154}
+  m_LocalRotation: {x: 0.15212336, y: -0.00000007356465, z: 0.0000000113226815, w: 0.98836154}
   m_LocalPosition: {x: 0, y: 3.5070581, z: -9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -198,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3335673532077654896}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212335, y: 0.00000006983764, z: -0.000000022568445, w: 0.98836154}
+  m_LocalRotation: {x: 0.15212336, y: -0.00000007356466, z: 0.000000011322681, w: 0.98836154}
   m_LocalPosition: {x: 0, y: 3.5070581, z: -9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3335673532077654896}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
@@ -408,8 +408,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1770967039425783057}
   - component: {fileID: 6322065367185886733}
+  - component: {fileID: 3443101341299475989}
   m_Layer: 0
-  m_Name: ZoomController
+  m_Name: CameraController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,12 +443,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1727cac4605a4f9eaa924151500f4def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _orbitalFollow: {fileID: 1972376068387167530}
+  _orbitalFollowCamera: {fileID: 1972376068387167530}
   _cameraCenterZoomTarget: {fileID: 1364184528448808199}
   _moveSensitivity: 0.25
   _reversedZoom: 1
   _maxZoomOutDistance: 10
   _maxZoomInDistance: 2
+--- !u!114 &3443101341299475989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5802119241527075038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce106b8c907844d9a73bde43c3a63832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _orbitalFollowCamera: {fileID: 1972376068387167530}
 --- !u!1 &7241083691246269873
 GameObject:
   m_ObjectHideFlags: 0
