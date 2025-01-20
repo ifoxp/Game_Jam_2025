@@ -9,7 +9,7 @@ public class SphereDeformationCalculator : MonoBehaviour
     private Vector3[] initialPositions; // Початкові позиції дочірніх об'єктів
     public float totalDeformation; // Загальне значення деформації сфери
     public TextMeshProUGUI textMeshProUGUI;
-
+    public bool seeLine = true;
     private void Start()
     {
         // Знаходимо всі дочірні об'єкти з компонентом Rigidbody
@@ -50,7 +50,7 @@ public class SphereDeformationCalculator : MonoBehaviour
     private void OnDrawGizmos()
     {
         // Малюємо початкові та поточні позиції для наглядності
-        if (initialPositions != null && childRigidbodies != null)
+        if (initialPositions != null && childRigidbodies != null && seeLine)
         {
             Gizmos.color = Color.green;
             for (int i = 0; i < initialPositions.Length; i++)

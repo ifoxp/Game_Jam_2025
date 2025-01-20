@@ -36433,6 +36433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652992736112}
   - component: {fileID: 5866666021207396618}
+  - component: {fileID: 5866666021207396619}
   m_Layer: 7
   m_Name: Bubble
   m_TagString: Untagged
@@ -36973,6 +36974,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5866666021207396619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148787990986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8813bcf05900443b74e53622490190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childRigidbodies:
+  - {fileID: 1318172152}
+  - {fileID: 986527693}
+  - {fileID: 1983129053}
+  - {fileID: 2116446923}
+  - {fileID: 2058019729}
+  - {fileID: 953635739}
+  - {fileID: 2130381070}
+  - {fileID: 1192004962}
+  - {fileID: 1073508477}
+  - {fileID: 1424775824}
+  - {fileID: 857444827}
+  - {fileID: 1654582486}
+  - {fileID: 1690793427}
+  - {fileID: 1240174615}
+  totalDeformation: 0
+  textMeshProUGUI: {fileID: 1245871032}
+  seeLine: 0
 --- !u!4 &5933186599088201061
 Transform:
   m_ObjectHideFlags: 0
@@ -37114,7 +37145,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8879528567155579886}
-  - component: {fileID: 8879528567155579887}
   - component: {fileID: 986421618}
   - component: {fileID: 986421617}
   - component: {fileID: 986421616}
@@ -37428,35 +37458,6 @@ Transform:
   - {fileID: 7160207549639594506}
   m_Father: {fileID: 543450652992736112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8879528567155579887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7036213049095262628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f8813bcf05900443b74e53622490190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  childRigidbodies:
-  - {fileID: 1318172152}
-  - {fileID: 986527693}
-  - {fileID: 1983129053}
-  - {fileID: 2116446923}
-  - {fileID: 2058019729}
-  - {fileID: 953635739}
-  - {fileID: 2130381070}
-  - {fileID: 1192004962}
-  - {fileID: 1073508477}
-  - {fileID: 1424775824}
-  - {fileID: 857444827}
-  - {fileID: 1654582486}
-  - {fileID: 1690793427}
-  - {fileID: 1240174615}
-  totalDeformation: 0
-  textMeshProUGUI: {fileID: 1245871032}
 --- !u!4 &8961653707168684405
 Transform:
   m_ObjectHideFlags: 0
