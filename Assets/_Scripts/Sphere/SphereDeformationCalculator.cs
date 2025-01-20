@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class SphereDeformationCalculator : MonoBehaviour
@@ -7,6 +8,7 @@ public class SphereDeformationCalculator : MonoBehaviour
 
     private Vector3[] initialPositions; // Початкові позиції дочірніх об'єктів
     public float totalDeformation; // Загальне значення деформації сфери
+    public TextMeshProUGUI textMeshProUGUI;
 
     private void Start()
     {
@@ -24,6 +26,13 @@ public class SphereDeformationCalculator : MonoBehaviour
     private void FixedUpdate()
     {
         CalculateDeformation();
+
+        // Оновлюємо текст у TextMeshProUGUI
+        if (textMeshProUGUI != null)
+        {
+            float roundedDeformation = Mathf.Round(totalDeformation * 100f) / 10f; // Множимо на 10, округлюємо до 0.1
+            textMeshProUGUI.text = $"Deformation: {roundedDeformation}";
+        }
     }
 
     private void CalculateDeformation()
