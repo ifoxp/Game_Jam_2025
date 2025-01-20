@@ -1,5 +1,5 @@
 {
-    "name": "InputSystem_Actions",
+    "name": "PlayerInputMap",
     "maps": [
         {
             "name": "Player",
@@ -28,7 +28,7 @@
                     "type": "Value",
                     "id": "a032915a-adab-4217-8dcf-cd2396e3ab6b",
                     "expectedControlType": "Vector2",
-                    "processors": "ScaleVector2(x=0.05,y=0.05),DeltaTimeScale",
+                    "processors": "ScaleVector2(x=0.02,y=0.02),DeltaTimeScale",
                     "interactions": "",
                     "initialStateCheck": true
                 }
