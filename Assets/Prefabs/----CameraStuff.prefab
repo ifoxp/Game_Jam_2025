@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 7276177781971275784}
   - component: {fileID: 1972376068387167530}
   - component: {fileID: 3644630312402467135}
-  - component: {fileID: 7326331575978066386}
   m_Layer: 0
   m_Name: OrbitalCamera(CM)
   m_TagString: Untagged
@@ -255,7 +254,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3335673532077654896}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
@@ -340,64 +339,6 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
---- !u!114 &7326331575978066386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3335673532077654896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScanRecursively: 1
-  SuppressInputWhileBlending: 1
-  IgnoreTimeScale: 0
-  m_ControllerManager:
-    Controllers:
-    - Name: Look Orbit X
-      Owner: {fileID: 1972376068387167530}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: 6371780135569440067, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: 1
-        LegacyInput: Mouse X
-        LegacyGain: 200
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0.2
-        DecelTime: 0.2
-    - Name: Look Orbit Y
-      Owner: {fileID: 1972376068387167530}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: 6371780135569440067, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: -1
-        LegacyInput: Mouse Y
-        LegacyGain: -200
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0.2
-        DecelTime: 0.2
-    - Name: Orbit Scale
-      Owner: {fileID: 1972376068387167530}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: -3813838266294358729, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: 1
-        LegacyInput: Mouse ScrollWheel
-        LegacyGain: 200
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0
-        DecelTime: 0
-  PlayerIndex: -1
-  AutoEnableInputs: 1
 --- !u!1 &5802119241527075038
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _orbitalFollowCamera: {fileID: 1972376068387167530}
   _cameraCenterZoomTarget: {fileID: 1364184528448808199}
-  _moveSensitivity: 0.25
+  _zoomSensitivity: 1
   _reversedZoom: 1
   _maxZoomOutDistance: 10
   _maxZoomInDistance: 2
@@ -462,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _orbitalFollowCamera: {fileID: 1972376068387167530}
+  _rotationSensitivity: 3
 --- !u!1 &7241083691246269873
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ namespace _Scripts.Controllers.Camera
         [SerializeField] private Transform _cameraCenterZoomTarget;
         
         [Space]
-        [SerializeField] private float _moveSensitivity;
+        [SerializeField] private float _zoomSensitivity;
         [SerializeField] private bool _reversedZoom = true;
         
         [Space, Header("Zoom Settings")]
@@ -68,9 +68,17 @@ namespace _Scripts.Controllers.Camera
         {
             if (_reversedZoom) direction *= -1;
             
-            var newZoom = Mathf.Clamp(_orbitalFollowCamera.Radius + (direction.y * _moveSensitivity),
+            var newZoom = Mathf.Clamp(_orbitalFollowCamera.Radius + (direction.y * _zoomSensitivity),
                 _maxZoomInDistance, _maxZoomOutDistance);
             _orbitalFollowCamera.Radius = newZoom;
         }
+        
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            PlayerPrefs.SetFloat(Utilities.SettingsKeys.ZOOM_CAMERA_SENSITIVITY, _zoomSensitivity);
+            PlayerPrefs.Save();
+        }
+#endif
     }
 }

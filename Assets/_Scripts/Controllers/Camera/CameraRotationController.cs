@@ -12,6 +12,10 @@ namespace _Scripts.Controllers.Camera
     {
         [Required]
         [SerializeField] private CinemachineOrbitalFollow _orbitalFollowCamera;
+        [SerializeField] private float _rotationSensitivity = 0.5f;
+
+        private bool _canRotate;
+        
         private Vector2 _lastValues;
 
         private Vector2 _defaultHorizontalRange;
@@ -50,6 +54,7 @@ namespace _Scripts.Controllers.Camera
         private void SubscribeToInputEvents()
         {
             _input.OnLeftMousePressed += OnRightsToRotateCameraChanged;
+            _input.OnMouseMove += RotateCameraByChangingValues;
         }
 
         private void EnsureComponentsNotNull()
@@ -67,9 +72,41 @@ namespace _Scripts.Controllers.Camera
         {
             _input.OnLeftMousePressed -= OnRightsToRotateCameraChanged;
         }
+        
+        private void RotateCameraByChangingValues(Vector2 inputValue)
+        {
+            if (!_canRotate) return;
 
+            var sensitivity = PlayerPrefs.GetFloat(
+                Utilities.SettingsKeys.ROTATE_CAMERA_SENSITIVITY, _rotationSensitivity);
+
+            var newHorizontalValue = CalculateWrappedAxisValue(inputValue.x, 
+                _orbitalFollowCamera.HorizontalAxis, sensitivity);
+            
+            var newVerticalValue = CalculateClampedAxisValue(inputValue.y, 
+                _orbitalFollowCamera.VerticalAxis, sensitivity);
+
+            _orbitalFollowCamera.HorizontalAxis.Value = newHorizontalValue;
+            _orbitalFollowCamera.VerticalAxis.Value = newVerticalValue;
+        }
+
+        private float CalculateWrappedAxisValue(float inputValue, InputAxis axis, float sensitivity)
+        {
+            var axisRangeWidth = axis.Range.y - axis.Range.x;
+            var newAxisValue = axis.Value + inputValue * sensitivity * Time.deltaTime;
+            
+            return Mathf.Repeat(newAxisValue - axis.Range.x, axisRangeWidth) + axis.Range.x;
+        }
+
+        private float CalculateClampedAxisValue(float inputValue, InputAxis axis, float sensitivity)
+        {
+            var newAxisValue = axis.Value - inputValue * sensitivity * Time.deltaTime;
+            return Mathf.Clamp(newAxisValue, axis.Range.x, axis.Range.y);
+        }
+        
         private void OnRightsToRotateCameraChanged(bool allowRotate)
         {
+            _canRotate = allowRotate;
             if (allowRotate)
             {
                 EnableCameraRotation();
@@ -82,7 +119,7 @@ namespace _Scripts.Controllers.Camera
 
         private void EnableCameraRotation()
         {
-            Utilities.CursorStateChanger.SetCursorState(CursorLockMode.None, true);
+            Utilities.CursorStateChanger.SetCursorState(CursorLockMode.Locked, true);
             
             RestoreCameraRanges();
             LoadValuesIntoCamera();
@@ -122,5 +159,13 @@ namespace _Scripts.Controllers.Camera
             _orbitalFollowCamera.HorizontalAxis.Value = _lastValues.x;
             _orbitalFollowCamera.VerticalAxis.Value = _lastValues.y;
         }
+        
+        #if UNITY_EDITOR
+        private void OnValidate()
+        {
+            PlayerPrefs.SetFloat(Utilities.SettingsKeys.ROTATE_CAMERA_SENSITIVITY, _rotationSensitivity);
+            PlayerPrefs.Save();
+        }
+#endif
     }
 }
