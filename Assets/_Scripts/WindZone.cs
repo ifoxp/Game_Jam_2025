@@ -6,8 +6,7 @@ public class WindZone : MonoBehaviour
     public Vector3 windAreaSize = new Vector3(2f, 2f, 10f); // Розміри початкового потоку
     public LayerMask obstacleLayers; // Шари, які визначають перешкоди
     public float minSegmentLength = 0.5f; // Мінімальна довжина сегмента, при якій потік припиняється
-
-
+    public bool showWindVisual = true; // Нове поле для включення/виключення візуалізації
 
     private void FixedUpdate()
     {
@@ -66,6 +65,7 @@ public class WindZone : MonoBehaviour
                 rb.AddForce(direction * windForce, ForceMode.Force);
             }
         }
+
         // Перевіряємо, чи є перешкода перед сегментом
         RaycastHit hit;
         if (Physics.Raycast(startPosition, direction, out hit, segmentLength, obstacleLayers))
@@ -76,12 +76,14 @@ public class WindZone : MonoBehaviour
             return true; // Перешкода виявлена
         }
 
-
         return false; // Перешкод немає
     }
 
     private void OnDrawGizmos()
     {
+        // Малюємо тільки якщо змінна showWindVisual дорівнює true
+        if (!showWindVisual) return;
+
         Gizmos.color = Color.cyan;
         Vector3 currentPosition = transform.position;
         Vector3 currentDirection = transform.forward;
@@ -94,24 +96,24 @@ public class WindZone : MonoBehaviour
             Vector3 center = currentPosition + currentDirection * (currentSegmentLength / 2);
             Vector3 size = new Vector3(windAreaSize.x, windAreaSize.y, currentSegmentLength);
             Gizmos.matrix = Matrix4x4.TRS(center, Quaternion.LookRotation(currentDirection), Vector3.one);
-            
 
             // Перевіряємо, чи є перешкода перед сегментом
             RaycastHit hit;
             if (Physics.Raycast(currentPosition, currentDirection, out hit, remainingLength, obstacleLayers))
             {
                 // Якщо є перешкода, малюємо лінію до неї
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(currentPosition, hit.point);
+                //Gizmos.color = Color.red;
+                //Gizmos.DrawLine(currentPosition, hit.point);
 
                 // Зберігаємо довжину поточного сегмента до перешкоди
                 currentSegmentLength = hit.distance;
 
                 // Обрізаємо потік
                 remainingLength -= hit.distance;
-                size.z-= remainingLength;
+                size.z -= remainingLength;
                 center = currentPosition + currentDirection * (currentSegmentLength / 2);
                 Gizmos.matrix = Matrix4x4.TRS(center, Quaternion.LookRotation(currentDirection), Vector3.one);
+
                 // Розраховуємо новий напрямок
                 currentDirection = Vector3.Reflect(currentDirection, hit.normal).normalized;
                 currentPosition = hit.point + currentDirection * 0.01f;
@@ -124,6 +126,7 @@ public class WindZone : MonoBehaviour
                 // Якщо залишкова довжина <= мінімальної, зупиняємо малювання
                 if (remainingLength <= minSegmentLength)
                     break;
+
                 Gizmos.DrawWireCube(Vector3.zero, size);
             }
             else
@@ -133,9 +136,6 @@ public class WindZone : MonoBehaviour
                 currentSegmentLength = remainingLength;
                 break;
             }
-            
         }
-
-        
     }
 }
