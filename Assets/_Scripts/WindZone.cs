@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WindZone : MonoBehaviour
 {
-    public float windForce = 20f; // Сила вітру
+    public float windForce = 20f; // Початкова сила вітру
     public Vector3 windAreaSize = new Vector3(2f, 2f, 10f); // Розміри початкового потоку
     public LayerMask obstacleLayers; // Шари, які визначають перешкоди
     public float minSegmentLength = 0.5f; // Мінімальна довжина сегмента, при якій потік припиняється
@@ -16,8 +16,11 @@ public class WindZone : MonoBehaviour
 
         while (remainingLength > minSegmentLength)
         {
+            // Обчислюємо силу вітру для поточного сегмента в залежності від відстані
+            float appliedWindForce = GetWindForceAtDistance(windAreaSize.z - remainingLength);
+
             // Перевіряємо потік для поточного сегмента
-            bool isBlocked = ApplyWindInSegment(currentPosition, currentDirection, remainingLength, out Vector3 hitPoint, out Vector3 hitNormal, out float distanceToHit);
+            bool isBlocked = ApplyWindInSegment(currentPosition, currentDirection, remainingLength, appliedWindForce, out Vector3 hitPoint, out Vector3 hitNormal, out float distanceToHit);
 
             if (isBlocked)
             {
@@ -37,13 +40,19 @@ public class WindZone : MonoBehaviour
             else
             {
                 // Якщо перешкоди немає, застосовуємо весь залишковий потік і завершуємо
-                ApplyWindInSegment(currentPosition, currentDirection, remainingLength, out _, out _, out _);
+                ApplyWindInSegment(currentPosition, currentDirection, remainingLength, appliedWindForce, out _, out _, out _);
                 break;
             }
         }
     }
 
-    private bool ApplyWindInSegment(Vector3 startPosition, Vector3 direction, float segmentLength, out Vector3 hitPoint, out Vector3 hitNormal, out float distanceToHit)
+    private float GetWindForceAtDistance(float distance)
+    {
+        // Застосовуємо формулу для зменшення сили вітру на основі відстані
+        return windForce * Mathf.Exp((1f / 3f) * (-Mathf.Sqrt(distance)));
+    }
+
+    private bool ApplyWindInSegment(Vector3 startPosition, Vector3 direction, float segmentLength, float windForce, out Vector3 hitPoint, out Vector3 hitNormal, out float distanceToHit)
     {
         hitPoint = Vector3.zero;
         hitNormal = Vector3.zero;
@@ -92,6 +101,9 @@ public class WindZone : MonoBehaviour
 
         while (remainingLength > minSegmentLength)
         {
+            // Обчислюємо силу вітру для поточного сегмента в залежності від відстані
+            float appliedWindForce = GetWindForceAtDistance(windAreaSize.z - remainingLength);
+
             // Малюємо поточний сегмент
             Vector3 center = currentPosition + currentDirection * (currentSegmentLength / 2);
             Vector3 size = new Vector3(windAreaSize.x, windAreaSize.y, currentSegmentLength);
