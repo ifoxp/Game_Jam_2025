@@ -7,7 +7,7 @@ public class WindZone : MonoBehaviour
     public LayerMask obstacleLayers; // Шари, які визначають перешкоди
     public float minSegmentLength = 0.5f; // Мінімальна довжина сегмента, при якій потік припиняється
     public bool showWindVisual = true; // Нове поле для включення/виключення візуалізації
-
+    public bool bounveActive = true;
     private void FixedUpdate()
     {
         Vector3 currentPosition = transform.position; // Початкова точка потоку
@@ -127,9 +127,16 @@ public class WindZone : MonoBehaviour
                 Gizmos.matrix = Matrix4x4.TRS(center, Quaternion.LookRotation(currentDirection), Vector3.one);
 
                 // Розраховуємо новий напрямок
-                currentDirection = Vector3.Reflect(currentDirection, hit.normal).normalized;
-                currentPosition = hit.point + currentDirection * 0.01f;
-
+                if (bounveActive)
+                {
+                    currentDirection = Vector3.Reflect(currentDirection, hit.normal).normalized;
+                    currentPosition = hit.point + currentDirection * 0.01f;
+                }
+                else
+                {
+                    Gizmos.DrawWireCube(Vector3.zero, size);
+                    break;
+                }
                 Gizmos.color = Color.cyan;
 
                 // Оновлюємо довжину наступного сегмента
@@ -138,7 +145,7 @@ public class WindZone : MonoBehaviour
                 // Якщо залишкова довжина <= мінімальної, зупиняємо малювання
                 if (remainingLength <= minSegmentLength)
                     break;
-
+                
                 Gizmos.DrawWireCube(Vector3.zero, size);
             }
             else
