@@ -4,16 +4,16 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Builded
+  - WindSegment
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Air interference
   - Water
   - UI
-  - 
-  - 
+  - Sphere
+  - Bubble
   - 
   - 
   - 
