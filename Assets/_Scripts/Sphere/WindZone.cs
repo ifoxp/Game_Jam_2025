@@ -11,9 +11,9 @@ public class WindZone : MonoBehaviour
     public bool showWindVisual = true; // Нове поле для включення/виключення візуалізації
     public bool bounveActive = true;
 
-    [SerializeField] private Collider[] windColliders;
+   /* [SerializeField] private Collider[] windColliders;
     private float windUpdateTimer = 0f; // Лічильник часу
-    public float updateInterval = 1f; // Інтервал між оновленнями (в секундах)
+    public float updateInterval = 1f; // Інтервал між оновленнями (в секундах)*/
 
     
     private void FixedUpdate()
@@ -24,7 +24,7 @@ public class WindZone : MonoBehaviour
                                                 // Оновлюємо колайдери кожні 0.5 секунди
                                                 // Оновлюємо колайдери кожні 0.5 секунди
                                                 // Додаємо час між кадрами до таймера
-        windUpdateTimer += Time.fixedDeltaTime;
+       /* windUpdateTimer += Time.fixedDeltaTime;
 
         // Якщо таймер перевищує інтервал оновлення
         if (windUpdateTimer >= updateInterval)
@@ -34,7 +34,7 @@ public class WindZone : MonoBehaviour
 
             // Скидаємо таймер
             windUpdateTimer = 0f;
-        }
+        }*/
         while (remainingLength > minSegmentLength)
         {
             // Обчислюємо силу вітру для поточного сегмента в залежності від відстані
@@ -137,38 +137,51 @@ public class WindZone : MonoBehaviour
             Vector3 size = new Vector3(windAreaSize.x, windAreaSize.y, currentSegmentLength);
             Gizmos.matrix = Matrix4x4.TRS(center, Quaternion.LookRotation(currentDirection), Vector3.one);
 
-            WindZone[] windZones = FindObjectsOfType<WindZone>();
-            foreach (WindZone otherZone in windZones)
+            /*bool segmentIntersecting = false;
+
+            foreach (Transform myChild in transform)
             {
-                if (otherZone != this && IsIntersecting(otherZone))
+                BoxCollider myCollider = myChild.GetComponent<BoxCollider>();
+                if (myCollider == null) continue;
+
+                WindZone[] windZones = FindObjectsOfType<WindZone>();
+                foreach (WindZone otherZone in windZones)
                 {
-                    // Если пересечение есть, рисуем зону красным цветом
-                    Gizmos.color = Color.red;
-                    foreach (Transform child in otherZone.transform)
+                    if (otherZone != this && !transform.IsChildOf(otherZone.transform))
                     {
-                        BoxCollider boxCollider = child.GetComponent<BoxCollider>();
+                        foreach (Transform otherChild in otherZone.transform)
+                        {
+                            BoxCollider otherCollider = otherChild.GetComponent<BoxCollider>();
+                            if (otherCollider == null || otherCollider.transform.IsChildOf(transform)) continue;
+
+                            if (myCollider.bounds.Intersects(otherCollider.bounds))
+                            {
+                                Gizmos.color = Color.red;
+                                //Gizmos.DrawWireCube(myCollider.bounds.center, myCollider.bounds.size);
+                                segmentIntersecting = true;
+                            }
+                        }
                     }
+                }
+                if (!segmentIntersecting)
+                {
+                    Gizmos.color = Color.cyan;
+                    //Gizmos.DrawWireCube(myCollider.bounds.center, myCollider.bounds.size);
                 }
             }
 
+            
+        */
             // Перевіряємо, чи є перешкода перед сегментом
             RaycastHit hit;
             if (Physics.Raycast(currentPosition, currentDirection, out hit, remainingLength, obstacleLayers))
             {
-                // Якщо є перешкода, малюємо лінію до неї
-                //Gizmos.color = Color.red;
-                //Gizmos.DrawLine(currentPosition, hit.point);
-
-                // Зберігаємо довжину поточного сегмента до перешкоди
                 currentSegmentLength = hit.distance;
-
-                // Обрізаємо потік
                 remainingLength -= hit.distance;
                 size.z -= remainingLength;
                 center = currentPosition + currentDirection * (currentSegmentLength / 2);
                 Gizmos.matrix = Matrix4x4.TRS(center, Quaternion.LookRotation(currentDirection), Vector3.one);
 
-                // Розраховуємо новий напрямок
                 if (bounveActive)
                 {
                     currentDirection = Vector3.Reflect(currentDirection, hit.normal).normalized;
@@ -181,10 +194,8 @@ public class WindZone : MonoBehaviour
                 }
                 Gizmos.color = Color.cyan;
 
-                // Оновлюємо довжину наступного сегмента
                 currentSegmentLength = remainingLength;
 
-                // Якщо залишкова довжина <= мінімальної, зупиняємо малювання
                 if (remainingLength <= minSegmentLength)
                     break;
 
@@ -193,13 +204,13 @@ public class WindZone : MonoBehaviour
             else
             {
                 Gizmos.DrawWireCube(Vector3.zero, size);
-                // Якщо перешкоди немає, завершуємо малювання
                 currentSegmentLength = remainingLength;
                 break;
             }
         }
     }
-    public bool IsIntersecting(WindZone otherZone)
+
+    /*public bool IsIntersecting(WindZone otherZone)
     {
         foreach (Transform myChild in transform)
         {
@@ -218,10 +229,10 @@ public class WindZone : MonoBehaviour
             }
         }
         return false;
-    }
+    }*/
 
 
-    private void GenerateWindColliders()
+    /*private void GenerateWindColliders()
     {
         // Очищаємо старі колайдери
         foreach (Transform child in transform)
@@ -282,5 +293,5 @@ public class WindZone : MonoBehaviour
             }
         }
     }
-
+    */
 }
