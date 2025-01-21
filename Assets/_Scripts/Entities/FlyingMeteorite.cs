@@ -8,6 +8,7 @@ namespace _Scripts.Entities
     public class FlyingMeteorite : MonoBehaviour, IEntity
     {
         [SerializeField] private float _speed;
+        [SerializeField] private float _maxErrorAngle = 20f;
         [SerializeField] private Vector3 _calculatedFlyDirection;
 
         [Tooltip("Object with layer which meteor forbidden to fly in")]
@@ -45,11 +46,7 @@ namespace _Scripts.Entities
         {
             var baseDirection = Vector3.back;
 
-            var colliderSize = _meteoriteCollider.size;
-
-            var maxErrorAngle = 25f;
-            var maxErrorAngleRadians = maxErrorAngle * Mathf.Deg2Rad;
-
+            var maxErrorAngleRadians = _maxErrorAngle * Mathf.Deg2Rad;
             Vector3[] possibleDirections =
             {
                 baseDirection,
@@ -61,9 +58,10 @@ namespace _Scripts.Entities
                 baseDirection + new Vector3(0, 0, -Mathf.Sin(maxErrorAngleRadians))
             };
 
+            var colliderSize = _meteoriteCollider.size;
             foreach (var direction in possibleDirections)
             {
-                var startPoint = transform.position ;
+                var startPoint = transform.position + _meteoriteCollider.center;
 
                 if (!Physics.BoxCast(
                         startPoint,
@@ -79,7 +77,7 @@ namespace _Scripts.Entities
                 }
             }
 
-            Debug.Log("<color=red>touching</color>");
+            Debug.Log("<color=red>Destroying earlier, because can't set direction</color>");
             Destroy(gameObject);
             
             return Vector3.zero;

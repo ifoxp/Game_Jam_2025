@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
+  _maxErrorAngle: 30
   _calculatedFlyDirection: {x: 0, y: 0, z: 0}
   _forbiddenLayer:
     serializedVersion: 2
