@@ -116,7 +116,7 @@ public class WindZone : MonoBehaviour
         return distanceToHit < segmentLength; // Якщо сегмент обрізаний, повертаємо true
     }
 
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         // Малюємо тільки якщо змінна showWindVisual дорівнює true
         if (!showWindVisual) return;
@@ -136,6 +136,20 @@ public class WindZone : MonoBehaviour
             Vector3 center = currentPosition + currentDirection * (currentSegmentLength / 2);
             Vector3 size = new Vector3(windAreaSize.x, windAreaSize.y, currentSegmentLength);
             Gizmos.matrix = Matrix4x4.TRS(center, Quaternion.LookRotation(currentDirection), Vector3.one);
+
+            WindZone[] windZones = FindObjectsOfType<WindZone>();
+            foreach (WindZone otherZone in windZones)
+            {
+                if (otherZone != this && IsIntersecting(otherZone))
+                {
+                    // Если пересечение есть, рисуем зону красным цветом
+                    Gizmos.color = Color.red;
+                    foreach (Transform child in otherZone.transform)
+                    {
+                        BoxCollider boxCollider = child.GetComponent<BoxCollider>();
+                    }
+                }
+            }
 
             // Перевіряємо, чи є перешкода перед сегментом
             RaycastHit hit;
@@ -184,7 +198,28 @@ public class WindZone : MonoBehaviour
                 break;
             }
         }
-    }*/
+    }
+    public bool IsIntersecting(WindZone otherZone)
+    {
+        foreach (Transform myChild in transform)
+        {
+            BoxCollider myCollider = myChild.GetComponent<BoxCollider>();
+            if (myCollider == null) continue;
+
+            foreach (Transform otherChild in otherZone.transform)
+            {
+                BoxCollider otherCollider = otherChild.GetComponent<BoxCollider>();
+                if (otherCollider == null) continue;
+
+                if (myCollider.bounds.Intersects(otherCollider.bounds))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     private void GenerateWindColliders()
     {

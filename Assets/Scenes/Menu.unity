@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1567073}
   - component: {fileID: 1567072}
+  - component: {fileID: 1567074}
   m_Layer: 8
   m_Name: WindZone (1)
   m_TagString: GizmoObject
@@ -160,7 +161,7 @@ MonoBehaviour:
   showWindVisual: 1
   bounveActive: 1
   windColliders: []
-  updateInterval: 0.5
+  updateInterval: 1
 --- !u!4 &1567073
 Transform:
   m_ObjectHideFlags: 0
@@ -169,13 +170,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567071}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.97629607, y: 0, z: 0.2164396, w: 0}
-  m_LocalPosition: {x: -59.94, y: 2, z: 13.26}
+  m_LocalRotation: {x: -0.9649479, y: 0, z: 0.26244178, w: 0}
+  m_LocalPosition: {x: -64.24, y: 2, z: 11.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -180, y: 25, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 30.43, z: 0}
+--- !u!65 &1567074
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567071}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &89817543
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -301,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 211996804}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -72.16, y: 1.37, z: 13.01}
+  m_LocalPosition: {x: -78.67, y: 1.37, z: 8.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1433,6 +1455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 850493767}
   - component: {fileID: 850493765}
+  - component: {fileID: 850493768}
   m_Layer: 8
   m_Name: WindZone
   m_TagString: GizmoObject
@@ -1464,7 +1487,7 @@ MonoBehaviour:
   showWindVisual: 1
   bounveActive: 1
   windColliders: []
-  updateInterval: 0.5
+  updateInterval: 1
 --- !u!4 &850493767
 Transform:
   m_ObjectHideFlags: 0
@@ -1474,12 +1497,33 @@ Transform:
   m_GameObject: {fileID: 850493764}
   serializedVersion: 2
   m_LocalRotation: {x: -0.97629607, y: 0, z: -0.21643952, w: 0}
-  m_LocalPosition: {x: -80.39, y: 2, z: 12.87}
+  m_LocalPosition: {x: -83.69, y: 2, z: 12.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -180, y: -25, z: 0}
+--- !u!65 &850493768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850493764}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &857444827
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4559,7 +4603,7 @@ MonoBehaviour:
   showWindVisual: 1
   bounveActive: 1
   windColliders: []
-  updateInterval: 0.5
+  updateInterval: 1
 --- !u!135 &1404478574
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -39610,7 +39654,7 @@ MonoBehaviour:
   showWindVisual: 1
   bounveActive: 1
   windColliders: []
-  updateInterval: 0.5
+  updateInterval: 1
 --- !u!4 &1843577511
 Transform:
   m_ObjectHideFlags: 0
@@ -39635,7 +39679,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1882808834}
-  - component: {fileID: 1882808835}
   m_Layer: 0
   m_Name: Wind
   m_TagString: Untagged
@@ -39661,20 +39704,6 @@ Transform:
   - {fileID: 1376556997}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!182 &1882808835
-WindZone:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1882808833}
-  m_Enabled: 1
-  m_Mode: 1
-  m_Radius: 28.4
-  m_WindMain: 1
-  m_WindTurbulence: 1
-  m_WindPulseMagnitude: 0.5
-  m_WindPulseFrequency: 0.01
 --- !u!135 &1894865559
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -40019,7 +40048,7 @@ MonoBehaviour:
   showWindVisual: 1
   bounveActive: 1
   windColliders: []
-  updateInterval: 0.5
+  updateInterval: 1
 --- !u!54 &2116446923
 Rigidbody:
   m_ObjectHideFlags: 0
