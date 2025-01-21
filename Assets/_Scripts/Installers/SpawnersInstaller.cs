@@ -9,7 +9,7 @@ namespace _Scripts.Installers
 {
     public class SpawnersInstaller : MonoInstaller
     {
-        [SerializeField] private Meteorite[] _meteorites;
+        [SerializeField] private FlyingMeteorite[] _meteorites;
 
         public override void InstallBindings()
         {

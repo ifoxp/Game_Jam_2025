@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 4615264355675058517}
   - component: {fileID: -8233192930908929257}
   - component: {fileID: -3540755910482684825}
+  - component: {fileID: 392400287144266937}
   m_Layer: 0
   m_Name: Meteorite_variant2
   m_TagString: Untagged
@@ -155,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  _flyDirection: {x: 0, y: 0, z: 0}
+  _calculatedFlyDirection: {x: 0, y: 0, z: 0}
   _forbiddenLayer:
     serializedVersion: 2
     m_Bits: 192
@@ -187,3 +188,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!205 &392400287144266937
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113447432809608053}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.014664173, y: 0.055957794, z: 0.086377144}
+  m_Size: 4.1304865
+  m_FadeMode: 1
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.02001525
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3673334507403540766}
+  m_Enabled: 1

@@ -6,12 +6,12 @@ namespace _Scripts.Entities.Factories
 {
     public class MeteoriteFactory : IEntityFactory
     {
-        private readonly Meteorite[] _meteoritePrefabs;
+        private readonly FlyingMeteorite[] _meteoritePrefabs;
 
         [Inject]
-        public MeteoriteFactory(Meteorite[] meteoritePrefabs)
+        public MeteoriteFactory(FlyingMeteorite[] meteoritePrefabs)
         {
-            _meteoritePrefabs = (Meteorite[])meteoritePrefabs.Clone();
+            _meteoritePrefabs = (FlyingMeteorite[])meteoritePrefabs.Clone();
         }
         
         public IEntity CreateEntity(Vector3 position)

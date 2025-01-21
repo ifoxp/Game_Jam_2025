@@ -5,10 +5,10 @@ using UnityEngine;
 namespace _Scripts.Entities
 {
     [RequireComponent(typeof(BoxCollider))]
-    public class Meteorite : MonoBehaviour, IEntity
+    public class FlyingMeteorite : MonoBehaviour, IEntity
     {
         [SerializeField] private float _speed;
-        [SerializeField] private Vector3 _flyDirection;
+        [SerializeField] private Vector3 _calculatedFlyDirection;
 
         [Tooltip("Object with layer which meteor forbidden to fly in")]
         [SerializeField] private LayerMask _forbiddenLayer;
@@ -34,7 +34,8 @@ namespace _Scripts.Entities
             var randomScale = Random.Range(MIN_SCALE, MAX_SCALE);
             transform.localScale = new Vector3(randomScale, randomScale, randomScale);
 
-            _flyDirection = CalculateDirection();
+            _calculatedFlyDirection = CalculateDirection();
+            Debug.Log(_calculatedFlyDirection);
             
             var randomRotation = Random.rotation.eulerAngles;
             _currentTween = Tween.Rotation(transform, randomRotation, 3, Ease.Default, -1, CycleMode.Incremental);
@@ -42,44 +43,51 @@ namespace _Scripts.Entities
 
         private Vector3 CalculateDirection()
         {
-            var baseDirection = Vector3.down;
+            var baseDirection = Vector3.back;
 
             var colliderSize = _meteoriteCollider.size;
-            var colliderCenter = _meteoriteCollider.center;
-            
+
+            var maxErrorAngle = 25f;
+            var maxErrorAngleRadians = maxErrorAngle * Mathf.Deg2Rad;
+
             Vector3[] possibleDirections =
             {
                 baseDirection,
-                baseDirection + Vector3.left * 0.5f,
-                baseDirection + Vector3.right * 0.5f,
-                baseDirection + Vector3.forward * 0.5f,
-                baseDirection + Vector3.back * 0.5f
+                baseDirection + new Vector3(Mathf.Sin(maxErrorAngleRadians), 0, 0),
+                baseDirection + new Vector3(-Mathf.Sin(maxErrorAngleRadians), 0, 0),
+                baseDirection + new Vector3(0, Mathf.Sin(maxErrorAngleRadians), 0),
+                baseDirection + new Vector3(0, -Mathf.Sin(maxErrorAngleRadians), 0),
+                baseDirection + new Vector3(0, 0, Mathf.Sin(maxErrorAngleRadians)),
+                baseDirection + new Vector3(0, 0, -Mathf.Sin(maxErrorAngleRadians))
             };
 
             foreach (var direction in possibleDirections)
             {
-                var startPoint = transform.position + colliderCenter;
+                var startPoint = transform.position ;
 
                 if (!Physics.BoxCast(
                         startPoint,
                         colliderSize / 2,
                         direction.normalized,
-                        out var hit,
+                        out _,
                         Quaternion.identity,
                         MAX_CHECK_DISTANCE,
                         _forbiddenLayer
                     ))
                 {
-                    return direction.normalized;
+                    return direction;
                 }
             }
 
-            return baseDirection;
+            Debug.Log("<color=red>touching</color>");
+            Destroy(gameObject);
+            
+            return Vector3.zero;
         }
 
         private void FixedUpdate()
         {
-            transform.position += _flyDirection * (_speed * Time.fixedDeltaTime);
+            transform.position += _calculatedFlyDirection * (_speed * Time.fixedDeltaTime);
         }
 
         private void OnTriggerEnter(Collider other)
