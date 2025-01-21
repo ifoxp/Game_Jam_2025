@@ -54,27 +54,54 @@ namespace _Scripts.Behaviours
                 isMovingToHub = false;
             }
         }
-        
+
         private void MoveToMeteorite()
         {
-            Vector3 distance = targetMeteorite.transform.position + transform.position;
-            Vector3 absoluteDistance = new Vector3(Mathf.Abs(distance.x), Mathf.Abs(distance.y), Mathf.Abs(distance.z));
-            float distanceToHub = Vector3.Distance(absoluteDistance, hub.position);
+            // Визначаємо відстань до метеориту
+            float distanceToMeteorite = Vector3.Distance(transform.position, targetMeteorite.transform.position);
 
-            
-            print(distanceToHub);
-            
+            // Друкуємо відстань для перевірки
+            print(distanceToMeteorite);
+
+            // Лінійна швидкість
             rb.linearVelocity = transform.forward * speed;
-            
+
+            // Напрямок до метеориту
             Vector3 targetDirection = (targetMeteorite.transform.position - transform.position).normalized;
             Vector3 currentDirection = transform.forward;
 
+            // Визначаємо вісь обертання
             Vector3 rotationAxis = Vector3.Cross(currentDirection, targetDirection);
             float angleDifference = Vector3.Angle(currentDirection, targetDirection);
-            
-            rb.angularVelocity = rotationAxis.normalized * (angleDifference * Mathf.Deg2Rad * rotationSpeed * distanceToHub);
-            
-            if (Vector3.Distance(transform.position, targetMeteorite.transform.position) < 0.4f)
+
+            // Модифікація швидкості обертання в залежності від відстані до метеориту
+            float adjustedRotationSpeed;
+
+            if (distanceToMeteorite < 7f)
+            {
+                // Якщо відстань менша ніж 3, збільшуємо швидкість повороту
+                adjustedRotationSpeed = rotationSpeed * Mathf.Clamp01(1 / (distanceToMeteorite + 1f)) * 2.5f; // Додаємо коефіцієнт, щоб збільшити швидкість повороту
+            }
+            else
+            {
+                // Інакше використовуємо стандартну швидкість
+                adjustedRotationSpeed = rotationSpeed * Mathf.Clamp01(1 / (distanceToMeteorite + 1f));
+            }
+
+            // Якщо відстань дуже мала, ми використовуємо RotateTowards для точного наведення
+            if (distanceToMeteorite < 0.4f)
+            {
+                // Обертання з максимальною швидкістю, щоб об'єкт точно орієнтувався на метеорит
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection), adjustedRotationSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // Якщо відстань більша, об'єкт може повертатись з врахуванням кутової швидкості
+                rb.angularVelocity = rotationAxis.normalized * (angleDifference * Mathf.Deg2Rad * adjustedRotationSpeed);
+            }
+
+            // Якщо відстань до метеориту менша за 0.4, об'єкт починає рухатись до хабу
+            if (distanceToMeteorite < 0.4f)
             {
                 isPickingUpMeteorite = true;
                 isMovingToHub = true;
@@ -82,7 +109,9 @@ namespace _Scripts.Behaviours
                 targetMeteorite.transform.localPosition = Vector3.zero;
             }
         }
-        
+
+
+
         [Button]
         public void FindNearestMeteorite()
         {
