@@ -41,15 +41,17 @@ namespace _Scripts.Behaviours
         
         private void MoveToHub()
         {
-            Vector3 velocity = (hub.position - transform.position).normalized * speed;
-            rb.linearVelocity = velocity;
+            MoveTo(hub, out _);
+            
+            if(targetMeteorite)
+                targetMeteorite.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y - 0.3f, transform.localPosition.z);
 
             if (Vector3.Distance(transform.position, hub.position) < 0.4f)
             {
                 rb.linearVelocity = Vector3.zero;
                 targetMeteorite = null;
                 
-                // GET RESOURCES
+                // TODO: LOGIC FOR RESOURCES IS HERE ->
                 
                 isMovingToHub = false;
             }
@@ -57,17 +59,30 @@ namespace _Scripts.Behaviours
 
         private void MoveToMeteorite()
         {
-            // Визначаємо відстань до метеориту
-            float distanceToMeteorite = Vector3.Distance(transform.position, targetMeteorite.transform.position);
+            MoveTo(targetMeteorite.transform, out float distanceToMeteorite);
 
-            // Друкуємо відстань для перевірки
-            print(distanceToMeteorite);
+            if (distanceToMeteorite < 0.4f)
+            {
+                isPickingUpMeteorite = true;
+                isMovingToHub = true;
+
+                Destroy(targetMeteorite.transform.GetComponent<Rigidbody>());
+            }
+        }
+        
+
+        private void MoveTo(Transform target, out float distanceToTarget)
+        {
+            // Визначаємо відстань
+            float distance = Vector3.Distance(transform.position, target.position);
+            
+            distanceToTarget = distance;
 
             // Лінійна швидкість
             rb.linearVelocity = transform.forward * speed;
 
             // Напрямок до метеориту
-            Vector3 targetDirection = (targetMeteorite.transform.position - transform.position).normalized;
+            Vector3 targetDirection = (target.position - transform.position).normalized;
             Vector3 currentDirection = transform.forward;
 
             // Визначаємо вісь обертання
@@ -77,19 +92,19 @@ namespace _Scripts.Behaviours
             // Модифікація швидкості обертання в залежності від відстані до метеориту
             float adjustedRotationSpeed;
 
-            if (distanceToMeteorite < 7f)
+            if (distance < 7f)
             {
                 // Якщо відстань менша ніж 3, збільшуємо швидкість повороту
-                adjustedRotationSpeed = rotationSpeed * Mathf.Clamp01(1 / (distanceToMeteorite + 1f)) * 2.5f; // Додаємо коефіцієнт, щоб збільшити швидкість повороту
+                adjustedRotationSpeed = rotationSpeed * Mathf.Clamp01(1 / (distance + 1f)) * 2.5f; // Додаємо коефіцієнт, щоб збільшити швидкість повороту
             }
             else
             {
                 // Інакше використовуємо стандартну швидкість
-                adjustedRotationSpeed = rotationSpeed * Mathf.Clamp01(1 / (distanceToMeteorite + 1f));
+                adjustedRotationSpeed = rotationSpeed * Mathf.Clamp01(1 / (distance + 1f));
             }
 
             // Якщо відстань дуже мала, ми використовуємо RotateTowards для точного наведення
-            if (distanceToMeteorite < 0.4f)
+            if (distance < 0.4f)
             {
                 // Обертання з максимальною швидкістю, щоб об'єкт точно орієнтувався на метеорит
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection), adjustedRotationSpeed * Time.deltaTime);
@@ -99,18 +114,7 @@ namespace _Scripts.Behaviours
                 // Якщо відстань більша, об'єкт може повертатись з врахуванням кутової швидкості
                 rb.angularVelocity = rotationAxis.normalized * (angleDifference * Mathf.Deg2Rad * adjustedRotationSpeed);
             }
-
-            // Якщо відстань до метеориту менша за 0.4, об'єкт починає рухатись до хабу
-            if (distanceToMeteorite < 0.4f)
-            {
-                isPickingUpMeteorite = true;
-                isMovingToHub = true;
-                targetMeteorite.transform.SetParent(hook);
-                targetMeteorite.transform.localPosition = Vector3.zero;
-            }
         }
-
-
 
         [Button]
         public void FindNearestMeteorite()
