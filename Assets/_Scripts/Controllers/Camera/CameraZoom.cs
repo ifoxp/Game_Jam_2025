@@ -76,7 +76,7 @@ namespace _Scripts.Controllers.Camera
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            PlayerPrefs.SetFloat(Utilities.SettingsKeys.ZOOM_CAMERA_SENSITIVITY, _zoomSensitivity);
+            PlayerPrefs.SetFloat(Utilities.Keys.ZOOM_CAMERA_SENSITIVITY, _zoomSensitivity);
             PlayerPrefs.Save();
         }
 #endif

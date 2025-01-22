@@ -27,10 +27,10 @@ namespace _Scripts.Spawners
 
         private void SpawnEntity()
         {
-            byte spawner = (byte)(Random.Range(_spawnPerWave.x, _spawnPerWave.y));
+            var spawner = (byte)(Random.Range(_spawnPerWave.x, _spawnPerWave.y));
             for (var i = 0; i < spawner; i++)
             {
-                var entity = _entityFactory.CreateEntity(RandomAdditional.
+                _entityFactory.CreateEntity(RandomAdditional.
                     GetRandomPositionInBoxCollider(_spawnSettings.spawnArea),transform);
             
                 //Debug.Log($"Spawned entity: {entity}");

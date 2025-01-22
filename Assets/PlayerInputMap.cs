@@ -53,6 +53,15 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""processors"": ""ScaleVector2(x=0.02,y=0.02),DeltaTimeScale"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""9bbd21b3-0328-4498-9fb5-deee92e7108e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -86,6 +95,17 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""LeftMouseButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9099ae3-9185-4726-bf78-57f625e8c957"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -676,6 +696,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         m_Player_LeftMouseButton = m_Player.FindAction("LeftMouseButton", throwIfNotFound: true);
         m_Player_ZoomLook = m_Player.FindAction("ZoomLook", throwIfNotFound: true);
         m_Player_PositionLook = m_Player.FindAction("PositionLook", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -758,6 +779,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LeftMouseButton;
     private readonly InputAction m_Player_ZoomLook;
     private readonly InputAction m_Player_PositionLook;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @PlayerInputMap m_Wrapper;
@@ -765,6 +787,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         public InputAction @LeftMouseButton => m_Wrapper.m_Player_LeftMouseButton;
         public InputAction @ZoomLook => m_Wrapper.m_Player_ZoomLook;
         public InputAction @PositionLook => m_Wrapper.m_Player_PositionLook;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -783,6 +806,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             @PositionLook.started += instance.OnPositionLook;
             @PositionLook.performed += instance.OnPositionLook;
             @PositionLook.canceled += instance.OnPositionLook;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -796,6 +822,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             @PositionLook.started -= instance.OnPositionLook;
             @PositionLook.performed -= instance.OnPositionLook;
             @PositionLook.canceled -= instance.OnPositionLook;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -981,6 +1010,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         void OnLeftMouseButton(InputAction.CallbackContext context);
         void OnZoomLook(InputAction.CallbackContext context);
         void OnPositionLook(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

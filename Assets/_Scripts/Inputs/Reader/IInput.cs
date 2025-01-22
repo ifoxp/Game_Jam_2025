@@ -9,5 +9,8 @@ namespace _Scripts.Inputs.Reader
         public event Action<Vector2> OnMouseMove;
         
         public event Action<bool> OnLeftMousePressed;
+        public event Action OnInteract;
+
+        public Vector2 GetPointerPosition();
     }
 }

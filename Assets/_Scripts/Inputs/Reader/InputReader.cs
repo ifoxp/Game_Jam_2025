@@ -10,6 +10,7 @@ namespace _Scripts.Inputs.Reader
         public event Action<Vector2> OnMouseWheelScroll;
         public event Action<Vector2> OnMouseMove;
         public event Action<bool> OnLeftMousePressed;
+        public event Action OnInteract;
 
         private PlayerInputMap _inputMap;
         
@@ -31,6 +32,8 @@ namespace _Scripts.Inputs.Reader
 
             _inputMap.Player.LeftMouseButton.performed += OnLeftMouseButtonPressed;
             _inputMap.Player.LeftMouseButton.canceled += OnLeftMouseButtonPressed;
+            
+            _inputMap.Player.Interact.performed += OnInteractNotify;
         }
         
         public void Dispose()
@@ -53,6 +56,8 @@ namespace _Scripts.Inputs.Reader
             
             _inputMap.Player.LeftMouseButton.performed -= OnLeftMouseButtonPressed;
             _inputMap.Player.LeftMouseButton.canceled -= OnLeftMouseButtonPressed;
+            
+            _inputMap.Player.Interact.performed -= OnInteractNotify;
         }
 
         private void ClearActions()
@@ -60,6 +65,7 @@ namespace _Scripts.Inputs.Reader
             OnMouseWheelScroll = null;
             OnMouseMove = null;
             OnLeftMousePressed = null;
+            OnInteract = null;
         }
 
         private void OnNotifyScrollLook(InputAction.CallbackContext context) => 
@@ -70,11 +76,19 @@ namespace _Scripts.Inputs.Reader
         
         private void OnLeftMouseButtonPressed(InputAction.CallbackContext context) =>
             OnLeftMousePressed?.Invoke(context.performed);
+        
+        private void OnInteractNotify(InputAction.CallbackContext context) =>
+            OnInteract?.Invoke();
             
         private void NotifyVector2Action(InputAction.CallbackContext context, Action<Vector2> action)
         {
             var vector2 = context.ReadValue<Vector2>();
             action?.Invoke(vector2);
+        }
+
+        public Vector2 GetPointerPosition()
+        {
+            return Mouse.current.position.ReadValue();
         }
     }
 }

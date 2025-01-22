@@ -78,7 +78,7 @@ namespace _Scripts.Controllers.Camera
             if (!_canRotate) return;
 
             var sensitivity = PlayerPrefs.GetFloat(
-                Utilities.SettingsKeys.ROTATE_CAMERA_SENSITIVITY, _rotationSensitivity);
+                Utilities.Keys.ROTATE_CAMERA_SENSITIVITY, _rotationSensitivity);
 
             var newHorizontalValue = CalculateWrappedAxisValue(inputValue.x, 
                 _orbitalFollowCamera.HorizontalAxis, sensitivity);
@@ -159,7 +159,7 @@ namespace _Scripts.Controllers.Camera
         #if UNITY_EDITOR
         private void OnValidate()
         {
-            PlayerPrefs.SetFloat(Utilities.SettingsKeys.ROTATE_CAMERA_SENSITIVITY, _rotationSensitivity);
+            PlayerPrefs.SetFloat(Utilities.Keys.ROTATE_CAMERA_SENSITIVITY, _rotationSensitivity);
             PlayerPrefs.Save();
         }
 #endif
