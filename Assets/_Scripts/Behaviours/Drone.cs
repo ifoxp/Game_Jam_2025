@@ -13,6 +13,7 @@ namespace _Scripts.Behaviours
     {
         [SerializeField] private float speed = 5f;
         [SerializeField] private float rotationSpeed = 1f;
+        [SerializeField] private Transform DroneEmpty;
         [SerializeField] private Transform hub;
         [SerializeField] private Transform hubRoad;
         [SerializeField] private Transform hook;
@@ -23,7 +24,7 @@ namespace _Scripts.Behaviours
         [HorizontalLine]
         [SerializeField] private Meteorite targetMeteorite;
         [SerializeField] private bool isPickingUpMeteorite;
-
+        private bool sitOnMeteorite;
         private Rigidbody rb;
 
         private void Awake() => rb = GetComponent<Rigidbody>();
@@ -42,19 +43,22 @@ namespace _Scripts.Behaviours
 
         private void FixedUpdate()
         {
-            if (targetMeteorite != null && !isPickingUpMeteorite)
-                MoveToMeteorite();
+            if (!sitOnMeteorite)
+            {
+                if (targetMeteorite != null && !isPickingUpMeteorite)
+                    MoveToMeteorite();
 
-            else if (!isPickingUpMeteorite && targetMeteorite == null )
-                if(Vector3.Distance(transform.position, hub.position) > 1.4f)
-                    isMovingToHub = true;
+                else if (!isPickingUpMeteorite && targetMeteorite == null)
+                    if (Vector3.Distance(transform.position, hub.position) > 1.4f)
+                        isMovingToHub = true;
 
-            else if(Vector3.Distance(transform.position, hub.position) > 2f && targetMeteorite == null)
-                    isMovingToHub = true;
+                    else if (Vector3.Distance(transform.position, hub.position) > 2f && targetMeteorite == null)
+                        isMovingToHub = true;
 
 
-            if (isMovingToHub)
-                MoveToHub();
+                if (isMovingToHub)
+                    MoveToHub();
+            }
         }
 
         private void MoveToHub()
@@ -143,25 +147,57 @@ namespace _Scripts.Behaviours
             // Перевіряємо, чи зіткнулися з метеоритом
             if (collision.gameObject.CompareTag("Meteorite") && !isPickingUpMeteorite)
             {
+                // Скидаємо всі сили та моменти об'єкта
+                Rigidbody rb = GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector3.zero; // Скидаємо лінійну швидкість
+                    rb.angularVelocity = Vector3.zero; // Скидаємо кутову швидкість
+                    rb.isKinematic = true;
+                }
+                gameObject.transform.SetParent(collision.transform);
+                /*Quaternion currentRotation = gameObject.transform.rotation;
+                gameObject.transform.rotation = Quaternion.Euler(currentRotation.eulerAngles.x - 90f, currentRotation.eulerAngles.y, currentRotation.eulerAngles.z);
+               */
 
+                // Стаємо до найближчої точки на поверхні метеорита
+                Vector3 closestPoint = collision.collider.ClosestPoint(transform.position);
+                transform.position = closestPoint; // Переміщуємо дрон до найближчої точки
+                transform.LookAt(collision.transform.position); // Орієнтуємо дрон на метеорит
+                // Активуємо посадку та очікування
+                sitOnMeteorite = true;
                 isPickingUpMeteorite = true;
                 isMovingToHub = true;
-                // Випадкове створення нового метеорита
-                int randomIndex = UnityEngine.Random.Range(0, meteoritesManager.meteoritePrefs.Length);
-                GameObject newMeteorite = Instantiate(meteoritesManager.meteoritePrefs[randomIndex], transform.position, Quaternion.identity,gameObject.transform);
-                newMeteorite.GetComponent<FlyingMeteorite>().enabled = false;
 
-                Vector3 newPosition = transform.position;
-                newPosition.z -=1.1f;
-                newMeteorite.transform.position = newPosition;
+                // Виконуємо логіку через затримку
+                StartCoroutine(HandleMeteoriteInteraction());
+
                 
-                newMeteorite.GetComponent<Collider>().isTrigger= true;
-                Destroy(newMeteorite.transform.GetComponent<Rigidbody>());
-                newMeteorite.transform.localScale=new Vector3(0.3f,0.3f,0.3f);
-                newMeteorite.SetActive(true); // Метеорит буде активним
-                targetMeteorite = null;
             }
         }
+
+        // Корутин для обробки взаємодії з метеоритом
+        private IEnumerator HandleMeteoriteInteraction()
+        {
+            // Чекаємо 3 секунди, імітуючи процес збору метеорита
+            yield return new WaitForSeconds(UnityEngine.Random.Range(5f,8f));
+            rb.isKinematic = false;
+            gameObject.transform.SetParent(DroneEmpty);
+            // Завершуємо посадку
+            sitOnMeteorite = false;
+
+            // Створюємо новий метеорит
+            int randomIndex = UnityEngine.Random.Range(0, meteoritesManager.meteoritePrefs.Length);
+            GameObject newMeteorite = Instantiate(
+                meteoritesManager.meteoritePrefs[randomIndex],
+                hook.position,
+                Quaternion.identity,
+                gameObject.transform
+            );
+            newMeteorite.SetActive(true); // Активуємо новий метеорит
+            targetMeteorite = null; // Скидаємо ціль
+        }
+
         private IEnumerator CheckForNearbyMeteorites()
         {
             while (true)
