@@ -49,11 +49,14 @@ namespace _Scripts.Behaviours
             if (Vector3.Distance(transform.position, hub.position) < 0.4f)
             {
                 rb.linearVelocity = Vector3.zero;
-                targetMeteorite = null;
+               
                 
                 // TODO: LOGIC FOR RESOURCES IS HERE ->
                 
                 isMovingToHub = false;
+                isPickingUpMeteorite = false;
+                targetMeteorite.gameObject.SetActive(false);
+                targetMeteorite = null;
             }
         }
 
