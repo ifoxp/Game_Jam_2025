@@ -1,6 +1,6 @@
+using UnityEngine;
 using _Scripts.Entities.Interfaces;
 using PrimeTween;
-using UnityEngine;
 
 namespace _Scripts.Entities
 {
@@ -16,15 +16,16 @@ namespace _Scripts.Entities
         
         [SerializeField] private BoxCollider _meteoriteCollider;
         
-        private Tween _currentTween;
+        [SerializeField] private float _scaleAnimationTime = 4f;
+        
+        private Tween _currentRotationTween;
+        private Tween _currentScaleTween;
         
         private const int MIN_SPEED = 3;
         private const int MAX_SPEED = 15;
         
         private const float MIN_SCALE = 0.5f;
         private const float MAX_SCALE = 2.5f;
-        [SerializeField]
-        private float SCALE_ANIMATION_TIME_BLIAT = 4f;
         
         private const float MAX_CHECK_DISTANCE =400f;
 
@@ -33,16 +34,16 @@ namespace _Scripts.Entities
         public void Initialize()
         {
             _speed = Random.Range(MIN_SPEED, MAX_SPEED);
-            //transform.localScale = Vector3.zero;
-
+            transform.localScale = Vector3.zero;
+            
             var randomScale = Random.Range(MIN_SCALE, MAX_SCALE);
-            //Tween.Scale(transform, randomScale, SCALE_ANIMATION_TIME_BLIAT,Ease.Linear);
+            _currentScaleTween = Tween.Scale(transform, randomScale,
+                _scaleAnimationTime, Ease.Linear);
 
             _calculatedFlyDirection = CalculateDirection();
-            //Debug.Log(_calculatedFlyDirection);
             
             var randomRotation = Random.rotation.eulerAngles;
-            _currentTween = Tween.Rotation(transform, randomRotation, 3, Ease.Linear, -1, CycleMode.Incremental);
+            _currentRotationTween = Tween.Rotation(transform, randomRotation, 3, Ease.Linear, -1, CycleMode.Incremental);
         }
 
         private Vector3 CalculateDirection()
@@ -79,8 +80,6 @@ namespace _Scripts.Entities
                     return direction;
                 }
             }
-
-            Debug.Log("<color=red>Destroying earlier, because can't set direction</color>");
             Destroy(gameObject);
             
             return Vector3.zero;
@@ -95,21 +94,14 @@ namespace _Scripts.Entities
         {
             if (other.CompareTag(DESTROY_COLLIDER_TAG))
             {
-               // _currentTween.Complete();
-                Tween.CompleteAll();
-
-                /*Tween.Scale(transform, 0, SCALE_ANIMATION_TIME_BLIAT, Ease.Linear).OnComplete(() =>
-                {
-                    gameObject.SetActive(false);
-                    Invoke("DestroyObjectForTime",1);
-                });*/
-
                 Destroy(gameObject);
             }
         }
-        /*private void DestroyObjectForTime()
+
+        private void OnDestroy()
         {
-            Destroy(gameObject);
-        }*/
+            _currentRotationTween.Complete();
+            _currentScaleTween.Complete();
+        }
     }
 }
