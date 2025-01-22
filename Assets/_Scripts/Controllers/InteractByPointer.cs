@@ -36,7 +36,7 @@ namespace _Scripts.Controllers
         {
             var objectInRay = GetGameObjectByPointer();
            // print(objectInRay);
-            var newInteractable = objectInRay.GetComponent<IInteractableByPointer>();
+            var newInteractable = objectInRay?.GetComponent<IInteractableByPointer>();
 
             if (newInteractable == null)
             {

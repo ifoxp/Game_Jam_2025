@@ -98,7 +98,7 @@ namespace _Scripts.Entities
 
         private void OnDestroy()
         {
-            Tween.CompleteAll();
+            //Tween.CompleteAll();
         }
     }
 }
