@@ -8,6 +8,7 @@ TagManager:
   - Builded
   - Mark
   - Beam
+  - GizmoObject
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - Sphere
   - Bubble
-  - IsDraged
-  - 
+  - Wind
+  - WindZone
   - 
   - 
   - 
@@ -44,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1190702661
     locked: 0
   m_RenderingLayers:
   - Default
