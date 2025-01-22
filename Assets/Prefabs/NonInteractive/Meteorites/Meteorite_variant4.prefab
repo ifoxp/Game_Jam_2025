@@ -95,13 +95,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1862461533158607566}
+  - component: {fileID: -7778011776863269478}
   - component: {fileID: 8344802445705259550}
   - component: {fileID: 4686297536698775897}
   - component: {fileID: -7416239424103081392}
   - component: {fileID: 7536676265176040039}
   m_Layer: 0
   m_Name: Meteorite_variant4
-  m_TagString: Untagged
+  m_TagString: Meteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +123,19 @@ Transform:
   - {fileID: 1739547117697501091}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7778011776863269478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413276843081836148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937481acf6734ffa8ca6aac32bea7e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedDrone: {fileID: 0}
 --- !u!65 &8344802445705259550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,7 +143,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3413276843081836148}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 67d23fb4f6f242c47a9ca18133b64402, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
