@@ -119,16 +119,12 @@ namespace _Scripts.Controllers.Camera
 
         private void EnableCameraRotation()
         {
-            Utilities.CursorStateChanger.SetCursorState(CursorLockMode.Locked, true);
-            
             RestoreCameraRanges();
             LoadValuesIntoCamera();
         }
 
         private void DisableCameraRotation()
         {
-            Utilities.CursorStateChanger.SetCursorState(CursorLockMode.None, true);
-            
             RecordLastValues();
             LockCameraToCurrentView();
         }
