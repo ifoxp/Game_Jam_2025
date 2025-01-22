@@ -7,10 +7,11 @@ namespace _Scripts.Managers
     /// <summary>
     /// Singleton class that manages meteorites spawn.
     /// </summary>
+    
     public class MeteoritesManager : MonoBehaviour
     {
         public static MeteoritesManager One { get; private set; }
-        
+        public GameObject[] meteoritePrefs;
         private void Awake()
         {
             if (One == null)
