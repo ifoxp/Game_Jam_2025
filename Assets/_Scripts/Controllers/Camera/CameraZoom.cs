@@ -25,6 +25,8 @@ namespace _Scripts.Controllers.Camera
         [SerializeField] private float _maxZoomInDistance = 2f;
 
         private IInput _input;
+
+        private bool _isInitialized;
         
         [Inject]
         private void Construct(IInput input)
@@ -37,8 +39,10 @@ namespace _Scripts.Controllers.Camera
             EnsureComponentsNotNull();
             
             _orbitalFollowCamera.GetComponent<CinemachineCamera>().Follow = _cameraCenterZoomTarget;
-            SubscribeButtons();
         }
+
+        public void _OnGameStarted() => 
+            SubscribeButtons();
 
         private void EnsureComponentsNotNull()
         {
@@ -49,6 +53,9 @@ namespace _Scripts.Controllers.Camera
 
         private void SubscribeButtons()
         {
+            if(_isInitialized) return;
+            _isInitialized = true;
+            
             _input.OnMouseWheelScroll += Zoom;
         }
 

@@ -14,6 +14,8 @@ namespace _Scripts.Controllers.Camera
         [SerializeField] private CinemachineOrbitalFollow _orbitalFollowCamera;
         [SerializeField] private float _rotationSensitivity = 0.5f;
 
+        private bool _isInitialized;
+        
         private bool _canRotate;
         
         private Vector2 _lastValues;
@@ -32,6 +34,13 @@ namespace _Scripts.Controllers.Camera
         private void Awake()
         {
             InitializeCameraSettings();
+        }
+
+        public void _OnGameStarted()
+        {
+            if(_isInitialized) return;
+            _isInitialized = true;
+            
             SubscribeToInputEvents();
             
             // Lock rotation when initialized
