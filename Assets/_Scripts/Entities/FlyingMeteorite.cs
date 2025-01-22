@@ -27,7 +27,7 @@ namespace _Scripts.Entities
         private const float MIN_SCALE = 0.5f;
         private const float MAX_SCALE = 2.5f;
         
-        private const float MAX_CHECK_DISTANCE =400f;
+        private const float MAX_CHECK_DISTANCE =800f;
 
         private const string DESTROY_COLLIDER_TAG = "EntityDestroy";
 

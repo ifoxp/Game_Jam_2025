@@ -383,6 +383,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5091848735450271589, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
+      propertyPath: _zoomSensitivity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5091848735450271589, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
+      propertyPath: _maxZoomOutDistance
+      value: 170
+      objectReference: {fileID: 0}
     - target: {fileID: 5428664027823604116, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
       propertyPath: m_Name
       value: ----CameraStuff
@@ -830,7 +838,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.06, y: 1.18, z: 1}
+  m_Size: {x: 1.06, y: 1.3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &331849523
 PrefabInstance:
@@ -842,11 +850,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2116618773837932017, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
       propertyPath: _spawnPerWave.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2116618773837932017, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
       propertyPath: _spawnPerWave.y
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5531212102153253080, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -855,6 +863,14 @@ PrefabInstance:
     - target: {fileID: 6324001591861551726, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
       propertyPath: m_Name
       value: ----Spawners
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931401436542062319, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
+      propertyPath: m_Size.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931401436542062319, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
+      propertyPath: m_Size.z
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7088649363142695579, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -898,7 +914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7755911848569724883, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 400
+      value: 800
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1333,7 +1349,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.06, y: 1.18, z: 1}
+  m_Size: {x: 1.06, y: 1.3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &485976720 stripped
 Transform:
@@ -4396,7 +4412,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.06, y: 1.18, z: 1}
+  m_Size: {x: 1.06, y: 1.3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &960925536
 GameObject:
@@ -4464,7 +4480,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.06, y: 1.18, z: 1}
+  m_Size: {x: 1.06, y: 1.3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &963775316
 PrefabInstance:
@@ -5580,7 +5596,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.06, y: 1.18, z: 1}
+  m_Size: {x: 1.06, y: 1.3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &1285376912
 SphereCollider:
@@ -6244,7 +6260,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.06, y: 1.18, z: 1}
+  m_Size: {x: 1.06, y: 1.3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &1474697775
 SphereCollider:
@@ -41930,7 +41946,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.06, y: 1.18, z: 1}
+  m_Size: {x: 1.06, y: 1.3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2053329598
 GameObject:
@@ -41998,7 +42014,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.06, y: 1.18, z: 1}
+  m_Size: {x: 1.06, y: 1.3, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2054340885
 GameObject:
