@@ -36,6 +36,7 @@ namespace _Scripts.Controllers.Camera
             InitializeCameraSettings();
         }
 
+        [Button("Initialize zoom (subscribe to inputs)")]
         public void _OnGameStarted()
         {
             if(_isInitialized) return;

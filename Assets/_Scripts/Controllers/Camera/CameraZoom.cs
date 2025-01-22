@@ -41,6 +41,7 @@ namespace _Scripts.Controllers.Camera
             _orbitalFollowCamera.GetComponent<CinemachineCamera>().Follow = _cameraCenterZoomTarget;
         }
 
+        [Button("Initialize zoom (subscribe to inputs)")]
         public void _OnGameStarted() => 
             SubscribeButtons();
 
