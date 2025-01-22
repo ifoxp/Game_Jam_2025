@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _Scripts.Entities;
 using _Scripts.Managers;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.Behaviours
@@ -94,12 +95,30 @@ namespace _Scripts.Behaviours
             float distance = Vector3.Distance(transform.position, target.position);
             distanceToTarget = distance;
 
-            // Лінійна швидкість
-            rb.linearVelocity = transform.forward * speed;
+            // Центр уявного кола
+            Vector3 forbiddenZoneCenter = Vector3.zero;
+            float forbiddenZoneRadius = 29f;
 
             // Напрямок до цілі
             Vector3 targetDirection = (target.position - transform.position).normalized;
             Vector3 currentDirection = transform.forward;
+
+            // Відстань до центру забороненого кола
+            float distanceToForbiddenCenter = Vector3.Distance(transform.position, forbiddenZoneCenter);
+
+            // Перевіряємо, чи дрон перетинає заборонене коло
+            if (distanceToForbiddenCenter < forbiddenZoneRadius)
+            {
+                // Коригуємо напрямок: знаходимо точку на межі кола, яка є найближчою до дрона
+                Vector3 directionFromCenter = (transform.position - forbiddenZoneCenter).normalized;
+                Vector3 avoidancePoint = forbiddenZoneCenter + directionFromCenter * forbiddenZoneRadius;
+
+                // Обчислюємо новий напрямок до цілі, уникаючи забороненої зони
+                targetDirection = (avoidancePoint - transform.position).normalized;
+            }
+
+            // Лінійна швидкість
+            rb.linearVelocity = transform.forward * speed;
 
             // Визначаємо вісь обертання
             Vector3 rotationAxis = Vector3.Cross(currentDirection, targetDirection);
@@ -117,6 +136,7 @@ namespace _Scripts.Behaviours
                 rb.angularVelocity = rotationAxis.normalized * (angleDifference * Mathf.Deg2Rad * dynamicRotationSpeed);
             }
         }
+
 
         private void OnCollisionEnter(Collision collision)
         {
