@@ -162,6 +162,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   _meteoriteCollider: {fileID: 1696467803201789240, guid: 202a56c423846284f8c4ef078e9db972, type: 3}
+  SCALE_ANIMATION_TIME_BLIAT: 7
 --- !u!54 &-3540755910482684825
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -203,7 +204,7 @@ LODGroup:
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.02001525
+  - screenRelativeHeight: 0.008070295
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 3673334507403540766}

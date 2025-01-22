@@ -28,9 +28,9 @@ namespace _Scripts.Spawners
             for (var i = 0; i < _spawnPerWave; i++)
             {
                 var entity = _entityFactory.CreateEntity(RandomAdditional.
-                    GetRandomPositionInBoxCollider(_spawnSettings.spawnArea));
+                    GetRandomPositionInBoxCollider(_spawnSettings.spawnArea),transform);
             
-                Debug.Log($"Spawned entity: {entity}");
+                //Debug.Log($"Spawned entity: {entity}");
             }
         }
     }

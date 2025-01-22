@@ -4,6 +4,6 @@ namespace _Scripts.Entities.Interfaces
 {
     public interface IEntityFactory
     {
-        public IEntity CreateEntity(Vector3 position);
+        public IEntity CreateEntity(Vector3 position, Transform parent);
     }
 }

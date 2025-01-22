@@ -14,10 +14,10 @@ namespace _Scripts.Entities.Factories
             _meteoritePrefabs = (FlyingMeteorite[])meteoritePrefabs.Clone();
         }
         
-        public IEntity CreateEntity(Vector3 position)
+        public IEntity CreateEntity(Vector3 position, Transform parent)
         {
             var meteorite = Object.Instantiate(_meteoritePrefabs[
-                Random.Range(0, _meteoritePrefabs.Length)], position, Quaternion.identity);
+                Random.Range(0, _meteoritePrefabs.Length)], position, Quaternion.identity,parent);
             
             meteorite.Initialize();
             return meteorite;
