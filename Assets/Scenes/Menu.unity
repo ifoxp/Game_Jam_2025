@@ -347,50 +347,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1460326653803408878, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026534413713423514, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -70.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026534413713423514, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 19.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026534413713423514, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -91.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026534413713423514, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9831545
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026534413713423514, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.10510486
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026534413713423514, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.14868718
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026534413713423514, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.015886858
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184493810725380591, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091848735450271589, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: _zoomSensitivity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5091848735450271589, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: _maxZoomOutDistance
-      value: 170
-      objectReference: {fileID: 0}
     - target: {fileID: 5428664027823604116, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
       propertyPath: m_Name
       value: ----CameraStuff
@@ -433,10 +389,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8582958760384113911, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9170295938942332303, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: Priority.Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

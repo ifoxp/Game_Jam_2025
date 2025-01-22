@@ -1,21 +1,23 @@
 using _Scripts.Inputs.Reader;
-using _Scripts.Interact;
+using _Scripts.Utilities;
 using UnityEngine;
 using Zenject;
 
-namespace _Scripts.Controllers
+namespace _Scripts.Interact
 {
     public class InteractByPointer : MonoBehaviour
     {
+        private CastersAdditional _pointerCaster;
+        
         private IInput _input;
-        private UnityEngine.Camera _playerCamera;
+        private Camera _playerCamera;
 
         private IInteractableByPointer _currentInteractable;
         
         private const int RAY_DISTANCE = 100;
         
         [Inject]
-        private void Construct(IInput input, UnityEngine.Camera playerCamera)
+        private void Construct(IInput input, Camera playerCamera)
         {
             _input = input;
             _playerCamera = playerCamera;
@@ -25,6 +27,8 @@ namespace _Scripts.Controllers
         {
             if (_input == null) throw new MissingComponentException("Input cannot be null");
             _input.OnInteract += CheckInteractComponentByPointer;
+            
+            _pointerCaster = new CastersAdditional();
         }
 
         private void OnDestroy()
@@ -34,7 +38,8 @@ namespace _Scripts.Controllers
 
         private void CheckInteractComponentByPointer()
         {
-            var objectInRay = GetGameObjectByPointer();
+            var objectInRay = _pointerCaster.GetGameObjectByPointer(_input.GetPointerPosition(), _playerCamera, 
+                RAY_DISTANCE);
            // print(objectInRay);
             var newInteractable = objectInRay?.GetComponent<IInteractableByPointer>();
 
@@ -52,20 +57,6 @@ namespace _Scripts.Controllers
                 newInteractable.OnInteractByPointer();
                 _currentInteractable = newInteractable;
             }
-        }
-
-        private GameObject GetGameObjectByPointer()
-        {
-            var pointerPosition = _input.GetPointerPosition();
-            var pointerWorldPosition = 
-                _playerCamera.ScreenToWorldPoint(new Vector3(
-                    pointerPosition.x, pointerPosition.y, _playerCamera.nearClipPlane));
-            
-            var cameraPosition = _playerCamera.transform.position;
-            var direction = (pointerWorldPosition - cameraPosition).normalized;
-
-            return Physics.Raycast(cameraPosition, direction, out var hit, RAY_DISTANCE)
-                ? hit.collider.gameObject : null;
         }
     }
 }

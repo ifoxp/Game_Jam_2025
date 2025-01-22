@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5091848735450271589}
   - component: {fileID: 7102837876008632409}
   - component: {fileID: 8223960138890295436}
+  - component: {fileID: 2875161739454621616}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -48,9 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _orbitalFollowCamera: {fileID: 5460525197234207364}
   _cameraCenterZoomTarget: {fileID: 9004520981646771554}
-  _zoomSensitivity: 1
+  _zoomSensitivity: 2
   _reversedZoom: 1
-  _maxZoomOutDistance: 70
+  _maxZoomOutDistance: 170
   _maxZoomInDistance: 2
 --- !u!114 &7102837876008632409
 MonoBehaviour:
@@ -78,6 +79,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437448d1c4f4cb64c8cca077cae477ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2875161739454621616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681832713738864292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c241869c4829ff24faf6f408d2002ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCamera: {fileID: 6986684565519720964}
 --- !u!1 &1460326653803408878
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7482676842478793579
 Transform:
   m_ObjectHideFlags: 0
