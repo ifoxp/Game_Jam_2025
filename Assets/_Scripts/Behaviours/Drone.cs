@@ -95,7 +95,7 @@ namespace _Scripts.Behaviours
 
         private void MoveTo(Transform target, out float distanceToTarget)
         {
-            // Визначаємо відстань
+            // Визначаємо відстань до цілі
             float distance = Vector3.Distance(transform.position, target.position);
             distanceToTarget = distance;
 
@@ -139,7 +139,17 @@ namespace _Scripts.Behaviours
                 float dynamicRotationSpeed = rotationSpeed * Mathf.Lerp(1f, 2f, Mathf.Clamp01(angleDifference / 180f));
                 rb.angularVelocity = rotationAxis.normalized * (angleDifference * Mathf.Deg2Rad * dynamicRotationSpeed);
             }
+
+            // Обчислення нахилу (rotation.z) для імітації польоту літака
+            float maxTiltAngle = 30f; // Максимальний нахил (в градусах)
+            float tiltAmount = Mathf.Clamp(rotationAxis.y * angleDifference, -maxTiltAngle, maxTiltAngle); // Розрахунок нахилу
+            Quaternion currentRotation = transform.rotation;
+            Quaternion targetRotation = Quaternion.Euler(currentRotation.eulerAngles.x, currentRotation.eulerAngles.y, -tiltAmount);
+
+            // Плавне оновлення повороту
+            transform.rotation = Quaternion.Lerp(currentRotation, targetRotation, Time.deltaTime * 2f);
         }
+
 
 
         private void OnCollisionEnter(Collision collision)
