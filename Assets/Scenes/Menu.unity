@@ -467,6 +467,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2116618773837932017, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
+      propertyPath: _spawnPerWave.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116618773837932017, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
+      propertyPath: _spawnPerWave.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5531212102153253080, guid: 604367f610b59b342b6d91be6babf2e6, type: 3}
       propertyPath: m_LocalPosition.z
       value: -400

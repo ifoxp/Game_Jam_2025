@@ -7,7 +7,8 @@ namespace _Scripts.Spawners
 {
     public class EntitySpawner : MonoBehaviour
     {
-        [SerializeField] private byte _spawnPerWave = 3;
+        [SerializeField] private Vector2Int _spawnPerWave=new Vector2Int(3,5);
+
         [SerializeField] private SpawnSettings _spawnSettings;
         
         private IEntityFactory _entityFactory;
@@ -21,11 +22,13 @@ namespace _Scripts.Spawners
         private void Start()
         {
             InvokeRepeating(nameof(SpawnEntity), _spawnSettings.spawnDelay, _spawnSettings.spawnDelay);
+
         }
 
         private void SpawnEntity()
         {
-            for (var i = 0; i < _spawnPerWave; i++)
+            byte spawner = (byte)(Random.Range(_spawnPerWave.x, _spawnPerWave.y));
+            for (var i = 0; i < spawner; i++)
             {
                 var entity = _entityFactory.CreateEntity(RandomAdditional.
                     GetRandomPositionInBoxCollider(_spawnSettings.spawnArea),transform);
