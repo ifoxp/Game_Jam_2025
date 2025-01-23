@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using _Scripts._BuildingsEarn;
+using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Building
 {
@@ -16,7 +18,7 @@ namespace _Scripts.Building
         BoxCollider boxCollider;
         BoxCollider finish;
         private bool isBuild = true, isTriggers = true;
-
+        [Inject] private DiContainer _container;
         public float overlapThreshold = 0.1f;
 
         // ������ ��� ��������� ��� ��������� "Finish"
@@ -116,35 +118,14 @@ namespace _Scripts.Building
 
         void MoveToFinishCollider()
         {
-            // ����������, �� � �������� ����
-            if (currentFinishIndex < 0 || currentFinishIndex >= finishColliders.Count)
-            {
-                Debug.LogWarning("������ �������� ��������� �������� �� ��� ������!");
-                return;
-            }
-
-            finish = finishColliders[currentFinishIndex];
-
-            // ������������ ������� ��'���� �������� �� �������� ���������
-            previewBeam.transform.position = finish.transform.position;
-
-            // ������������ ����� ������� ��'���� �������� �� ���������
-            Quaternion targetRotation = finish.transform.rotation;
-            previewBeam.transform.rotation = Quaternion.Euler(
-                Mathf.Round(targetRotation.eulerAngles.x / 90) * 90,
-                Mathf.Round(targetRotation.eulerAngles.y / 90) * 90,
-                Mathf.Round(targetRotation.eulerAngles.z / 90) * 90
-            );
-
-            // ��������� ������� ��������
-            rotationnOffset = targetRotation;
-
-            // ���������� ��� ��� ����������
-            Debug.Log($"��'��� ��������� �� �������� ���������: {finish.name}, �������: {finish.transform.position}, �������: {targetRotation.eulerAngles}");
+            // Оновлення кута на 90 градусів
+            Vector3 rotationAngles = rotationnOffset.eulerAngles;
+            rotationAngles.z = (rotationAngles.z + 90f) % 360f; // Обертання на 90 градусів, враховуючи межі (0-360)
+            rotationnOffset.eulerAngles = rotationAngles; // Оновлюємо значення
         }
 
-
-        void CancelPlacing()
+       
+                void CancelPlacing()
         {
             // ���������� ���������
             isPlacing = false;
@@ -180,19 +161,32 @@ namespace _Scripts.Building
                         Vector3 targetPosition = hit.collider.bounds.center;
 
                         // ������ ������ ������� �� �������� ��������
+                        // Додаємо зсув у напрямку вперед
                         Vector3 forwardOffset = lastValidRotation * Vector3.forward * size;
+
+                        // Розрахунок кінцевої позиції
                         targetPosition += forwardOffset;
                         targetPosition -= positionOffset;
 
-                        // ��������� ������� �� ������� ���������� ��'����
+                        // Оновлення позиції та обертання
                         lastValidPosition = targetPosition;
-                        // ������ ������� �� ���������� �������� ��������
-                        lastValidRotation = lastValidRotation * rotationnOffset;
 
-                        // ��������� ������� ������� ������� �� ����� �������� ����
-                        lastValidRotation = Quaternion.LookRotation(hit.normal);
+                        // Оновлюємо `lastValidRotation` із використанням оновленого кута
+                        lastValidRotation = Quaternion.Euler(lastValidRotation.x, lastValidRotation.y, rotationnOffset.eulerAngles.z);
 
-                        hasValidPosition = true;
+                        // Використання LookRotation для орієнтації, якщо потрібно
+                        if (hit.normal != Vector3.zero) // Перевірка, чи нормаль не нульова
+                        {
+                            // Отримуємо ротацію з нормаллю
+                            Quaternion normalRotation = Quaternion.LookRotation(hit.normal);
+
+                            // Поєднуємо обертання з новим кутом `z` з rotationnOffset
+                            Vector3 finalEulerAngles = normalRotation.eulerAngles;
+                            finalEulerAngles.z = rotationnOffset.eulerAngles.z; // Застосовуємо кут обертання по `z`
+
+                            // Оновлюємо останню дійсну ротацію
+                            lastValidRotation = Quaternion.Euler(finalEulerAngles);
+                        }
 
                         // ��������� ��'��� ������������ ���������
                         previewBeam.transform.position = lastValidPosition;
@@ -275,9 +269,11 @@ namespace _Scripts.Building
             }
 
             // ����� ������������� beamCollider, �� �� �
-            GameObject placedBeam = Instantiate(beamPrefab, position, rotation);
+            //GameObject placedBeam = Instantiate(beamPrefab, position, rotation, transform);
+            var instantiated = _container.InstantiatePrefab(beamPrefab, position, rotation, transform);
+            instantiated.GetComponent<ResourceEarnerBuilding>().enabled= true;
             // ��������� ��� ������� ���������
-            Collider[] childColliders = placedBeam.GetComponentsInChildren<Collider>();
+            Collider[] childColliders = instantiated.GetComponentsInChildren<Collider>();
             foreach (var collider in childColliders)
             {
                 collider.enabled = true;

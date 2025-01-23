@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 8173251634856505798}
   - component: {fileID: 3305051499131436487}
   - component: {fileID: 4765946141064596928}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Balka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
