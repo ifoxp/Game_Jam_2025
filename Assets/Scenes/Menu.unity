@@ -42119,6 +42119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Balka
       objectReference: {fileID: 0}
+    - target: {fileID: 8655066244722176862, guid: 07ce2f284d2e8584e9efc90b801ff245, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

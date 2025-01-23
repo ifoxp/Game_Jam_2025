@@ -271,6 +271,7 @@ namespace _Scripts.Building
             // ����� ������������� beamCollider, �� �� �
             //GameObject placedBeam = Instantiate(beamPrefab, position, rotation, transform);
             var instantiated = _container.InstantiatePrefab(beamPrefab, position, rotation, transform);
+            if(instantiated.GetComponent<ResourceEarnerBuilding>())
             instantiated.GetComponent<ResourceEarnerBuilding>().enabled= true;
             // ��������� ��� ������� ���������
             Collider[] childColliders = instantiated.GetComponentsInChildren<Collider>();
