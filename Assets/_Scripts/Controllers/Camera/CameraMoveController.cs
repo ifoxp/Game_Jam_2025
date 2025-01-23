@@ -12,10 +12,12 @@ namespace _Scripts.Controllers.Camera
     {
         [Required] [SerializeField] private Transform _cameraTarget;
         [SerializeField] private CinemachineRotationComposer _rotationComposerCamera;
-        
+
+        [SerializeField] private float _maxRadius = 30f;
         [SerializeField] private float _moveTargetSensitivity = 0.5f;
         
         private UnityEngine.Camera _playerCamera;
+        private Vector3 _cameraStartPosition;
         
         private bool _canMove;
         
@@ -30,16 +32,21 @@ namespace _Scripts.Controllers.Camera
 
         private void Awake()
         {
+            _cameraStartPosition = _cameraTarget.position;
             ValidateComponents();
             
             _input.OnToggleMoveCamera += SetCanMoveCamera;
             _input.OnMouseMove += OnTargetMove;
+            
+            _input.OnReturnToMapCenter += ReturnToCenter;
         }
 
         private void OnDestroy()
         {
             _input.OnToggleMoveCamera -= SetCanMoveCamera;
             _input.OnMouseMove -= OnTargetMove;
+
+            _input.OnReturnToMapCenter -= ReturnToCenter;
         }
 
         private void ValidateComponents()
@@ -48,6 +55,11 @@ namespace _Scripts.Controllers.Camera
             if(_cameraTarget == null) throw new MissingComponentException("CameraTarget cannot be null");
             if(_rotationComposerCamera == null) throw new MissingComponentException("Rotation composer camera cannot be null");
             if(_playerCamera == null) throw new MissingComponentException("Player Camera cannot be null");
+        }
+
+        private void ReturnToCenter()
+        {
+            _cameraTarget.position = _cameraStartPosition;
         }
 
         private void SetCanMoveCamera(bool canMove)
@@ -62,7 +74,22 @@ namespace _Scripts.Controllers.Camera
             if (!_canMove) return;
 
             var moveDirection = CalculateNextCameraPosition(direction);
-            _cameraTarget.position += moveDirection * Time.deltaTime * _moveTargetSensitivity;
+            var clampedMove = ClampDirectionUsingRadius(moveDirection);
+            _cameraTarget.position = clampedMove;
+        }
+
+        private Vector3 ClampDirectionUsingRadius(Vector3 moveDirection)
+        {
+            var potentialPosition = _cameraTarget.position + moveDirection * Time.deltaTime * _moveTargetSensitivity;
+
+            var offset = potentialPosition - _cameraStartPosition;
+            if (offset.magnitude > _maxRadius)
+            {
+                offset = offset.normalized * _maxRadius;
+                potentialPosition = _cameraStartPosition + offset;
+            }
+
+            return potentialPosition;
         }
 
         private Vector3 CalculateNextCameraPosition(Vector2 direction)
@@ -75,5 +102,15 @@ namespace _Scripts.Controllers.Camera
 
             return (cameraForward * direction.y + cameraRight * direction.x);
         }
+        
+        #if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            if (_cameraTarget == null) return;
+
+            Gizmos.color = new Color(0, 1, 0, 0.25f);
+            Gizmos.DrawWireSphere(_cameraStartPosition, _maxRadius);
+        }
+        #endif
     }
 }

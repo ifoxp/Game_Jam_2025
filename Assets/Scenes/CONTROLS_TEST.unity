@@ -248,34 +248,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3232010471168457611, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: Damping.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232010471168457611, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: Damping.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232010471168457611, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: Composition.DeadZone.Size.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232010471168457611, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: Composition.DeadZone.Size.y
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232010471168457611, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: Composition.DeadZone.Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232010471168457611, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: Composition.HardLimits.Size.x
-      value: 0.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232010471168457611, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
-      propertyPath: Composition.HardLimits.Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4026534413713423514, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

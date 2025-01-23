@@ -263,13 +263,13 @@ MonoBehaviour:
   Composition:
     ScreenPosition: {x: 0, y: 0}
     DeadZone:
-      Enabled: 1
+      Enabled: 0
       Size: {x: 0.75, y: 0.75}
     HardLimits:
-      Enabled: 1
+      Enabled: 0
       Size: {x: 0.86, y: 0.8}
       Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
+  CenterOnActivate: 0
   TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 1, y: 1}
   Lookahead:
@@ -399,7 +399,6 @@ GameObject:
   - component: {fileID: 9004520981646771554}
   - component: {fileID: 4037238278291045100}
   - component: {fileID: 2665063435408184443}
-  - component: {fileID: 780128184374373151}
   m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
@@ -475,27 +474,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &780128184374373151
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6539827719979915972}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8756296541486470973
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,8 +502,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8756296541486470973}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3187112, y: 0.000000018140788, z: -0.0000000060997634, w: 0.9478519}
-  m_LocalPosition: {x: 0, y: 4.1250916, z: -4.7810783}
+  m_LocalRotation: {x: 0.10510486, y: 0.14868718, z: -0.015886858, w: 0.9831545}
+  m_LocalPosition: {x: -70.1, y: 19.8, z: -91.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
