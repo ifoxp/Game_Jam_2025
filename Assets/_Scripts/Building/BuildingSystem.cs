@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using static Zenject.CheatSheet;
+using Zenject;
 
 public class BuildingSystem : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class BuildingSystem : MonoBehaviour
     BoxCollider boxCollider;
     BoxCollider finish;
     private bool isBuild=true, isTriggers=true;
-
+    [Inject] private DiContainer _container;
     public float overlapThreshold = 0.1f;
 
     // Список для зберігання всіх колайдерів "Finish"
@@ -275,9 +276,11 @@ public class BuildingSystem : MonoBehaviour
         }
 
         // Тепер використовуємо beamCollider, бо він є
-            GameObject placedBeam = Instantiate(beamPrefab, position, rotation);
-            // Увімкнення всіх дочірніх колайдерів
-            Collider[] childColliders = placedBeam.GetComponentsInChildren<Collider>();
+
+        //GameObject placedBeam = Instantiate(beamPrefab, position, rotation, transform);
+        var placedBeam = _container.InstantiatePrefab(beamPrefab, position, rotation, transform);
+        // Увімкнення всіх дочірніх колайдерів
+        Collider[] childColliders = placedBeam.GetComponentsInChildren<Collider>();
             foreach (var collider in childColliders)
             {
                 collider.enabled = true;
