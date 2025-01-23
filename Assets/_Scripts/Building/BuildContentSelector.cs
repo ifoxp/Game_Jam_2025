@@ -22,6 +22,7 @@ namespace _Scripts.Building
         private void Awake()
         {
             if(_input == null) throw new MissingComponentException("Input cannot be null");
+            if(_contentSelector == null) throw new MissingComponentException("Content selector cannot be null");
 
             _input.OnSelectContentPressed += OnSelectorButtonChanged;
         }
