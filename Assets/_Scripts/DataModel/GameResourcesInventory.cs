@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 public enum GameResourcesType
 {
@@ -15,7 +14,7 @@ public enum GameResourcesType
 namespace _Scripts.DataModel
 {
     [Serializable]
-    public class GameResourcesInventory : IInitializable, IDisposable
+    public class GameResourcesInventory : IDisposable
     {
         // I'm sorry. I haven't ever make save system for sessions.
         public event Action<GameResourceContainer> OnResourceChanged;
@@ -29,23 +28,26 @@ namespace _Scripts.DataModel
             [GameResourcesType.Materials] = 0,
             [GameResourcesType.Energy] = 0
         };
-
-        public void Initialize()
-        {
-        }
+        
+        public Dictionary<GameResourcesType, int> GameResources => _gameResources;
 
         public void Dispose()
         {
             OnResourceChanged = null;
         }
         
-        public void InitializeResources(int food, int population, int junk, int materials, int energy)
+        /// <summary>
+        /// Invokes on game loading
+        /// </summary>
+        /// <param name="data">data to load</param>
+        public void InitializeResources(Dictionary<GameResourcesType, int> data)
         {
-            _gameResources[GameResourcesType.Food] = food;
-            _gameResources[GameResourcesType.Population] = population;
-            _gameResources[GameResourcesType.Junk] = junk;
-            _gameResources[GameResourcesType.Materials] = materials;
-            _gameResources[GameResourcesType.Energy] = energy;
+            _gameResources = data;
+            
+            foreach (var resource in _gameResources)
+            {
+                OnResourceChanged?.Invoke(new GameResourceContainer(resource.Key, resource.Value));
+            }
         }
         
         /// <summary>

@@ -17,7 +17,7 @@ namespace _Scripts.UI
             _resourcesInventory = gameResourcesInventory;
         }
 
-        private void Start()
+        private void Awake()
         {
             if(_resourcesInventory == null) 
                 throw new MissingComponentException("Missing GameResourcesInventory. Add data installer to the scene.");
