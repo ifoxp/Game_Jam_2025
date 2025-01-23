@@ -1,29 +1,38 @@
-using _Scripts.Hover;
 using UnityEngine;
-[RequireComponent(typeof(Outline))]
-public class HoverOutline : MonoBehaviour, IHoverable
+
+namespace _Scripts.Hover
 {
-    [SerializeField] private Outline outline;
-    public void Hovered()
+    [RequireComponent(typeof(Outline))]
+    public class HoverOutline : MonoBehaviour, IHoverable
     {
-        outline.enabled = true;
-
-    }
-
-    public void UnHovered()
-    {
-        outline.enabled = false;
-    }
-    private void Reset()
-    {
-        if (outline == null)
+        [SerializeField] private Outline _outline;
+        
+        public void Hovered()
         {
-            outline = GetComponent<Outline>();
-            outline.enabled = false;
-            Color outlineColor = new Color(6f / 255f, 180f / 255f, 255f / 255f);
-
-            outline.OutlineColor = outlineColor;
-            outline.OutlineWidth = 5f;
+            if (!_outline) return;
+            _outline.enabled = true;
         }
+
+        public void UnHovered()
+        {
+            if (!_outline) return;
+            _outline.enabled = false;
+        }
+        
+        #if UNITY_EDITOR
+        private void Reset()
+        {
+            if (_outline != null) return;
+            
+            _outline = GetComponent<Outline>();
+            _outline.enabled = false;
+            
+            var outlineColor = new Color(6f / 255f, 180f / 255f, 255f / 255f);
+            _outline.OutlineColor = outlineColor;
+            
+            const float width = 5f;
+            _outline.OutlineWidth = width;
+        }
+        #endif
     }
 }
