@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5279036685265426949}
   - component: {fileID: 2619613366764720584}
   - component: {fileID: 1172037883802737217}
+  - component: {fileID: -5569291827168096901}
   m_Layer: 8
   m_Name: SunPanel
   m_TagString: Untagged
@@ -187,6 +188,20 @@ MonoBehaviour:
   box: {fileID: 2619613366764720584}
   currentCollider: {fileID: 0}
   sizeBuild: []
+--- !u!114 &-5569291827168096901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954264946004855640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106dcb216a644d33a7015f451bda1aa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceToEarn: 4
+  _resourceAmountPerMinute: 4
 --- !u!1001 &6178016377075894981
 PrefabInstance:
   m_ObjectHideFlags: 0

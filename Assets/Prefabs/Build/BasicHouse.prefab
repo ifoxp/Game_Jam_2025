@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 7544930174028870010}
   - component: {fileID: 1285984879409460579}
   - component: {fileID: 8976463275530482947}
+  - component: {fileID: -5330207960191817265}
   m_Layer: 8
   m_Name: BasicHouse
   m_TagString: Untagged
@@ -188,6 +189,20 @@ MonoBehaviour:
   box: {fileID: 1285984879409460579}
   currentCollider: {fileID: 0}
   sizeBuild: []
+--- !u!114 &-5330207960191817265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106dcb216a644d33a7015f451bda1aa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resourceToEarn: 1
+  _resourceAmountPerMinute: 2
 --- !u!1001 &3538281948924806228
 PrefabInstance:
   m_ObjectHideFlags: 0
