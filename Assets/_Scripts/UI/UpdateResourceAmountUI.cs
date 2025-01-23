@@ -33,8 +33,11 @@ namespace _Scripts.UI
         private void UpdateResourceUI(GameResourceContainer newResource)
         {
             var amountText = GetTextByResourceType(newResource.ResourceType);
-            if(amountText == null) 
-                throw new MissingComponentException("Missing text for resource type: " + newResource.ResourceType);
+            if (amountText == null)
+            {
+                Debug.LogWarning("Missing text for resource type: " + newResource.ResourceType);
+                return;
+            }
             
             amountText.text = $"{newResource.ResourceType.ToString()}: {newResource.Quantity}";
         }
