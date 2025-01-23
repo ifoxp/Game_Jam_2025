@@ -62,6 +62,15 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleMoveCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""96b4a38c-1e6a-4849-baec-cfbddc08d8fa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -106,6 +115,17 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d35d8d07-430c-40d3-9806-283d027be5b4"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""ToggleMoveCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -697,6 +717,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         m_Player_ZoomLook = m_Player.FindAction("ZoomLook", throwIfNotFound: true);
         m_Player_PositionLook = m_Player.FindAction("PositionLook", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_ToggleMoveCamera = m_Player.FindAction("ToggleMoveCamera", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -780,6 +801,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ZoomLook;
     private readonly InputAction m_Player_PositionLook;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_ToggleMoveCamera;
     public struct PlayerActions
     {
         private @PlayerInputMap m_Wrapper;
@@ -788,6 +810,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         public InputAction @ZoomLook => m_Wrapper.m_Player_ZoomLook;
         public InputAction @PositionLook => m_Wrapper.m_Player_PositionLook;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @ToggleMoveCamera => m_Wrapper.m_Player_ToggleMoveCamera;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -809,6 +832,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @ToggleMoveCamera.started += instance.OnToggleMoveCamera;
+            @ToggleMoveCamera.performed += instance.OnToggleMoveCamera;
+            @ToggleMoveCamera.canceled += instance.OnToggleMoveCamera;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -825,6 +851,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @ToggleMoveCamera.started -= instance.OnToggleMoveCamera;
+            @ToggleMoveCamera.performed -= instance.OnToggleMoveCamera;
+            @ToggleMoveCamera.canceled -= instance.OnToggleMoveCamera;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1011,6 +1040,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         void OnZoomLook(InputAction.CallbackContext context);
         void OnPositionLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnToggleMoveCamera(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

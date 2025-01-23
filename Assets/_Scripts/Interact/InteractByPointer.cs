@@ -26,6 +26,9 @@ namespace _Scripts.Interact
         private void Awake()
         {
             if (_input == null) throw new MissingComponentException("Input cannot be null");
+            if (_playerCamera == null) 
+                throw new MissingComponentException("Player camera cannot be null. Set it in the installer");
+            
             _input.OnInteract += CheckInteractComponentByPointer;
             
             _pointerCaster = new CastersAdditional();

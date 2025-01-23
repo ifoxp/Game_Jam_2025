@@ -11,6 +11,7 @@ namespace _Scripts.Inputs.Reader
         public event Action<Vector2> OnMouseMove;
         public event Action<bool> OnLeftMousePressed;
         public event Action OnInteract;
+        public event Action<bool> OnToggleMoveCamera;
 
         private PlayerInputMap _inputMap;
         
@@ -34,8 +35,11 @@ namespace _Scripts.Inputs.Reader
             _inputMap.Player.LeftMouseButton.canceled += OnLeftMouseButtonPressed;
             
             _inputMap.Player.Interact.performed += OnInteractNotify;
+
+            _inputMap.Player.ToggleMoveCamera.performed += OnToggleMoveCameraNotify;
+            _inputMap.Player.ToggleMoveCamera.canceled += OnToggleMoveCameraNotify;
         }
-        
+
         public void Dispose()
         {
             _inputMap.Disable();
@@ -58,6 +62,9 @@ namespace _Scripts.Inputs.Reader
             _inputMap.Player.LeftMouseButton.canceled -= OnLeftMouseButtonPressed;
             
             _inputMap.Player.Interact.performed -= OnInteractNotify;
+            
+            _inputMap.Player.ToggleMoveCamera.performed -= OnToggleMoveCameraNotify;
+            _inputMap.Player.ToggleMoveCamera.canceled -= OnToggleMoveCameraNotify;
         }
 
         private void ClearActions()
@@ -66,6 +73,7 @@ namespace _Scripts.Inputs.Reader
             OnMouseMove = null;
             OnLeftMousePressed = null;
             OnInteract = null;
+            OnToggleMoveCamera = null;
         }
 
         private void OnNotifyScrollLook(InputAction.CallbackContext context) => 
@@ -79,6 +87,9 @@ namespace _Scripts.Inputs.Reader
         
         private void OnInteractNotify(InputAction.CallbackContext context) =>
             OnInteract?.Invoke();
+
+        private void OnToggleMoveCameraNotify(InputAction.CallbackContext context) =>
+            OnToggleMoveCamera?.Invoke(context.performed);
             
         private void NotifyVector2Action(InputAction.CallbackContext context, Action<Vector2> action)
         {
