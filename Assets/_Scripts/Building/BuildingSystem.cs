@@ -236,11 +236,12 @@ public class BuildingSystem : MonoBehaviour
                         // Оновлюємо значення isBuild на основі результату перевірки
                         isBuild = allTouchDrone;
                     }
-                    else
+                    else if(colliders == null || colliders.Length == 0)
                     {
-                        isBuild = false; // Якщо немає жодного колайдера, isBuild = false
+                        isBuild = true; // Якщо немає жодного колайдера, isBuild = false
                     }
-                    
+                    else
+                        isBuild = false;
 
                     // Ставимо об'єкт при натисканні ЛКМ
                     if (Input.GetMouseButtonDown(0) && isBuild && isTriggers)

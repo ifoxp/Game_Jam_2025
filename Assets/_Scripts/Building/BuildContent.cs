@@ -35,18 +35,51 @@ public class BuildContent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentCollider != null)
+        // Маска для перевірки тригерів з двох шарів (LayerMask за потреби можна змінити)
+        int layerMask = LayerMask.GetMask("Drone", "Builder"); // Об'єднуємо маски для обох шарів
+
+        // Отримуємо фактичні розміри BoxCollider
+        Vector3 size = box.size;  // Реальний розмір BoxCollider (не bounds.extents)
+        Vector3 halfExtents = size / 2f;  // Піврозміри для використання в OverlapBox
+
+        // Збільшуємо точність перевірок для маленьких колайдерів
+        // Можна збільшити перевірку кілька разів, щоб не втратити перетин
+        float overlapScaleFactor = Mathf.Max(size.x, size.y, size.z) * 10f; // Множимо розміри для збільшення точності
+
+        // Перевірка на перетин тригерів з фактичними розмірами та орієнтацією колайдера
+        Collider[] overlappingColliders = Physics.OverlapBox(box.transform.position, halfExtents * overlapScaleFactor, transform.rotation, layerMask);
+
+        bool isAnyTriggerInside = false;
+
+        // Перевірка перетину для кожного колайдера, ігноруючи сам об'єкт і його дочірні елементи
+        foreach (var collider in overlappingColliders)
         {
-            // Перевірка на перетин bounds
-            if (!box.bounds.Intersects(currentCollider.bounds))
+            // Ігноруємо колайдер цього об'єкта та його дочірні елементи
+            if (collider.transform != transform && !collider.transform.IsChildOf(transform))
             {
-                currentCollider = null;
-                isBuild = true; // Об'єкт більше не перетинається
+                // Використовуємо Intersects для перевірки точного перетину
+                if (box.bounds.Intersects(collider.bounds))
+                {
+                    isAnyTriggerInside = true;
+                    currentCollider = collider;  // Оновлюємо currentCollider
+                    break; // Якщо хоча б один тригер знайдений, зупиняємо перевірку
+                }
             }
-            else
-                isBuild = false;
+        }
+
+        // Якщо знайдений хоча б один тригер, об'єкт у зоні тригера
+        if (isAnyTriggerInside)
+        {
+            isBuild = false; // Об'єкт у зоні тригера
+        }
+        else
+        {
+            currentCollider = null;
+            isBuild = true; // Об'єкт вийшов із зони тригера
         }
     }
+
+
 
     private void Reset()
     {
