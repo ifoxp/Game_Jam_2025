@@ -7,7 +7,8 @@ namespace _Scripts.Building
 {
     public class BuildingSystem : MonoBehaviour
     {
-        public GameObject beamPrefab; // ������ �����
+        public GameObject[] beamPrefab; // ������ �����
+        private int WhoBuild;
         private GameObject previewBeam; // ����� � ����� ������������ ���������
         private bool isPlacing = false; // ����� ���������
         public LayerMask buildingLayer; // ��� ��� ��'���� �� ����� "Building"
@@ -37,10 +38,10 @@ namespace _Scripts.Building
                 {
                     CancelPlacing();
                 }
-                else
+                /*else
                 {
                     StartPlacing();
-                }
+                }*/
             }
 
             // ����������� �� ����������� "Finish" �� ��������� "R"
@@ -81,7 +82,7 @@ namespace _Scripts.Building
         {
             // ��������� ��'���� ��� ������������ ���������
             isPlacing = true;
-            previewBeam = Instantiate(beamPrefab);
+            previewBeam = Instantiate(beamPrefab[WhoBuild]);
             size = previewBeam.GetComponent<BuildContent>().size;
 
             // ������� �� ��������� � ����� "Finish"
@@ -257,7 +258,18 @@ namespace _Scripts.Building
         }
 
         // �������� �� ������� �����
-
+        public void BuildUGUI(int who)
+        {
+            WhoBuild = who;
+            if (isPlacing)
+            {
+                CancelPlacing();
+            }
+            else
+            {
+                StartPlacing();
+            }
+        }
         void PlaceBeam(Vector3 position, Quaternion rotation)
         {
             // �������� �������� ��������� ����� �������� �� �����
@@ -270,7 +282,7 @@ namespace _Scripts.Building
 
             // ����� ������������� beamCollider, �� �� �
             //GameObject placedBeam = Instantiate(beamPrefab, position, rotation, transform);
-            var instantiated = _container.InstantiatePrefab(beamPrefab, position, rotation, transform);
+            var instantiated = _container.InstantiatePrefab(beamPrefab[WhoBuild], position, rotation, transform);
             instantiated.GetComponent<UpgradableBuilding>()?.OnBuildingPlaced();
             if (instantiated.GetComponent<ResourceEarnerBuilding>())
                 instantiated.GetComponent<ResourceEarnerBuilding>().enabled = true;
@@ -287,6 +299,7 @@ namespace _Scripts.Building
             isPlacing = false;
             positionOffset = Vector3.zero;
             Destroy(previewBeam);
+            StartPlacing();
         }
 
         Collider GetFinishCollider(GameObject obj)
@@ -303,4 +316,5 @@ namespace _Scripts.Building
             return null;
         }
     }
+    
 }

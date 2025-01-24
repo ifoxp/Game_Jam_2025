@@ -16559,7 +16559,9 @@ MonoBehaviour:
     _audioSource: {fileID: 5923262616433069830}
     _volume: 0
     _pitchRange: {x: 1, y: 1}
-  _eachLevelSettings: []
+  _eachLevelSettings:
+  - <NewResourceAmountPerMinute>k__BackingField: 0
+    <RequiredToUpgrade>k__BackingField: []
   _dustParticle:
     _particleToPlay: {fileID: 6444605332035671005}
   <CurrentLevelArrayIndex>k__BackingField: 0
