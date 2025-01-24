@@ -72,12 +72,11 @@ public class DroneBuy : MonoBehaviour
             return;
         }
 
-        int currentMaterials=_inventory.GameResources[GameResourcesType.Materials];
+        int currentMaterials=PlayerPrefs.GetInt("Material");
 
         if (currentMaterials >= _prices[currentLevel])
         {
-            _inventory.SpendResource(GameResourcesType.Materials, (int)_prices[currentLevel]);
-
+            PlayerPrefs.SetInt("Material", PlayerPrefs.GetInt("Material")- (int)_prices[currentLevel]);
 
             // Підвищуємо рівень прокачки
             currentLevel++;
