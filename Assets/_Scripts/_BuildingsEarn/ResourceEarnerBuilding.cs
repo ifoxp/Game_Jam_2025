@@ -1,5 +1,4 @@
-﻿using System;
-using _Scripts.DataModel;
+﻿using _Scripts.DataModel;
 using UnityEngine;
 using Zenject;
 
@@ -8,8 +7,8 @@ namespace _Scripts._BuildingsEarn
     public class ResourceEarnerBuilding : MonoBehaviour
     {
         [SerializeField] private GameResourcesType _resourceToEarn;
-        [SerializeField] private int _resourceAmountPerMinute;
-        
+        [SerializeField] private int _currentResourceAmountPerMinute;
+
         private float _timeToGetOneResource;
         
         private GameResourcesInventory _gameResourcesInventory;
@@ -19,15 +18,6 @@ namespace _Scripts._BuildingsEarn
         {
             _gameResourcesInventory = gameResourcesInventory;
         }
-        
-        private void Start()
-        {
-            if(_resourceAmountPerMinute <= 0) 
-                throw new Exception("Resource amount per minute must be greater than 0");
-            
-            _timeToGetOneResource = CalculateWhenGotOneResource();
-            InvokeRepeating(nameof(GetOneResource), _timeToGetOneResource, _timeToGetOneResource);
-        }
 
         private void GetOneResource()
         {
@@ -36,10 +26,21 @@ namespace _Scripts._BuildingsEarn
         
         private float CalculateWhenGotOneResource()
         {
-            var resourcePerSecond = (float)_resourceAmountPerMinute / 60;
+            var resourcePerSecond = (float)_currentResourceAmountPerMinute / 60;
 
             // Time to get one resource
             return 1 / resourcePerSecond;
+        }
+
+        public void ChangeBuildingStats(UpgradableBuilding.LevelStats newLevelStats)
+        {
+            _currentResourceAmountPerMinute = newLevelStats.NewResourceAmountPerMinute;
+            _timeToGetOneResource = CalculateWhenGotOneResource();
+            
+            CancelInvoke(nameof(GetOneResource));
+            InvokeRepeating(nameof(GetOneResource), _timeToGetOneResource, _timeToGetOneResource);
+
+            Debug.Log($"Building stats changed! Per minute: {_currentResourceAmountPerMinute}");
         }
     }
 }

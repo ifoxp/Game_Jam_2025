@@ -79,23 +79,22 @@ namespace _Scripts.Building
 
         void StartPlacing()
         {
-            // ��������� ��'���� ��� ������������ ���������
             isPlacing = true;
             previewBeam = Instantiate(beamPrefab);
+            
             size = previewBeam.GetComponent<BuildContent>().size;
 
-            // ������� �� ��������� � ����� "Finish"
             finishColliders.Clear();
             BoxCollider[] childColliders = previewBeam.GetComponentsInChildren<BoxCollider>();
-            foreach (var collider in childColliders)
+            foreach (var childCollider in childColliders)
             {
-                if (collider.CompareTag("Finish") && collider.gameObject.layer == LayerMask.NameToLayer("Build"))
+                if (childCollider.CompareTag("Finish") && childCollider.gameObject.layer == LayerMask.NameToLayer("Build"))
                 {
-                    finishColliders.Add(collider);
+                    finishColliders.Add(childCollider);
                 }
-                else if (collider.gameObject.layer == LayerMask.NameToLayer("Build"))
+                else if (childCollider.gameObject.layer == LayerMask.NameToLayer("Build"))
                 {
-                    collider.enabled = false;
+                    childCollider.enabled = false;
                 }
             }
 
@@ -125,11 +124,11 @@ namespace _Scripts.Building
         }
 
        
-                void CancelPlacing()
+        void CancelPlacing()
         {
             // ���������� ���������
             isPlacing = false;
-            if (previewBeam != null)
+            if (!previewBeam)
             {
                 Destroy(previewBeam);
             }
@@ -271,9 +270,10 @@ namespace _Scripts.Building
             // ����� ������������� beamCollider, �� �� �
             //GameObject placedBeam = Instantiate(beamPrefab, position, rotation, transform);
             var instantiated = _container.InstantiatePrefab(beamPrefab, position, rotation, transform);
-            if(instantiated.GetComponent<ResourceEarnerBuilding>())
-            instantiated.GetComponent<ResourceEarnerBuilding>().enabled= true;
-            // ��������� ��� ������� ���������
+
+            if (instantiated.TryGetComponent(out UpgradableBuilding upgradableBuilding))
+                upgradableBuilding.OnBuildingPlaced();
+            
             Collider[] childColliders = instantiated.GetComponentsInChildren<Collider>();
             foreach (var collider in childColliders)
             {
