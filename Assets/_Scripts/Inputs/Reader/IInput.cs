@@ -13,6 +13,7 @@ namespace _Scripts.Inputs.Reader
         public event Action OnInteract;
 
         public event Action OnReturnToMapCenter;
+        public event Action<bool> OnSelectContentPressed;
 
         public Vector2 GetPointerPosition();
     }

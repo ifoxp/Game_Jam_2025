@@ -18,6 +18,8 @@ namespace _Scripts.Audio
 
         public void PlayShot()
         {
+            if (_audioSource == null)
+                return;
             SetupAudioSource();
             _audioSource.PlayOneShot(GetRandomClip());
         }

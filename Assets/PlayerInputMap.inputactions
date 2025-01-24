@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "MultiTap",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SelectBuildContent",
+                    "type": "Button",
+                    "id": "a0117548-0b1d-4f6c-841e-e639ded0349a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -124,6 +133,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "ReturnToMapCenter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f7325d2-9cfa-4486-bab1-7950d5a48963",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SelectBuildContent",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

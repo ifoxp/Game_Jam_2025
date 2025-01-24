@@ -13,6 +13,7 @@ namespace _Scripts.Inputs.Reader
         public event Action OnInteract;
         public event Action<bool> OnToggleMoveCamera;
         public event Action OnReturnToMapCenter;
+        public event Action<bool> OnSelectContentPressed;
 
         private PlayerInputMap _inputMap;
         
@@ -41,6 +42,9 @@ namespace _Scripts.Inputs.Reader
             _inputMap.Player.ToggleMoveCamera.canceled += OnToggleMoveCameraNotify;
 
             _inputMap.Player.ReturnToMapCenter.performed += OnReturnToMapCenterNotify;
+            
+            _inputMap.Player.SelectBuildContent.performed += OnSelectContentNotify;
+            _inputMap.Player.SelectBuildContent.canceled += OnSelectContentNotify;
         }
 
         public void Dispose()
@@ -70,6 +74,9 @@ namespace _Scripts.Inputs.Reader
             _inputMap.Player.ToggleMoveCamera.canceled -= OnToggleMoveCameraNotify;
             
             _inputMap.Player.ReturnToMapCenter.performed -= OnReturnToMapCenterNotify;
+            
+            _inputMap.Player.SelectBuildContent.performed -= OnSelectContentNotify;
+            _inputMap.Player.SelectBuildContent.canceled -= OnSelectContentNotify;
         }
 
         private void ClearActions()
@@ -80,6 +87,7 @@ namespace _Scripts.Inputs.Reader
             OnInteract = null;
             OnToggleMoveCamera = null;
             OnReturnToMapCenter = null;
+            OnSelectContentPressed = null;
         }
 
         private void OnNotifyScrollLook(InputAction.CallbackContext context) => 
@@ -99,6 +107,9 @@ namespace _Scripts.Inputs.Reader
         
         private void OnReturnToMapCenterNotify(InputAction.CallbackContext context) =>
             OnReturnToMapCenter?.Invoke();
+        
+        private void OnSelectContentNotify(InputAction.CallbackContext context) =>
+            OnSelectContentPressed?.Invoke(context.performed);
             
         private void NotifyVector2Action(InputAction.CallbackContext context, Action<Vector2> action)
         {

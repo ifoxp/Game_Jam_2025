@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetedDrone: {fileID: 0}
+  price: {x: 7, y: 13}
 --- !u!65 &4615264355675058517
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -61,7 +61,7 @@ namespace _Scripts.DataModel
             _gameResources[resource] += amountAdd;
             
             OnResourceChanged?.Invoke(new GameResourceContainer(resource, _gameResources[resource]));
-            Debug.Log($"{resource}: {_gameResources[resource]}");
+            //Debug.Log($"{resource}: {_gameResources[resource]}");
         }
         
         /// <summary>

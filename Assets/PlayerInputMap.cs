@@ -80,6 +80,15 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""MultiTap"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectBuildContent"",
+                    ""type"": ""Button"",
+                    ""id"": ""a0117548-0b1d-4f6c-841e-e639ded0349a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -146,6 +155,17 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""ReturnToMapCenter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f7325d2-9cfa-4486-bab1-7950d5a48963"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SelectBuildContent"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -739,6 +759,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_ToggleMoveCamera = m_Player.FindAction("ToggleMoveCamera", throwIfNotFound: true);
         m_Player_ReturnToMapCenter = m_Player.FindAction("ReturnToMapCenter", throwIfNotFound: true);
+        m_Player_SelectBuildContent = m_Player.FindAction("SelectBuildContent", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -824,6 +845,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_ToggleMoveCamera;
     private readonly InputAction m_Player_ReturnToMapCenter;
+    private readonly InputAction m_Player_SelectBuildContent;
     public struct PlayerActions
     {
         private @PlayerInputMap m_Wrapper;
@@ -834,6 +856,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @ToggleMoveCamera => m_Wrapper.m_Player_ToggleMoveCamera;
         public InputAction @ReturnToMapCenter => m_Wrapper.m_Player_ReturnToMapCenter;
+        public InputAction @SelectBuildContent => m_Wrapper.m_Player_SelectBuildContent;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -861,6 +884,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             @ReturnToMapCenter.started += instance.OnReturnToMapCenter;
             @ReturnToMapCenter.performed += instance.OnReturnToMapCenter;
             @ReturnToMapCenter.canceled += instance.OnReturnToMapCenter;
+            @SelectBuildContent.started += instance.OnSelectBuildContent;
+            @SelectBuildContent.performed += instance.OnSelectBuildContent;
+            @SelectBuildContent.canceled += instance.OnSelectBuildContent;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -883,6 +909,9 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
             @ReturnToMapCenter.started -= instance.OnReturnToMapCenter;
             @ReturnToMapCenter.performed -= instance.OnReturnToMapCenter;
             @ReturnToMapCenter.canceled -= instance.OnReturnToMapCenter;
+            @SelectBuildContent.started -= instance.OnSelectBuildContent;
+            @SelectBuildContent.performed -= instance.OnSelectBuildContent;
+            @SelectBuildContent.canceled -= instance.OnSelectBuildContent;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1071,6 +1100,7 @@ public partial class @PlayerInputMap: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnToggleMoveCamera(InputAction.CallbackContext context);
         void OnReturnToMapCenter(InputAction.CallbackContext context);
+        void OnSelectBuildContent(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

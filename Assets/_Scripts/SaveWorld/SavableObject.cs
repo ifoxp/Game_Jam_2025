@@ -1,73 +1,80 @@
+using _Scripts._BuildingsEarn;
+using _Scripts.UI;
 using UnityEngine;
 
-public class SavableObject : MonoBehaviour
+namespace _Scripts.DataModel
 {
-    [SerializeField] private string prefabName;
-
-    // Масив імен скриптів, які мають бути false після завантаження
-    [SerializeField] private string[] scriptsToSetFalse;
-
-    // Масив імен скриптів, які мають бути true після завантаження
-    [SerializeField] private string[] scriptsToSetTrue;
-    //public Transform parent;
-    private void Start()
+    public class SavableObject : MonoBehaviour
     {
-        // Реєструємо об'єкт у менеджері збереження
-        GlobalSaveManager.Instance.RegisterObject(this);
-    }
+        [SerializeField] private string prefabName;
 
-    private void OnDestroy()
-    {
-        if (GlobalSaveManager.Instance != null)
+        // Масив імен скриптів, які мають бути false після завантаження
+        [SerializeField] private string[] scriptsToSetFalse;
+
+        // Масив імен скриптів, які мають бути true після завантаження
+        [SerializeField] private string[] scriptsToSetTrue;
+        public UpgradableBuilding UpdateResourceAmountUI;
+        //public Transform parent;
+        private void Start()
         {
-            GlobalSaveManager.Instance.UnregisterObject(this);
+            // Реєструємо об'єкт у менеджері збереження
+            GlobalSaveManager.Instance.RegisterObject(this);
+          
         }
-    }
 
-    // Повертає дані для збереження
-    public SavableData GetSaveData()
-    {
-        return new SavableData
+        private void OnDestroy()
         {
-            prefabName = prefabName,
-            position = transform.position,
-            rotation = transform.rotation,
-            scale = transform.localScale,
-            scriptsToSetFalse = scriptsToSetFalse,
-            scriptsToSetTrue = scriptsToSetTrue
-        };
-    }
-
-    // Встановлює стани скриптів після завантаження
-    public void ApplySavedState()
-    {
-        foreach (string scriptName in scriptsToSetFalse)
-        {
-            MonoBehaviour script = (MonoBehaviour)GetComponent(scriptName);
-            if (script != null)
+            if (GlobalSaveManager.Instance != null)
             {
-                script.enabled = false;
+                GlobalSaveManager.Instance.UnregisterObject(this);
             }
         }
 
-        foreach (string scriptName in scriptsToSetTrue)
+        // Повертає дані для збереження
+        public SavableData GetSaveData()
         {
-            MonoBehaviour script = (MonoBehaviour)GetComponent(scriptName);
-            if (script != null)
+            return new SavableData
             {
-                script.enabled = true;
+                prefabName = prefabName,
+                position = transform.position,
+                rotation = transform.rotation,
+                scale = transform.localScale,
+                scriptsToSetFalse = scriptsToSetFalse,
+                scriptsToSetTrue = scriptsToSetTrue
+            };
+        }
+
+        // Встановлює стани скриптів після завантаження
+        public void ApplySavedState()
+        {
+            foreach (string scriptName in scriptsToSetFalse)
+            {
+                MonoBehaviour script = (MonoBehaviour)GetComponent(scriptName);
+                if (script != null)
+                {
+                    script.enabled = false;
+                }
+            }
+
+            foreach (string scriptName in scriptsToSetTrue)
+            {
+                MonoBehaviour script = (MonoBehaviour)GetComponent(scriptName);
+                if (script != null)
+                {
+                    script.enabled = true;
+                }
             }
         }
     }
-}
 
-[System.Serializable]
-public class SavableData
-{
-    public string prefabName;
-    public Vector3 position;
-    public Quaternion rotation;
-    public Vector3 scale;
-    public string[] scriptsToSetFalse;
-    public string[] scriptsToSetTrue;
+    [System.Serializable]
+    public class SavableData
+    {
+        public string prefabName;
+        public Vector3 position;
+        public Quaternion rotation;
+        public Vector3 scale;
+        public string[] scriptsToSetFalse;
+        public string[] scriptsToSetTrue;
+    }
 }
