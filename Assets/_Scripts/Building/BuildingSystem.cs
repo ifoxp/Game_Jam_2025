@@ -1,4 +1,5 @@
 ﻿using _Scripts._BuildingsEarn;
+using _Scripts.DataModel;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -28,6 +29,17 @@ namespace _Scripts.Building
 
         private Vector3 positionOffset; // ������� ��� ��������� ��'����
         private Quaternion rotationnOffset;
+
+
+        private int Junk,JunkBuy;
+        private int Materials,MaterialsBuy;
+
+        private GameResourcesInventory _inventory;
+        [Inject]
+        private void Construct(GameResourcesInventory inventory)
+        {
+            _inventory = inventory;
+        }
         void Update()
         {
 
@@ -245,9 +257,17 @@ namespace _Scripts.Building
                             float distanceToOrigin = Vector3.Distance(lastValidPosition, Vector3.zero);
                             if (distanceToOrigin <= 23f)
                             {
-                                PlaceBeam(lastValidPosition, lastValidRotation);
-                            }
-                            else
+                                if (JunkBuy <= Junk && MaterialsBuy <= Materials)
+                                {
+                                    Debug.Log("Junk:" + Junk + "\tMaterail:" + Materials);
+                                    _inventory.SpendResource(GameResourcesType.Materials, MaterialsBuy);
+                                    _inventory.SpendResource(GameResourcesType.Junk, JunkBuy);
+                                    Junk = _inventory.GameResources[GameResourcesType.Junk];
+                                    Materials = _inventory.GameResources[GameResourcesType.Materials];
+                                    PlaceBeam(lastValidPosition, lastValidRotation);
+                                }
+                                }
+                                else
                             {
                                 Debug.LogWarning("Об'єкт занадто далеко від початку координат і не може бути розміщений.");
                             }
@@ -267,16 +287,25 @@ namespace _Scripts.Building
         }
 
         // �������� �� ������� �����
-        public void BuildUGUI(int who)
+        public void BuildUGUI(int who,int junk, int material)
         {
             WhoBuild = who;
-            if (isPlacing)
+            Junk= _inventory.GameResources[GameResourcesType.Junk];
+            Materials= _inventory.GameResources[GameResourcesType.Materials];
+            JunkBuy = junk;
+            MaterialsBuy = material;
+            Debug.Log(Materials+"\t"+Junk);
+            if (junk <=Junk && material <= Materials)
             {
-                CancelPlacing();
-            }
-            else
-            {
-                StartPlacing();
+
+                if (isPlacing)
+                {
+                    CancelPlacing();
+                }
+                else
+                {
+                    StartPlacing();
+                }
             }
         }
         void PlaceBeam(Vector3 position, Quaternion rotation)

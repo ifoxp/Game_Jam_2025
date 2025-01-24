@@ -23018,7 +23018,7 @@ MonoBehaviour:
     _volume: 0
     _pitchRange: {x: 1, y: 1}
   _eachLevelSettings:
-  - <NewResourceAmountPerMinute>k__BackingField: 0
+  - <NewResourceAmountPerMinute>k__BackingField: 1000
     <RequiredToUpgrade>k__BackingField: []
   _dustParticle:
     _particleToPlay: {fileID: 7389544761063645505}

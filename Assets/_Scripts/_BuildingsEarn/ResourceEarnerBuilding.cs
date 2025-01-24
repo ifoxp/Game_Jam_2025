@@ -1,6 +1,7 @@
 ﻿using _Scripts.DataModel;
 using UnityEngine;
 using Zenject;
+using static _Scripts._BuildingsEarn.UpgradableBuilding;
 
 namespace _Scripts._BuildingsEarn
 {
