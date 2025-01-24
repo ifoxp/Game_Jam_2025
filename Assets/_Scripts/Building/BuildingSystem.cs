@@ -260,10 +260,11 @@ namespace _Scripts.Building
                                 if (JunkBuy <= Junk && MaterialsBuy <= Materials)
                                 {
                                     Debug.Log("Junk:" + Junk + "\tMaterail:" + Materials);
-                                    _inventory.SpendResource(GameResourcesType.Materials, MaterialsBuy);
-                                    _inventory.SpendResource(GameResourcesType.Junk, JunkBuy);
-                                    Junk = _inventory.GameResources[GameResourcesType.Junk];
-                                    Materials = _inventory.GameResources[GameResourcesType.Materials];
+
+                                    PlayerPrefs.SetInt("Junk", PlayerPrefs.GetInt("Junk") -JunkBuy);
+                                    PlayerPrefs.SetInt("Materials", PlayerPrefs.GetInt("Materials")-MaterialsBuy);
+                                    Junk = PlayerPrefs.GetInt("Junk");
+                                    Materials = PlayerPrefs.GetInt("Materials");
                                     PlaceBeam(lastValidPosition, lastValidRotation);
                                 }
                                 }
@@ -290,8 +291,8 @@ namespace _Scripts.Building
         public void BuildUGUI(int who,int junk, int material)
         {
             WhoBuild = who;
-            Junk= _inventory.GameResources[GameResourcesType.Junk];
-            Materials= _inventory.GameResources[GameResourcesType.Materials];
+            Junk= PlayerPrefs.GetInt("Junk");
+            Materials= PlayerPrefs.GetInt("Materials"); 
             JunkBuy = junk;
             MaterialsBuy = material;
             Debug.Log(Materials+"\t"+Junk);

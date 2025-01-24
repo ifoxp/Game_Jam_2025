@@ -40,15 +40,15 @@ public class HouseGenerateResource : MonoBehaviour
             // Скидаємо таймер
             productionTimer = productionInterval;
 
-            // Перевіряємо і виробляємо ресурси
-            if (CanProduceResources())
+            // Перевіряємо і виробляємо ресурси, якщо рівень 2
+            if (currentLevel >= 0 && CanProduceResources())
             {
                 ProduceResources();
-                Debug.Log("Ресурси успішно створені на рівні " + (currentLevel + 1));
+                //Debug.Log("Ресурси успішно створені на рівні " + (currentLevel + 1));
             }
             else
             {
-                Debug.Log("Недостатньо ресурсів для виробництва на рівні " + (currentLevel + 1));
+                //Debug.Log("Недостатньо ресурсів для виробництва на рівні " + (currentLevel + 1));
             }
 
             // Виведення поточного стану ресурсів
@@ -81,7 +81,9 @@ public class HouseGenerateResource : MonoBehaviour
 
     private bool CanProduceResources()
     {
-        // Перевірка ресурсів для поточного рівня
+        // Перевірка ресурсів для поточного рівня, але не для першого
+        if (currentLevel < 0) return false; // Рівень 0 не виробляє ресурси
+
         foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
         {
             int currentAmount = PlayerPrefs.GetInt(requirement.Name, 0);
@@ -112,15 +114,15 @@ public class HouseGenerateResource : MonoBehaviour
 
     private void DisplayResources()
     {
-        Debug.Log("Поточний рівень: " + (currentLevel + 1));
+        //Debug.Log("Поточний рівень: " + (currentLevel + 1));
         foreach (var resource in upgradeLevels[currentLevel].resourcesProduced)
         {
-            Debug.Log(resource.Name + ": " + PlayerPrefs.GetInt(resource.Name));
+            //Debug.Log(resource.Name + ": " + PlayerPrefs.GetInt(resource.Name));
         }
 
         foreach (var resource in upgradeLevels[currentLevel].resourcesRequired)
         {
-            Debug.Log(resource.Name + ": " + PlayerPrefs.GetInt(resource.Name));
+            //Debug.Log(resource.Name + ": " + PlayerPrefs.GetInt(resource.Name));
         }
     }
 
@@ -158,12 +160,14 @@ public class HouseGenerateResource : MonoBehaviour
             Debug.Log("Рівень будівлі не знайдено, використовується базовий рівень.");
         }
     }
+
     [Button]
     public void UppateBuild()
     {
         Upgrade();
     }
 }
+
 
 [System.Serializable]
 public class ResourceData

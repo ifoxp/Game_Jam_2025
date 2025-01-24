@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -17,12 +18,21 @@ public class TextUpdater : MonoBehaviour
 
         // Ініціалізація тексту
         UpdateText();
+
+        // Запускаємо корутину для оновлення тексту кожні 2 секунди
+        StartCoroutine(UpdateTextEveryTwoSeconds());
     }
 
-    private void FixedUpdate()
+    private IEnumerator UpdateTextEveryTwoSeconds()
     {
-        // Оновлення тексту в кожному кадрі
-        UpdateText();
+        while (true)
+        {
+            // Оновлюємо текст
+            UpdateText();
+
+            // Чекаємо 2 секунди перед наступним оновленням
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     private void UpdateText()
@@ -33,4 +43,5 @@ public class TextUpdater : MonoBehaviour
         // Оновлення тексту TextMeshProUGUI
         textMesh.text = $"{resourceKey}: {resourceValue}";
     }
+
 }

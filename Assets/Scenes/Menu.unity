@@ -63583,9 +63583,9 @@ MonoBehaviour:
     resourcesRequired: []
   - resourcesProduced:
     - Name: Junk
-      Amount: 10
+      Amount: 1
     - Name: Materials
-      Amount: 15
+      Amount: 1
     resourcesRequired: []
   productionInterval: 1
   buildingID: 
