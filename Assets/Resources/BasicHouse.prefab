@@ -5120,12 +5120,10 @@ GameObject:
   - component: {fileID: 7544930174028870010}
   - component: {fileID: 1285984879409460579}
   - component: {fileID: 8976463275530482947}
-  - component: {fileID: -5330207960191817265}
   - component: {fileID: -2188037576862724410}
   - component: {fileID: -6703824087167560456}
   - component: {fileID: -2453939951319363955}
-  - component: {fileID: -472102457616895123}
-  - component: {fileID: 4841692183254669624}
+  - component: {fileID: 1859876637112619094}
   m_Layer: 10
   m_Name: BasicHouse
   m_TagString: Untagged
@@ -5216,20 +5214,6 @@ MonoBehaviour:
   box: {fileID: 1285984879409460579}
   currentCollider: {fileID: 0}
   sizeBuild: []
---- !u!114 &-5330207960191817265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945693231805750458}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 106dcb216a644d33a7015f451bda1aa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _resourceToEarn: 1
-  _currentResourceAmountPerMinute: 0
 --- !u!114 &-2188037576862724410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13700,46 +13684,20 @@ MonoBehaviour:
   scriptsToSetFalse:
   - BuildContent
   scriptsToSetTrue:
-  - ResourceEarnerBuilding
-  UpdateResourceAmountUI: {fileID: 4841692183254669624}
---- !u!114 &-472102457616895123
+  - HouseGenerateResource
+--- !u!114 &1859876637112619094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8945693231805750458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc980c7dbd840ff8573138e665a6427, type: 3}
+  m_Script: {fileID: 11500000, guid: 47dda6383b6804946b70786559fba139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4841692183254669624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945693231805750458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2862af0186c4469b9d5c93a10693b49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _onPlacedAudio:
-    _audioClips:
-    - {fileID: 8300000, guid: 0fcbeacf04079584e9569d6452b89cd8, type: 3}
-    - {fileID: 8300000, guid: b4526febbdca169448ce1f8302c1a961, type: 3}
-    - {fileID: 8300000, guid: bed738b7b731c6343ac41a98351c601a, type: 3}
-    _audioSource: {fileID: 5902903738277601908}
-    _volume: 0.45
-    _pitchRange: {x: 1, y: 1}
-  _eachLevelSettings:
-  - <NewResourceAmountPerMinute>k__BackingField: 0
-    <RequiredToUpgrade>k__BackingField: []
-  _dustParticle:
-    _particleToPlay: {fileID: 7081852698258385800}
-  <CurrentLevelArrayIndex>k__BackingField: 0
+  population: 20
 --- !u!1001 &3538281948924806228
 PrefabInstance:
   m_ObjectHideFlags: 0

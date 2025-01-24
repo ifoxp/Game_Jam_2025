@@ -6094,8 +6094,8 @@ MonoBehaviour:
   prefabName: Balka
   scriptsToSetFalse:
   - BuildContent
-  scriptsToSetTrue: []
-  UpdateResourceAmountUI: {fileID: -5889727899630282750}
+  scriptsToSetTrue:
+  - HouseGenerateResource
 --- !u!114 &-3386638654886133299
 MonoBehaviour:
   m_ObjectHideFlags: 0

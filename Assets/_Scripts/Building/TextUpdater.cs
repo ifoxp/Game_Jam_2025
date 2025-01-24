@@ -6,42 +6,51 @@ public class TextUpdater : MonoBehaviour
 {
     [Header("Налаштування")]
     [SerializeField] private TextMeshProUGUI textMesh; // Посилання на TextMeshProUGUI
-    [SerializeField] private string resourceKey;       // Назва ресурсу в PlayerPrefs
 
+    // Якщо 'ResourceType' вже існує, використовуйте його без змін
+    [SerializeField] private ResourceType resourceType;
+
+    private int lastResourceValue;
     private void Start()
     {
         // Перевірка, чи існує ключ у PlayerPrefs, якщо ні — створити його зі значенням за замовчуванням
-        if (!PlayerPrefs.HasKey(resourceKey))
+        if (!PlayerPrefs.HasKey(resourceType.ToString()))
         {
-            PlayerPrefs.SetInt(resourceKey, 0); // Значення за замовчуванням
+            PlayerPrefs.SetInt(resourceType.ToString(), 0); // Значення за замовчуванням
         }
 
         // Ініціалізація тексту
+        lastResourceValue = PlayerPrefs.GetInt(resourceType.ToString());
         UpdateText();
-
-        // Запускаємо корутину для оновлення тексту кожні 2 секунди
-        StartCoroutine(UpdateTextEveryTwoSeconds());
     }
 
-    private IEnumerator UpdateTextEveryTwoSeconds()
+    private void Update()
     {
-        while (true)
-        {
-            // Оновлюємо текст
-            UpdateText();
+        // Отримуємо нове значення з PlayerPrefs
+        int currentResourceValue = PlayerPrefs.GetInt(resourceType.ToString());
 
-            // Чекаємо 2 секунди перед наступним оновленням
-            yield return new WaitForSeconds(1f);
+        // Оновлюємо текст тільки якщо значення змінилося
+        if (currentResourceValue != lastResourceValue)
+        {
+            lastResourceValue = currentResourceValue;
+            UpdateText();
         }
     }
 
     private void UpdateText()
     {
-        // Отримання значення з PlayerPrefs
-        int resourceValue = PlayerPrefs.GetInt(resourceKey);
-
         // Оновлення тексту TextMeshProUGUI
-        textMesh.text = $"{resourceKey}: {resourceValue}";
+        textMesh.text = $"{resourceType}: {lastResourceValue}";
     }
+}
 
+// Новий enum для типів ресурсів
+public enum BuildingResourceType
+{
+    Food,
+    Junk,
+    Material,
+    Energy,
+    Population,
+    PopulationActive
 }

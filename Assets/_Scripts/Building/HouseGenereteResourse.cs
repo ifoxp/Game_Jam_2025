@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HouseGenerateResource : MonoBehaviour
 {
     [Header("Рівні апгрейду")]
@@ -16,64 +17,49 @@ public class HouseGenerateResource : MonoBehaviour
 
     private void Start()
     {
-        // Генеруємо унікальний ID для цієї будівлі
         buildingID = gameObject.name + "_Level";
 
-        // Завантажуємо поточний рівень збереження
         LoadLevel();
 
-        // Ініціалізація PlayerPrefs для всіх ресурсів
         InitializePlayerPrefs();
 
-        // Ініціалізація таймера
         productionTimer = productionInterval;
     }
 
     private void Update()
     {
-        // Зменшуємо таймер
         productionTimer -= Time.deltaTime;
 
-        // Якщо час виробництва настав
         if (productionTimer <= 0f)
         {
-            // Скидаємо таймер
             productionTimer = productionInterval;
 
-            // Перевіряємо і виробляємо ресурси, якщо рівень 2
             if (currentLevel >= 0 && CanProduceResources())
             {
                 ProduceResources();
-                //Debug.Log("Ресурси успішно створені на рівні " + (currentLevel + 1));
-            }
-            else
-            {
-                //Debug.Log("Недостатньо ресурсів для виробництва на рівні " + (currentLevel + 1));
             }
 
-            // Виведення поточного стану ресурсів
             DisplayResources();
         }
     }
 
     private void InitializePlayerPrefs()
     {
-        // Ініціалізація всіх ресурсів для кожного рівня
         foreach (var level in upgradeLevels)
         {
             foreach (var resource in level.resourcesProduced)
             {
-                if (!PlayerPrefs.HasKey(resource.Name))
+                if (!PlayerPrefs.HasKey(resource.Name.ToString()))
                 {
-                    PlayerPrefs.SetInt(resource.Name, 0);
+                    PlayerPrefs.SetInt(resource.Name.ToString(), 0);
                 }
             }
 
             foreach (var resource in level.resourcesRequired)
             {
-                if (!PlayerPrefs.HasKey(resource.Name))
+                if (!PlayerPrefs.HasKey(resource.Name.ToString()))
                 {
-                    PlayerPrefs.SetInt(resource.Name, 0);
+                    PlayerPrefs.SetInt(resource.Name.ToString(), 0);
                 }
             }
         }
@@ -81,12 +67,11 @@ public class HouseGenerateResource : MonoBehaviour
 
     private bool CanProduceResources()
     {
-        // Перевірка ресурсів для поточного рівня, але не для першого
-        if (currentLevel < 0) return false; // Рівень 0 не виробляє ресурси
+        if (currentLevel < 0) return false;
 
         foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
         {
-            int currentAmount = PlayerPrefs.GetInt(requirement.Name, 0);
+            int currentAmount = PlayerPrefs.GetInt(requirement.Name.ToString(), 0);
             if (currentAmount < requirement.Amount)
             {
                 return false;
@@ -97,38 +82,32 @@ public class HouseGenerateResource : MonoBehaviour
 
     private void ProduceResources()
     {
-        // Витрата необхідних ресурсів
         foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
         {
-            int currentAmount = PlayerPrefs.GetInt(requirement.Name);
-            PlayerPrefs.SetInt(requirement.Name, currentAmount - requirement.Amount);
+            int currentAmount = PlayerPrefs.GetInt(requirement.Name.ToString());
+            PlayerPrefs.SetInt(requirement.Name.ToString(), currentAmount - requirement.Amount);
         }
 
-        // Додавання вироблених ресурсів
         foreach (var production in upgradeLevels[currentLevel].resourcesProduced)
         {
-            int currentAmount = PlayerPrefs.GetInt(production.Name);
-            PlayerPrefs.SetInt(production.Name, currentAmount + production.Amount);
+            int currentAmount = PlayerPrefs.GetInt(production.Name.ToString());
+            PlayerPrefs.SetInt(production.Name.ToString(), currentAmount + production.Amount);
         }
     }
 
     private void DisplayResources()
     {
-        //Debug.Log("Поточний рівень: " + (currentLevel + 1));
         foreach (var resource in upgradeLevels[currentLevel].resourcesProduced)
         {
-            //Debug.Log(resource.Name + ": " + PlayerPrefs.GetInt(resource.Name));
         }
 
         foreach (var resource in upgradeLevels[currentLevel].resourcesRequired)
         {
-            //Debug.Log(resource.Name + ": " + PlayerPrefs.GetInt(resource.Name));
         }
     }
 
     public void Upgrade()
     {
-        // Переходимо на наступний рівень, якщо можливо
         if (currentLevel + 1 < upgradeLevels.Count)
         {
             currentLevel++;
@@ -168,11 +147,22 @@ public class HouseGenerateResource : MonoBehaviour
     }
 }
 
+public enum ResourceType
+{
+    Food,
+    Junk,
+    Material,
+    Energy,
+    Population,
+    PopulationActive
+}
 
 [System.Serializable]
 public class ResourceData
 {
-    public string Name;  // Назва ресурсу (наприклад, Food, Energy)
+    [SerializeField]
+    public ResourceType Name;
+
     public int Amount;   // Кількість ресурсу
 }
 

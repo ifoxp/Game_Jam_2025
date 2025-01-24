@@ -33,7 +33,7 @@ namespace _Scripts.Building
 
         private int Junk,JunkBuy;
         private int Materials,MaterialsBuy;
-
+        private int Population, PopulationBuy;
         private GameResourcesInventory _inventory;
         [Inject]
         private void Construct(GameResourcesInventory inventory)
@@ -257,14 +257,16 @@ namespace _Scripts.Building
                             float distanceToOrigin = Vector3.Distance(lastValidPosition, Vector3.zero);
                             if (distanceToOrigin <= 23f)
                             {
-                                if (JunkBuy <= Junk && MaterialsBuy <= Materials)
+                                if (JunkBuy <= Junk && MaterialsBuy <= Materials && Population + PopulationBuy <= PlayerPrefs.GetInt("Population", 0))
                                 {
-                                    Debug.Log("Junk:" + Junk + "\tMaterail:" + Materials);
+                                    //Debug.Log("Junk:" + Junk + "\tMaterail:" + Materials);
 
                                     PlayerPrefs.SetInt("Junk", PlayerPrefs.GetInt("Junk") -JunkBuy);
-                                    PlayerPrefs.SetInt("Materials", PlayerPrefs.GetInt("Materials")-MaterialsBuy);
+                                    PlayerPrefs.SetInt("Material", PlayerPrefs.GetInt("Material") -MaterialsBuy);
+                                    PlayerPrefs.SetInt("PopulationActive", PlayerPrefs.GetInt("PopulationActive") + PopulationBuy);
                                     Junk = PlayerPrefs.GetInt("Junk");
-                                    Materials = PlayerPrefs.GetInt("Materials");
+                                    Materials = PlayerPrefs.GetInt("Material");
+                                    Population=PlayerPrefs.GetInt("PopulationActive");
                                     PlaceBeam(lastValidPosition, lastValidRotation);
                                 }
                                 }
@@ -288,15 +290,17 @@ namespace _Scripts.Building
         }
 
         // �������� �� ������� �����
-        public void BuildUGUI(int who,int junk, int material)
+        public void BuildUGUI(int who,int junk, int material,int population)
         {
             WhoBuild = who;
             Junk= PlayerPrefs.GetInt("Junk");
-            Materials= PlayerPrefs.GetInt("Materials"); 
+            Materials= PlayerPrefs.GetInt("Material"); 
+            Population= PlayerPrefs.GetInt("PopulationActive",0);
             JunkBuy = junk;
             MaterialsBuy = material;
+            PopulationBuy = population;
             Debug.Log(Materials+"\t"+Junk);
-            if (junk <=Junk && material <= Materials)
+            if (junk <=Junk && material <= Materials && Population+PopulationBuy<= PlayerPrefs.GetInt("Population", 0))
             {
 
                 if (isPlacing)
@@ -324,10 +328,12 @@ namespace _Scripts.Building
             var instantiated = _container.InstantiatePrefab(beamPrefab[WhoBuild], position, rotation, transform);
             instantiated.gameObject.name = instantiated.gameObject.name + PlayerPrefs.GetInt("Index", 0);
             PlayerPrefs.SetInt("Index", PlayerPrefs.GetInt("Index")+1);
-            instantiated.GetComponent<UpgradableBuilding>()?.OnBuildingPlaced();
+
             instantiated.GetComponent<BuildContent>().enabled = false;
-            if (instantiated.GetComponent<ResourceEarnerBuilding>())
-                instantiated.GetComponent<ResourceEarnerBuilding>().enabled = true;
+            if (instantiated.GetComponent<HouseGenerateResource>())
+                instantiated.GetComponent<HouseGenerateResource>().enabled = true;
+            if (instantiated.GetComponent<PopulationSave>())
+                instantiated.GetComponent<PopulationSave>().enabled = true;
             // ��������� ��� ������� ���������
             Collider[] childColliders = instantiated.GetComponentsInChildren<Collider>();
             foreach (var collider in childColliders)

@@ -14,7 +14,6 @@ namespace _Scripts.DataModel
         // Масив імен скриптів, які мають бути true після завантаження
         [SerializeField] private string[] scriptsToSetTrue;
 
-        public UpgradableBuilding UpdateResourceAmountUI;
 
         private void Start()
         {

@@ -14,7 +14,7 @@ namespace _Scripts.UI
         {
             _animateStrategy.AnimateMenuCategory(_currentMenuSection, newRectToShow, () => 
                 Debug.Log("Completed!"));
-            
+            PlayerPrefs.SetInt("PopulationNoActive", PlayerPrefs.GetInt("Population"));
             _currentMenuSection = newRectToShow;
         }
     }
