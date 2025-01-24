@@ -27,13 +27,22 @@ namespace _Scripts.DataModel
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
-                saveFilePath = Path.Combine(Application.persistentDataPath, "saveData.json");
+
+                // Використовуємо відносний шлях для збереження файлу в проекті
+                string saveFolderPath = Path.Combine(Application.dataPath, "Resources/Saves"); // Задаємо шлях до папки
+                if (!Directory.Exists(saveFolderPath))
+                {
+                    Directory.CreateDirectory(saveFolderPath); // Створюємо папку, якщо її немає
+                }
+
+                saveFilePath = Path.Combine(saveFolderPath, "saveData.json"); // Формуємо повний шлях до файлу
             }
             else
             {
                 Destroy(gameObject);
             }
         }
+
 
         private void Start()
         {

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 using UnityEngine;
@@ -28,5 +29,25 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Population", Population);
         PlayerPrefs.SetInt("PopulationActive", PopulationActive);
     }
+    [Button]
+    private void GiveAllResources()
+    {
+        
+
+        // Зберігаємо нові значення в PlayerPrefs
+        PlayerPrefs.SetInt("Food", 1000);
+        PlayerPrefs.SetInt("Junk", 1000);
+        PlayerPrefs.SetInt("Material", 1000);
+        PlayerPrefs.SetInt("Energy", 1000);
+        PlayerPrefs.SetInt("Population", 1000);
+        PlayerPrefs.SetInt("PopulationActive", 0);
+
+        // Не забудьте зберегти PlayerPrefs після змін
+        PlayerPrefs.Save();
+
+        // Можна вивести інформацію для відлагодження
+        Debug.Log("All resources increased by 1000.");
+    }
+
 }
 
