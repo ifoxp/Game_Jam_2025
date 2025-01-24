@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ee73712ab9211408ecd7e2da9f2ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 2
+  size: 1
   isBuild: 1
   box: {fileID: 5047792765746672001}
   currentCollider: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourceToEarn: 4
-  _currentResourceAmountPerMinute: 2
+  _currentResourceAmountPerMinute: 0
 --- !u!114 &4633518535091114409
 MonoBehaviour:
   m_ObjectHideFlags: 0

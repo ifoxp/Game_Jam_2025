@@ -5210,7 +5210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ee73712ab9211408ecd7e2da9f2ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0.6
+  size: 0.3
   isBuild: 1
   box: {fileID: 2619613366764720584}
   currentCollider: {fileID: 0}
