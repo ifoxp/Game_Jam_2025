@@ -49,10 +49,10 @@ namespace _Scripts.Behaviours
                     MoveToMeteorite();
 
                 else if (!isPickingUpMeteorite && targetMeteorite == null)
-                    if (Vector3.Distance(transform.position, hub.position) > 1.4f)
+                    if (Vector3.Distance(transform.position, hub.position) > 3f)
                         isMovingToHub = true;
 
-                    else if (Vector3.Distance(transform.position, hub.position) > 2f && targetMeteorite == null)
+                    else if (Vector3.Distance(transform.position, hub.position) > 3f && targetMeteorite == null)
                         isMovingToHub = true;
 
 
