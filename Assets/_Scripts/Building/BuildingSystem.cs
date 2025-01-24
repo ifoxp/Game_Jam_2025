@@ -241,9 +241,18 @@ namespace _Scripts.Building
                         // ������� ��'��� ��� ��������� ���
                         if (Input.GetMouseButtonDown(0) && isBuild && isTriggers)
                         {
-                            if (isBuild && isTriggers)
+                            // Додаємо перевірку на відстань
+                            float distanceToOrigin = Vector3.Distance(lastValidPosition, Vector3.zero);
+                            if (distanceToOrigin <= 23f)
+                            {
                                 PlaceBeam(lastValidPosition, lastValidRotation);
+                            }
+                            else
+                            {
+                                Debug.LogWarning("Об'єкт занадто далеко від початку координат і не може бути розміщений.");
+                            }
                         }
+
                         else if (!isBuild || !isTriggers)
                         {
                             renderers = previewBeam.GetComponentsInChildren<Renderer>();
@@ -284,6 +293,7 @@ namespace _Scripts.Building
             //GameObject placedBeam = Instantiate(beamPrefab, position, rotation, transform);
             var instantiated = _container.InstantiatePrefab(beamPrefab[WhoBuild], position, rotation, transform);
             instantiated.GetComponent<UpgradableBuilding>()?.OnBuildingPlaced();
+            instantiated.GetComponent<BuildContent>().enabled = false;
             if (instantiated.GetComponent<ResourceEarnerBuilding>())
                 instantiated.GetComponent<ResourceEarnerBuilding>().enabled = true;
             // ��������� ��� ������� ���������
