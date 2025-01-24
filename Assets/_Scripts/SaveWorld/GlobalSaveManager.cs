@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -6,14 +7,15 @@ using Zenject;
 
 public class GlobalSaveManager : MonoBehaviour
 {
+    public Transform parent;
     public static GlobalSaveManager Instance;
 
     private string saveFilePath;
     [Inject] private DiContainer _container;
-
+    public float saveTime;
     // Список всіх збережених об'єктів
     private List<SavableObject> savableObjects = new List<SavableObject>();
-
+    public SceneObjectsStateManager sceneObjectsStateManager;
     private void Awake()
     {
         if (Instance == null)
@@ -34,14 +36,21 @@ public class GlobalSaveManager : MonoBehaviour
         LoadAllObjects();
 
         // Автозбереження кожні 2 хвилини
-        InvokeRepeating(nameof(SaveAllObjects), 120f, 120f);
+        InvokeRepeating(nameof(SaveAllObjects), saveTime, saveTime);
     }
     public void DeleteSave()
     {
         if (File.Exists(saveFilePath))
         {
+            sceneObjectsStateManager.DeleteObjectStates();
             File.Delete(saveFilePath);
             Debug.Log("Save file deleted: " + saveFilePath);
+            // Видаляємо всі дочірні об'єкти у parent
+            foreach (Transform child in parent)
+            {
+                Destroy(child.gameObject);
+            }
+            sceneObjectsStateManager.AllObjFalse();
         }
         else
         {
@@ -63,6 +72,7 @@ public class GlobalSaveManager : MonoBehaviour
         if (savableObjects.Contains(savableObject))
         {
             savableObjects.Remove(savableObject);
+ 
         }
     }
 
@@ -81,7 +91,7 @@ public class GlobalSaveManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(new SaveDataWrapper { objects = saveDataList }, true);
         File.WriteAllText(saveFilePath, json);
-
+        sceneObjectsStateManager.SaveObjectStates();
         Debug.Log("Game saved to: " + saveFilePath);
     }
 
@@ -99,7 +109,7 @@ public class GlobalSaveManager : MonoBehaviour
                 if (prefab != null)
                 {
                     //GameObject instance = Instantiate(prefab, data.position, data.rotation);
-                    GameObject instance = _container.InstantiatePrefab(prefab, data.position, data.rotation, transform);
+                    GameObject instance = _container.InstantiatePrefab(prefab, data.position, data.rotation, parent);
                     instance.transform.localScale = data.scale;
 
                     // Застосувати стани скриптів
@@ -120,5 +130,15 @@ public class GlobalSaveManager : MonoBehaviour
     private class SaveDataWrapper
     {
         public List<SavableData> objects;
+    }
+    [Button]
+    void SaveButton()
+    {
+        SaveAllObjects();
+    }
+    [Button]
+    void DeleteSaveButtone()
+    {
+        DeleteSave();
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Meteorite
   - DeleteMeteorite
   - Beam
+  - UI
   layers:
   - Default
   - TransparentFX
