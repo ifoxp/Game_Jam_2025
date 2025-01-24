@@ -1,7 +1,9 @@
+using _Scripts.DataModel;
 using _Scripts.Interact;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class DroneBuy : MonoBehaviour
 {
@@ -12,7 +14,12 @@ public class DroneBuy : MonoBehaviour
 
     [SerializeField] private uint[] _prices; // Масив цін для кожного рівня прокачки
     private int currentLevel; // Поточний рівень прокачки дрона
-
+    private GameResourcesInventory _inventory;
+    [Inject]
+    private void Construct(GameResourcesInventory inventory)
+    {
+        _inventory = inventory;
+    }
     private void Start()
     {
         // Завантаження поточного рівня прокачки з PlayerPrefs
@@ -65,15 +72,12 @@ public class DroneBuy : MonoBehaviour
             return;
         }
 
-        // Отримуємо поточну кількість матеріалів з PlayerPrefs
-        int currentMaterials = PlayerPrefs.GetInt("Materials", 50000);
+        int currentMaterials=_inventory.GameResources[GameResourcesType.Materials];
 
         if (currentMaterials >= _prices[currentLevel])
         {
-            // Якщо вистачає матеріалів, зменшуємо їх кількість і зберігаємо
-            currentMaterials -= (int)_prices[currentLevel];
-            PlayerPrefs.SetInt("Materials", currentMaterials);
-            PlayerPrefs.Save();
+            _inventory.SpendResource(GameResourcesType.Materials, (int)_prices[currentLevel]);
+
 
             // Підвищуємо рівень прокачки
             currentLevel++;
