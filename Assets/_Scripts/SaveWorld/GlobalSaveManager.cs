@@ -1,3 +1,4 @@
+using _Scripts._BuildingsEarn;
 using NaughtyAttributes;
 using System.Collections.Generic;
 using System.IO;
@@ -116,7 +117,7 @@ namespace _Scripts.DataModel
                         //GameObject instance = Instantiate(prefab, data.position, data.rotation);
                         GameObject instance = _container.InstantiatePrefab(prefab, data.position, data.rotation, parent);
                         instance.transform.localScale = data.scale;
-
+                        instance.GetComponent<UpgradableBuilding>()?.OnBuildingPlaced();
                         // Застосувати стани скриптів
                         SavableObject savableObject = instance.GetComponent<SavableObject>();
                         if (savableObject != null)

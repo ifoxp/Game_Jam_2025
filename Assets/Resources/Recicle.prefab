@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: -5243010371504942542}
   - component: {fileID: 3247475401439098406}
   - component: {fileID: 7734977640856061577}
+  - component: {fileID: -1077719196380617722}
+  - component: {fileID: 6091658492838294151}
   m_Layer: 10
   m_Name: Recicle
   m_TagString: Untagged
@@ -126,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourceToEarn: 3
-  _resourceAmountPerMinute: 10
+  _currentResourceAmountPerMinute: 100
 --- !u!114 &-5243010371504942542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22980,6 +22982,41 @@ MonoBehaviour:
   - BuildContent
   scriptsToSetTrue:
   - ResourceEarnerBuilding
+--- !u!114 &-1077719196380617722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707263669767223038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc980c7dbd840ff8573138e665a6427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6091658492838294151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707263669767223038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2862af0186c4469b9d5c93a10693b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onPlacedAudio:
+    _audioClips: []
+    _audioSource: {fileID: 0}
+    _volume: 0
+    _pitchRange: {x: 1, y: 1}
+  _eachLevelSettings:
+  - <NewResourceAmountPerMinute>k__BackingField: 1000
+    <RequiredToUpgrade>k__BackingField: []
+  _dustParticle:
+    _particleToPlay: {fileID: 0}
+  <CurrentLevelArrayIndex>k__BackingField: 0
 --- !u!1001 &259957743842413442
 PrefabInstance:
   m_ObjectHideFlags: 0

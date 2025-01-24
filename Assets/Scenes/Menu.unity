@@ -47433,7 +47433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a7b53759d3b6ac4783097a5e0448b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beamPrefab: {fileID: 8655066244722176862, guid: 6121769bc87672949aa2499748866959, type: 3}
+  beamPrefab: {fileID: 8945693231805750458, guid: 7a61c57028540fb4ab116db1cf242aa8, type: 3}
   buildingLayer:
     serializedVersion: 2
     m_Bits: 512
