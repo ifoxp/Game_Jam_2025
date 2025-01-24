@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: -5569291827168096901}
   - component: {fileID: -6798301875476726465}
   - component: {fileID: 2038678789345708752}
+  - component: {fileID: 6895066931186083157}
   m_Layer: 10
   m_Name: SunPanel
   m_TagString: Untagged
@@ -11484,6 +11485,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _outline: {fileID: -6798301875476726465}
+--- !u!114 &6895066931186083157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954264946004855640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adaaef95abc59c742a70ad2047039f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabName: SunPanel
+  scriptsToSetFalse:
+  - BuildContent
+  scriptsToSetTrue:
+  - ResourceEarnerBuilding
 --- !u!1001 &6178016377075894981
 PrefabInstance:
   m_ObjectHideFlags: 0

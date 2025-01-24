@@ -195,6 +195,7 @@ public class Outline : MonoBehaviour {
       meshFilter.sharedMesh.SetUVs(3, smoothNormals);
 
       // Combine submeshes
+
       var renderer = meshFilter.GetComponent<Renderer>();
 
       if (renderer != null) {

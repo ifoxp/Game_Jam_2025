@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6905593419480011613}
   - component: {fileID: -5243010371504942542}
   - component: {fileID: 3247475401439098406}
+  - component: {fileID: 7734977640856061577}
   m_Layer: 10
   m_Name: Recicle
   m_TagString: Untagged
@@ -22962,6 +22963,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _outline: {fileID: -5243010371504942542}
+--- !u!114 &7734977640856061577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707263669767223038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adaaef95abc59c742a70ad2047039f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabName: Recicle
+  scriptsToSetFalse:
+  - BuildContent
+  scriptsToSetTrue:
+  - ResourceEarnerBuilding
 --- !u!1001 &259957743842413442
 PrefabInstance:
   m_ObjectHideFlags: 0
