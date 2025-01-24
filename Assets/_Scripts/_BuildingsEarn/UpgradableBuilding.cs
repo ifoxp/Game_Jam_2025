@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Linq;
 using _Scripts.Controllers;
+using _Scripts.DataModel;
+using Mono.Cecil;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Zenject;
 
 namespace _Scripts._BuildingsEarn
 {
     [RequireComponent(typeof(ResourceEarnerBuilding))]
+    [RequireComponent(typeof(BuildingContainerInfo))]
     public class UpgradableBuilding : MonoBehaviour
     {
         [SerializeField] private LevelStats[] _eachLevelSettings;
@@ -14,10 +20,18 @@ namespace _Scripts._BuildingsEarn
         [SerializeField] private ParticlesPlayer _dustParticle;
         
         private uint _maxLevelArrayIndex;
-        private uint _currentLevelArrayIndex;
+        [field: SerializeField] public uint CurrentLevelArrayIndex { get; private set; }
+        
+        private GameResourcesInventory _gameResourcesInventory;
         
         private const byte START_LEVEL = 0;
 
+        [Inject]
+        private void Construct(GameResourcesInventory gameResourcesInventory)
+        {
+            _gameResourcesInventory = gameResourcesInventory;
+        }
+        
         // For test!!! Use OnBuildingPlaced instead of Start()
         // Also erase this when test completed
         private void Start() =>
@@ -35,12 +49,25 @@ namespace _Scripts._BuildingsEarn
         [Button]
         public void UpgradeBuilding()
         { 
-            if(_currentLevelArrayIndex == _maxLevelArrayIndex) return;
+            if(CurrentLevelArrayIndex == _maxLevelArrayIndex) return;
             
-            _currentLevelArrayIndex = (uint)Mathf.Clamp(
-                _currentLevelArrayIndex + 1, 0, _maxLevelArrayIndex);
+            var nextLevel = (uint)Mathf.Clamp(
+                CurrentLevelArrayIndex + 1, 0, _maxLevelArrayIndex);
             
-            SetLevel(_currentLevelArrayIndex);
+            if(!CanUpgrade(nextLevel)) return;
+            
+            CurrentLevelArrayIndex = nextLevel;
+            SetLevel(CurrentLevelArrayIndex);
+        }
+
+        public bool CanUpgrade(uint levelIndex)
+        {
+            if(CurrentLevelArrayIndex >= _maxLevelArrayIndex) return false;
+            
+            var requirements = _eachLevelSettings[levelIndex].RequiredToUpgrade;
+            
+            return requirements.All(requirement => _gameResourcesInventory.
+                GameResources[requirement.RequiredResource] >= requirement.RequiredAmount);
         }
 
         private void SetLevel(uint levelByArrayIndex)
@@ -61,6 +88,15 @@ namespace _Scripts._BuildingsEarn
         public class LevelStats
         {
             [field: SerializeField] public int NewResourceAmountPerMinute { get; private set; }
+            
+            [field: SerializeField] public UpgradeRequirements[] RequiredToUpgrade { get; private set; }
+
+            [Serializable]
+            public class UpgradeRequirements
+            {
+                [field: SerializeField] public GameResourcesType RequiredResource { get; private set; }
+                [field: SerializeField] public int RequiredAmount { get; private set; }
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum GameResourcesType
@@ -84,17 +85,10 @@ namespace _Scripts.DataModel
 
         public GameResourceContainer[] GetAllResources()
         {
-            var result = new GameResourceContainer[_gameResources.Count];
-            var index = 0;
-            foreach (var resource in _gameResources)
-            {
-                result[index].ResourceType = resource.Key;
-                result[index].Quantity = resource.Value;
-
-                index++;
-            }
-
-            return result;
+            return _gameResources
+                .Select(resource => 
+                    new GameResourceContainer(resource.Key, resource.Value))
+                .ToArray();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using _Scripts.Inputs.Reader;
 using _Scripts.Utilities;
 using UnityEngine;
@@ -13,6 +14,8 @@ namespace _Scripts.Interact
         private Camera _playerCamera;
 
         private IInteractableByPointer _currentInteractable;
+     
+        public event Action<IInteractableByPointer> OnInteractComponentChanged;
         
         private const int RAY_DISTANCE = 100;
         
@@ -37,6 +40,7 @@ namespace _Scripts.Interact
         private void OnDestroy()
         {
             if(_input != null) _input.OnInteract -= CheckInteractComponentByPointer;
+            OnInteractComponentChanged = null;
         }
 
         private void CheckInteractComponentByPointer()
@@ -59,6 +63,8 @@ namespace _Scripts.Interact
                 
                 newInteractable.OnInteractByPointer();
                 _currentInteractable = newInteractable;
+                
+                OnInteractComponentChanged?.Invoke(_currentInteractable);
             }
         }
     }
