@@ -13701,6 +13701,7 @@ MonoBehaviour:
   - BuildContent
   scriptsToSetTrue:
   - ResourceEarnerBuilding
+  UpdateResourceAmountUI: {fileID: 4841692183254669624}
 --- !u!114 &-472102457616895123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13733,21 +13734,7 @@ MonoBehaviour:
     _audioSource: {fileID: 5902903738277601908}
     _volume: 0.45
     _pitchRange: {x: 1, y: 1}
-  _eachLevelSettings:
-  - <NewResourceAmountPerMinute>k__BackingField: 10
-    <RequiredToUpgrade>k__BackingField: []
-  - <NewResourceAmountPerMinute>k__BackingField: 20
-    <RequiredToUpgrade>k__BackingField:
-    - <RequiredResource>k__BackingField: 1
-      <RequiredAmount>k__BackingField: 10
-    - <RequiredResource>k__BackingField: 2
-      <RequiredAmount>k__BackingField: 10
-  - <NewResourceAmountPerMinute>k__BackingField: 0
-    <RequiredToUpgrade>k__BackingField: []
-  - <NewResourceAmountPerMinute>k__BackingField: 0
-    <RequiredToUpgrade>k__BackingField: []
-  - <NewResourceAmountPerMinute>k__BackingField: 0
-    <RequiredToUpgrade>k__BackingField: []
+  _eachLevelSettings: []
   _dustParticle:
     _particleToPlay: {fileID: 7081852698258385800}
   <CurrentLevelArrayIndex>k__BackingField: 0
