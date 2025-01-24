@@ -321,6 +321,8 @@ namespace _Scripts.Building
             // ����� ������������� beamCollider, �� �� �
             //GameObject placedBeam = Instantiate(beamPrefab, position, rotation, transform);
             var instantiated = _container.InstantiatePrefab(beamPrefab[WhoBuild], position, rotation, transform);
+            instantiated.gameObject.name = instantiated.gameObject.name + PlayerPrefs.GetInt("Index", 0);
+            PlayerPrefs.SetInt("Index", PlayerPrefs.GetInt("Index")+1);
             instantiated.GetComponent<UpgradableBuilding>()?.OnBuildingPlaced();
             instantiated.GetComponent<BuildContent>().enabled = false;
             if (instantiated.GetComponent<ResourceEarnerBuilding>())

@@ -102,6 +102,7 @@ namespace _Scripts.DataModel
         }
 
         // Завантажити об'єкти з файлу
+        // Завантажити об'єкти з файлу
         public void LoadAllObjects()
         {
             if (File.Exists(saveFilePath))
@@ -114,15 +115,19 @@ namespace _Scripts.DataModel
                     GameObject prefab = Resources.Load<GameObject>(data.prefabName);
                     if (prefab != null)
                     {
-                        //GameObject instance = Instantiate(prefab, data.position, data.rotation);
+                        // Створюємо об'єкт на основі завантажених даних
                         GameObject instance = _container.InstantiatePrefab(prefab, data.position, data.rotation, parent);
                         instance.transform.localScale = data.scale;
+
+                        // Викликаємо метод для відновлення стану будівлі
                         instance.GetComponent<UpgradableBuilding>()?.OnBuildingPlaced();
-                        // Застосувати стани скриптів
+
+                        // Відновлюємо стан SavableObject
                         SavableObject savableObject = instance.GetComponent<SavableObject>();
                         if (savableObject != null)
                         {
-                            savableObject.ApplySavedState();
+                            // Передаємо завантажені дані в ApplySavedState
+                            savableObject.ApplySavedState(data);
                         }
                     }
                 }
@@ -130,6 +135,7 @@ namespace _Scripts.DataModel
                 Debug.Log("Game loaded from: " + saveFilePath);
             }
         }
+
 
 
         [System.Serializable]

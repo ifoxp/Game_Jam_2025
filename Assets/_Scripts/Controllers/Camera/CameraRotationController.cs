@@ -18,8 +18,8 @@ namespace _Scripts.Controllers.Camera
         
         private Vector2 _lastValues;
 
-        private Vector2 _defaultHorizontalRange;
-        private Vector2 _defaultVerticalRange;
+         private Vector2 _defaultHorizontalRange;
+        [SerializeField] private Vector2 _defaultVerticalRange;
         
         private IInput _input;
 
@@ -48,7 +48,7 @@ namespace _Scripts.Controllers.Camera
         private void CacheDefaultCameraRanges()
         {
             _defaultHorizontalRange = _orbitalFollowCamera.HorizontalAxis.Range;
-            _defaultVerticalRange = _orbitalFollowCamera.VerticalAxis.Range;
+            /*_defaultVerticalRange = _orbitalFollowCamera.VerticalAxis.Range;*/
         }
 
         private void SubscribeToInputEvents()
