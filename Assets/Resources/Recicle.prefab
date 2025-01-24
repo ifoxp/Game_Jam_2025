@@ -23020,10 +23020,6 @@ MonoBehaviour:
   _eachLevelSettings:
   - <NewResourceAmountPerMinute>k__BackingField: 0
     <RequiredToUpgrade>k__BackingField: []
-  - <NewResourceAmountPerMinute>k__BackingField: 0
-    <RequiredToUpgrade>k__BackingField: []
-  - <NewResourceAmountPerMinute>k__BackingField: 0
-    <RequiredToUpgrade>k__BackingField: []
   _dustParticle:
     _particleToPlay: {fileID: 7389544761063645505}
   <CurrentLevelArrayIndex>k__BackingField: 0

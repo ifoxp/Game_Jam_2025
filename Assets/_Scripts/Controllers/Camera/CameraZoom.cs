@@ -12,7 +12,11 @@ namespace _Scripts.Controllers.Camera
     {
         [Required]
         [SerializeField] private CinemachineOrbitalFollow _orbitalFollowCamera;
-        
+        public bool Orbital=false;
+        [SerializeField] private CinemachineCamera _cinemachineCamera;
+        [SerializeField] private UnityEngine.Camera _camera;
+
+
         [Required]
         [SerializeField] private Transform _cameraCenterZoomTarget;
         
@@ -67,10 +71,21 @@ namespace _Scripts.Controllers.Camera
         private void Zoom(Vector2 direction)
         {
             if (_reversedZoom) direction *= -1;
-            
-            var newZoom = Mathf.Clamp(_orbitalFollowCamera.Radius + (direction.y * _zoomSensitivity),
-                _maxZoomInDistance, _maxZoomOutDistance);
-            _orbitalFollowCamera.Radius = newZoom;
+
+            if (!Orbital)
+            {
+               
+                var newZoom = Mathf.Clamp(_orbitalFollowCamera.Radius + (direction.y * _zoomSensitivity),
+                    _maxZoomInDistance, _maxZoomOutDistance);
+                _orbitalFollowCamera.Radius = newZoom;
+            }
+            else
+            {
+                // Зміна OrthographicSize для ортографічної камери
+                var newZoom = Mathf.Clamp(_cinemachineCamera.Lens.OrthographicSize + (direction.y * _zoomSensitivity),
+                    _maxZoomInDistance, _maxZoomOutDistance);
+                _cinemachineCamera.Lens.OrthographicSize = newZoom;
+            }
         }
         
 #if UNITY_EDITOR
@@ -80,5 +95,14 @@ namespace _Scripts.Controllers.Camera
             PlayerPrefs.Save();
         }
 #endif
+        [Button]
+        public void CameraOr()
+        {
+            if(!Orbital)
+            _camera.orthographic = true;
+            else
+                _camera.orthographic = false;
+            Orbital = !Orbital;
+        }
     }
 }
