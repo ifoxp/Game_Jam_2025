@@ -19,8 +19,10 @@ namespace _Scripts.DataModel
         // —писок вс≥х збережених об'Їкт≥в
         private List<SavableObject> savableObjects = new List<SavableObject>();
         public SceneObjectsStateManager sceneObjectsStateManager;
+        public GameManager gameManager;
         private void Awake()
         {
+            gameManager = FindAnyObjectByType<GameManager>();
             if (Instance == null)
             {
                 Instance = this;
@@ -57,6 +59,8 @@ namespace _Scripts.DataModel
                 PlayerPrefs.DeleteAll();
                 PlayerPrefs.Save(); // «бер≥гаЇ зм≥ни
                 saveLoadJson.DeleteSave();
+                
+                gameManager.SetDefaultPrefs();
             }
             else
             {

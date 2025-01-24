@@ -299,7 +299,7 @@ namespace _Scripts.Building
             JunkBuy = junk;
             MaterialsBuy = material;
             PopulationBuy = population;
-            Debug.Log(Materials+"\t"+Junk);
+           //Debug.Log(Materials+"\t"+Junk);
             if (junk <=Junk && material <= Materials && Population+PopulationBuy<= PlayerPrefs.GetInt("Population", 0))
             {
 
