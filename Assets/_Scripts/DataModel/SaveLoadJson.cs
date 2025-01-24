@@ -71,7 +71,14 @@ namespace _Scripts.DataModel
                 }
             }
         }
-
+        public void DeleteSave()
+        {
+            if (File.Exists(_saveFilePath))
+            {
+                File.Delete(_saveFilePath);
+                SaveGame();
+            }
+        }
         [Serializable]
         private class ResourceQuantitiesWrapper
         {
