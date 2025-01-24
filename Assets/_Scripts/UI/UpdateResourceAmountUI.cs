@@ -21,7 +21,7 @@ namespace _Scripts.UI
         {
             if(_resourcesInventory == null) 
                 throw new MissingComponentException("Missing GameResourcesInventory. Add data installer to the scene.");
-            
+
             _resourcesInventory.OnResourceChanged += UpdateResourceUI;
         }
 

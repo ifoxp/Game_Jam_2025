@@ -6,6 +6,7 @@ using _Scripts.Managers;
 using NaughtyAttributes;
 using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Behaviours
 {
@@ -20,7 +21,7 @@ namespace _Scripts.Behaviours
         [SerializeField] private MeteoritesManager meteoritesManager; // Метеорити, які створюються
         [HorizontalLine]
         [SerializeField] private bool isMovingToHub;
-
+        
         [HorizontalLine]
         [SerializeField] private Meteorite targetMeteorite;
         [SerializeField] private bool isPickingUpMeteorite;
@@ -28,7 +29,8 @@ namespace _Scripts.Behaviours
         private Rigidbody rb;
 
         private void Awake() => rb = GetComponent<Rigidbody>();
-
+        [Inject]
+        private DiContainer _container;
         private void Start()
         {
             transform.position = hub.position;
@@ -198,12 +200,8 @@ namespace _Scripts.Behaviours
 
             // Створюємо новий метеорит
             int randomIndex = UnityEngine.Random.Range(0, meteoritesManager.meteoritePrefs.Length);
-            GameObject newMeteorite = Instantiate(
-                meteoritesManager.meteoritePrefs[randomIndex],
-                hook.position,
-                Quaternion.identity,
-                gameObject.transform
-            );
+            //GameObject newMeteorite = Instantiate(meteoritesManager.meteoritePrefs[randomIndex],hook.position,Quaternion.identity,gameObject.transform);
+            var newMeteorite = _container.InstantiatePrefab(meteoritesManager.meteoritePrefs[randomIndex], hook.position, Quaternion.identity, gameObject.transform);
             newMeteorite.SetActive(true); // Активуємо новий метеорит
             targetMeteorite = null; // Скидаємо ціль
         }

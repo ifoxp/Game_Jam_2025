@@ -22982,6 +22982,7 @@ MonoBehaviour:
   - BuildContent
   scriptsToSetTrue:
   - ResourceEarnerBuilding
+  UpdateResourceAmountUI: {fileID: 6091658492838294151}
 --- !u!114 &-1077719196380617722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23013,6 +23014,10 @@ MonoBehaviour:
     _pitchRange: {x: 1, y: 1}
   _eachLevelSettings:
   - <NewResourceAmountPerMinute>k__BackingField: 1000
+    <RequiredToUpgrade>k__BackingField: []
+  - <NewResourceAmountPerMinute>k__BackingField: 10000
+    <RequiredToUpgrade>k__BackingField: []
+  - <NewResourceAmountPerMinute>k__BackingField: 100000
     <RequiredToUpgrade>k__BackingField: []
   _dustParticle:
     _particleToPlay: {fileID: 0}

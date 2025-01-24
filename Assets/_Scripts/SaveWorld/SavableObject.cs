@@ -1,3 +1,5 @@
+using _Scripts._BuildingsEarn;
+using _Scripts.UI;
 using UnityEngine;
 
 namespace _Scripts.DataModel
@@ -11,11 +13,13 @@ namespace _Scripts.DataModel
 
         // Масив імен скриптів, які мають бути true після завантаження
         [SerializeField] private string[] scriptsToSetTrue;
+        public UpgradableBuilding UpdateResourceAmountUI;
         //public Transform parent;
         private void Start()
         {
             // Реєструємо об'єкт у менеджері збереження
             GlobalSaveManager.Instance.RegisterObject(this);
+          
         }
 
         private void OnDestroy()
