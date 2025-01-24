@@ -4,6 +4,7 @@ using _Scripts.Interact;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractShowBuildingStat))]
+[RequireComponent(typeof(InteractBuildingControl))]
 public class HouseGenerateResource : MonoBehaviour
 {
     [Header("Рівні апгрейду")]
