@@ -2,6 +2,7 @@ using _Scripts._BuildingsEarn;
 using NaughtyAttributes;
 using System.Collections.Generic;
 using System.IO;
+using _Scripts._BuildingsEarn.Systems;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Zenject;
@@ -16,7 +17,7 @@ namespace _Scripts.DataModel
         private string saveFilePath;
         [Inject] private DiContainer _container;
         public float saveTime;
-        // Список всіх збережених об'єктів
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅпїЅ
         private List<SavableObject> savableObjects = new List<SavableObject>();
         public SceneObjectsStateManager sceneObjectsStateManager;
         private void Awake()
@@ -35,10 +36,10 @@ namespace _Scripts.DataModel
 
         private void Start()
         {
-            // Завантаження всіх об'єктів при запуску сцени
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             LoadAllObjects();
 
-            // Автозбереження кожні 2 хвилини
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ 2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             InvokeRepeating(nameof(SaveAllObjects), saveTime, saveTime);
         }
         public void DeleteSave()
@@ -48,14 +49,14 @@ namespace _Scripts.DataModel
                 sceneObjectsStateManager.DeleteObjectStates();
                 File.Delete(saveFilePath);
                 Debug.Log("Save file deleted: " + saveFilePath);
-                // Видаляємо всі дочірні об'єкти у parent
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅпїЅ пїЅ parent
                 foreach (Transform child in parent)
                 {
                     Destroy(child.gameObject);
                 }
                 sceneObjectsStateManager.AllObjFalse();
                 PlayerPrefs.DeleteAll();
-                PlayerPrefs.Save(); // Зберігає зміни
+                PlayerPrefs.Save(); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
                 saveLoadJson.DeleteSave();
             }
             else
@@ -63,7 +64,7 @@ namespace _Scripts.DataModel
                 Debug.Log("No save file found to delete.");
             }
         }
-        // Додати об'єкт до списку
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         public void RegisterObject(SavableObject savableObject)
         {
             if (!savableObjects.Contains(savableObject))
@@ -72,7 +73,7 @@ namespace _Scripts.DataModel
             }
         }
 
-        // Видалити об'єкт зі списку
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         public void UnregisterObject(SavableObject savableObject)
         {
             if (savableObjects.Contains(savableObject))
@@ -82,7 +83,7 @@ namespace _Scripts.DataModel
             }
         }
 
-        // Зберегти всі об'єкти в файл
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
         public void SaveAllObjects()
         {
             List<SavableData> saveDataList = new List<SavableData>();
@@ -101,7 +102,7 @@ namespace _Scripts.DataModel
             Debug.Log("Game saved to: " + saveFilePath);
         }
 
-        // Завантажити об'єкти з файлу
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ
         public void LoadAllObjects()
         {
             if (File.Exists(saveFilePath))
@@ -118,7 +119,7 @@ namespace _Scripts.DataModel
                         GameObject instance = _container.InstantiatePrefab(prefab, data.position, data.rotation, parent);
                         instance.transform.localScale = data.scale;
                         instance.GetComponent<UpgradableBuilding>()?.OnBuildingPlaced();
-                        // Застосувати стани скриптів
+                        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                         SavableObject savableObject = instance.GetComponent<SavableObject>();
                         if (savableObject != null)
                         {

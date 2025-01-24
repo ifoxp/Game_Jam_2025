@@ -1,4 +1,5 @@
 using _Scripts._BuildingsEarn;
+using _Scripts._BuildingsEarn.Systems;
 using _Scripts.UI;
 using UnityEngine;
 
@@ -8,16 +9,16 @@ namespace _Scripts.DataModel
     {
         [SerializeField] private string prefabName;
 
-        // Масив імен скриптів, які мають бути false після завантаження
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ false пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         [SerializeField] private string[] scriptsToSetFalse;
 
-        // Масив імен скриптів, які мають бути true після завантаження
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ true пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         [SerializeField] private string[] scriptsToSetTrue;
         public UpgradableBuilding UpdateResourceAmountUI;
         //public Transform parent;
         private void Start()
         {
-            // Реєструємо об'єкт у менеджері збереження
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             GlobalSaveManager.Instance.RegisterObject(this);
           
         }
@@ -30,7 +31,7 @@ namespace _Scripts.DataModel
             }
         }
 
-        // Повертає дані для збереження
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public SavableData GetSaveData()
         {
             return new SavableData
@@ -44,7 +45,7 @@ namespace _Scripts.DataModel
             };
         }
 
-        // Встановлює стани скриптів після завантаження
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         public void ApplySavedState()
         {
             foreach (string scriptName in scriptsToSetFalse)
