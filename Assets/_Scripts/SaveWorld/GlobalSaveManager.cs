@@ -82,11 +82,11 @@ namespace _Scripts.DataModel
 
                 
                     // Перезавантаження поточної сцени
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                    if (gameOver)
-                        gameOverUI.SetActive(true);
-
-
+               
+                if (gameOver)
+                {
+                    gameOverUI.SetActive(true); SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
 
                 
             }

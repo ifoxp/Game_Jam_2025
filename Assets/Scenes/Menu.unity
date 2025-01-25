@@ -15463,7 +15463,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796617732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7601ff62835b63c47a1090a6a9879811, type: 3}
   m_Name: 
@@ -23026,7 +23026,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108241877}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7601ff62835b63c47a1090a6a9879811, type: 3}
   m_Name: 
@@ -67535,16 +67535,16 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1108241878}
-        m_TargetAssemblyTypeName: GlobalSaveManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: _Scripts.DataModel.GlobalSaveManager, Assembly-CSharp
         m_MethodName: DeleteSave
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2116952654}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
