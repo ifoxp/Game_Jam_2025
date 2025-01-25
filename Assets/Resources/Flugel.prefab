@@ -1820,24 +1820,16 @@ MonoBehaviour:
   upgradeLevels:
   - resourcesProduced:
     - Name: 3
-      Amount: 20
-    resourcesRequired:
+      Amount: 22
     - Name: 1
-      Amount: 13
-  - resourcesProduced:
-    - Name: 3
-      Amount: 15
-    resourcesRequired: []
-  - resourcesProduced:
-    - Name: 3
       Amount: 20
     resourcesRequired:
     - Name: 0
-      Amount: 0
-    - Name: 0
-      Amount: 0
-    - Name: 0
-      Amount: 0
+      Amount: 131
+    - Name: 4
+      Amount: 14
+    - Name: 2
+      Amount: 13
   productionInterval: 5
   buildingID: 
 --- !u!114 &-995667471980988223
@@ -1854,7 +1846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 6846028352580642840, guid: 2070cf0038084f5448d55c47cff87c4e, type: 3}
   objectName: Fluger
-  uiElementPrefab: {fileID: 3386216793834041139, guid: 1e2cf1eeeafe8cf4a99b10473f8cd01b, type: 3}
 --- !u!1 &4066239413388177621
 GameObject:
   m_ObjectHideFlags: 0

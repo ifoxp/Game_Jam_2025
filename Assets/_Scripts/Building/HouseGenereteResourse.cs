@@ -152,25 +152,33 @@ public class HouseGenerateResource : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("–≥вень буд≥вл≥ збережено: " + currentLevel);
     }
-    public void GetResourcesForCurrentAndNextLevel(out List<ResourceData> currentLevelResources, out List<ResourceData> nextLevelResources)
+    public void GetResourcesForCurrentAndNextLevel(
+     out List<ResourceData> currentLevelProducedResources,
+     out List<ResourceData> currentLevelRequiredResources,
+     out List<ResourceData> nextLevelProducedResources,
+     out List<ResourceData> nextLevelRequiredResources)
     {
-        currentLevelResources = new List<ResourceData>();
-        nextLevelResources = new List<ResourceData>();
+        // ≤н≥ц≥ал≥зуЇмо списки
+        currentLevelProducedResources = new List<ResourceData>();
+        currentLevelRequiredResources = new List<ResourceData>();
+        nextLevelProducedResources = new List<ResourceData>();
+        nextLevelRequiredResources = new List<ResourceData>();
 
         // ќтримуЇмо ресурси поточного р≥вн€
         if (currentLevel >= 0 && currentLevel < upgradeLevels.Count)
         {
-            currentLevelResources.AddRange(upgradeLevels[currentLevel].resourcesProduced);
-            currentLevelResources.AddRange(upgradeLevels[currentLevel].resourcesRequired);
+            currentLevelProducedResources.AddRange(upgradeLevels[currentLevel].resourcesProduced);
+            currentLevelRequiredResources.AddRange(upgradeLevels[currentLevel].resourcesRequired);
         }
 
         // якщо наступний р≥вень ≥снуЇ, додаЇмо ресурси наступного р≥вн€
         if (currentLevel + 1 < upgradeLevels.Count)
         {
-            nextLevelResources.AddRange(upgradeLevels[currentLevel + 1].resourcesProduced);
-            nextLevelResources.AddRange(upgradeLevels[currentLevel + 1].resourcesRequired);
+            nextLevelProducedResources.AddRange(upgradeLevels[currentLevel + 1].resourcesProduced);
+            nextLevelRequiredResources.AddRange(upgradeLevels[currentLevel + 1].resourcesRequired);
         }
     }
+
 
 
 

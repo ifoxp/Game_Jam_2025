@@ -604,12 +604,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPanel: {fileID: 6121695961281780165}
   uiElementPrefab: {fileID: 3386216793834041139, guid: 1e2cf1eeeafe8cf4a99b10473f8cd01b, type: 3}
-  totalElements: 0
   elementSpacing: 5
   paddingTop: -80
   paddingBottom: 80
   paddingLeft: -250
   paddingRight: 250
+  houseGenerateResource: {fileID: 0}
+  resourceSprites:
+  - {fileID: 736115237, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
+  - {fileID: 446450840, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
+  - {fileID: 1272932327, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
+  - {fileID: -1195386360, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
+  - {fileID: -434269493, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
+  - {fileID: -943683122, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
 --- !u!1 &6846028352580642840
 GameObject:
   m_ObjectHideFlags: 0
