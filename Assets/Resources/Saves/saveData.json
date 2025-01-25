@@ -26,6 +26,490 @@
                 "INTERACT"
             ],
             "objectName": "DELETE"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 2.809999942779541,
+                "y": 2.9200000762939455,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "DELETE"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 2.809999942779541,
+                "y": 2.9200000762939455,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "DELETE"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 2.809999942779541,
+                "y": 2.9200000762939455,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "DELETE"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 2.809999942779541,
+                "y": 2.9200000762939455,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "DELETE"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 2.809999942779541,
+                "y": 2.9200000762939455,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "DELETE"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 2.809999942779541,
+                "y": 2.9200000762939455,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "DELETE"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 2.809999942779541,
+                "y": 2.9200000762939455,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "DELETE"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 9.5367431640625e-7,
+                "y": -0.07000076770782471,
+                "z": -7.595001220703125
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "BasicHouse(Clone)0"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 9.5367431640625e-7,
+                "y": -0.07000076770782471,
+                "z": -9.590001106262207
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "BasicHouse(Clone)1"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 0.0000017881393432617188,
+                "y": -0.07000076770782471,
+                "z": -11.585000991821289
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "BasicHouse(Clone)2"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 1.0150001049041749,
+                "y": -1.0850000381469727,
+                "z": -7.595001220703125
+            },
+            "rotation": {
+                "x": 4.214685134229512e-8,
+                "y": 0.7071068286895752,
+                "z": -4.214685134229512e-8,
+                "w": 0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "BasicHouse(Clone)3"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 1.0150009393692017,
+                "y": -1.0850000381469727,
+                "z": -11.585000991821289
+            },
+            "rotation": {
+                "x": 4.214685134229512e-8,
+                "y": 0.7071068286895752,
+                "z": -4.214685134229512e-8,
+                "w": 0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "BasicHouse(Clone)4"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 0.0000017881393432617188,
+                "y": -2.099999189376831,
+                "z": -11.585000991821289
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "BasicHouse(Clone)"
+        },
+        {
+            "prefabName": "Flugel",
+            "position": {
+                "x": 9.59000015258789,
+                "y": 1.9299991130828858,
+                "z": 2.384185791015625e-7
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "Flugel(Clone)6"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 7.59499979019165,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)7"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 9.59000015258789,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)8"
+        },
+        {
+            "prefabName": "ElertroFarm",
+            "position": {
+                "x": 7.59499979019165,
+                "y": 1.5549988746643067,
+                "z": -5.818999290466309
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "ElertroFarm(Clone)10"
+        },
+        {
+            "prefabName": "Recicle",
+            "position": {
+                "x": 7.595000267028809,
+                "y": 1.5549988746643067,
+                "z": -1.878998875617981
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "Recicle(Clone)11"
         }
     ]
 }

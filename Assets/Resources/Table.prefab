@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22.491686, y: 1.1188}
-  m_SizeDelta: {x: 172.9843, y: 32.8788}
+  m_AnchoredPosition: {x: 29.6614, y: 3.0176}
+  m_SizeDelta: {x: 83.2125, y: 56.035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4905887629226677116
 CanvasRenderer:
@@ -65,10 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10->15
+  m_text: +25
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a9757f32380b9f4abaec104e04c3705, type: 2}
+  m_sharedMaterial: {fileID: -3941174356370310762, guid: 9a9757f32380b9f4abaec104e04c3705, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.4
+  m_fontSize: 38.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -171,8 +171,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 244.6466, y: 50}
+  m_AnchoredPosition: {x: -47.1491, y: -12.8245}
+  m_SizeDelta: {x: 150.3485, y: 75.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &87545552080858586
 CanvasRenderer:
@@ -216,8 +216,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -89, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -43.7, y: 3.0175}
+  m_SizeDelta: {x: 50, y: 56.0351}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &395753478628305006
 CanvasRenderer:
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 956517cb988002c439ac2556767b0b01, type: 3}
+  m_Sprite: {fileID: 446450840, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
