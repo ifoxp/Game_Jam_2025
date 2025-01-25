@@ -11,7 +11,7 @@ public class HouseGenerateResource : MonoBehaviour
     [Header("Інтервал виробництва")]
     [SerializeField] private float productionInterval = 5f; // Час між виробництвом (у секундах)
 
-    private float productionTimer;
+   // private float productionTimer;
     private int currentLevel = 0; // Поточний рівень (0 - базовий рівень)
     [SerializeField] private string buildingID; // Унікальний ідентифікатор будівлі
     private Dictionary<ResourceType, float> resourceProgress = new Dictionary<ResourceType, float>();
@@ -25,7 +25,7 @@ public class HouseGenerateResource : MonoBehaviour
 
         InitializePlayerPrefs();
 
-        productionTimer = productionInterval;
+        //productionTimer = productionInterval;
     }
     private void InitializeResourceProgress()
     {
@@ -40,13 +40,15 @@ public class HouseGenerateResource : MonoBehaviour
 
     private void Update()
     {
-
         if (currentLevel >= 0 && CanProduceResources())
         {
             float deltaTime = Time.deltaTime;
 
             foreach (var production in upgradeLevels[currentLevel].resourcesProduced)
             {
+                // Перевірка і споживання ресурсів
+                if (!ConsumeResourcesForProduction(deltaTime)) continue;
+
                 // Розрахунок кількості ресурсу за секунду
                 float resourcePerSecond = (float)production.Amount / 60f;
 
@@ -62,21 +64,42 @@ public class HouseGenerateResource : MonoBehaviour
                 }
             }
         }
-        if (currentLevel + 1 < upgradeLevels.Count)
-        {
-            currentLevel++;
-            SaveLevel();
-            InitializeResourceProgress();
-            Debug.Log("Рівень підвищено до: " + (currentLevel + 1));
-        }
-        else
-        {
-            //Debug.Log("Максимальний рівень досягнуто!");
-        }
 
         DisplayResources();
-        
     }
+
+    private bool ConsumeResourcesForProduction(float deltaTime)
+    {
+        bool canProduce = true;
+
+        foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
+        {
+            int currentAmount = PlayerPrefs.GetInt(requirement.Name.ToString(), 0);
+            float requiredPerSecond = (float)requirement.Amount / 60f;
+            int amountToDeduct = Mathf.CeilToInt(requiredPerSecond * deltaTime);
+
+            if (currentAmount >= amountToDeduct)
+            {
+                // Віднімаємо ресурси, якщо їх достатньо
+                PlayerPrefs.SetInt(requirement.Name.ToString(), currentAmount - amountToDeduct);
+            }
+            else if (currentAmount > 0)
+            {
+                // Якщо ресурсу не вистачає, використовується все, що залишилося
+                PlayerPrefs.SetInt(requirement.Name.ToString(), 0);
+                canProduce = false; // Зупинка виробництва, коли ресурс вичерпано
+            }
+            else
+            {
+                // Якщо ресурсу зовсім немає, виробництво неможливе
+                canProduce = false;
+            }
+        }
+
+        return canProduce;
+    }
+
+
     private void AddResource(ResourceType resourceType, int amount)
     {
         int currentAmount = PlayerPrefs.GetInt(resourceType.ToString());

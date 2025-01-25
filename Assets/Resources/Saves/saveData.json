@@ -1,3 +1,31 @@
 {
-    "objects": []
+    "objects": [
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 2.809999942779541,
+                "y": 2.9200000762939455,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "DELETE"
+        }
+    ]
 }
