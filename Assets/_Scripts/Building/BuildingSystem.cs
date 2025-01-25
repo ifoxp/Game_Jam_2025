@@ -1,6 +1,6 @@
-﻿using _Scripts._BuildingsEarn;
-using _Scripts.DataModel;
+﻿using _Scripts.DataModel;
 using System.Collections.Generic;
+using _Scripts.Building.WhenPlaced;
 using UnityEngine;
 using Zenject;
 
@@ -269,8 +269,8 @@ namespace _Scripts.Building
                                     Population=PlayerPrefs.GetInt("PopulationActive");
                                     PlaceBeam(lastValidPosition, lastValidRotation);
                                 }
-                                }
-                                else
+                            }
+                            else
                             {
                                 Debug.LogWarning("Об'єкт занадто далеко від початку координат і не може бути розміщений.");
                             }
@@ -326,15 +326,34 @@ namespace _Scripts.Building
             // ����� ������������� beamCollider, �� �� �
             //GameObject placedBeam = Instantiate(beamPrefab, position, rotation, transform);
             var instantiated = _container.InstantiatePrefab(beamPrefab[WhoBuild], position, rotation, transform);
+
             instantiated.gameObject.name = instantiated.gameObject.name + PlayerPrefs.GetInt("Index", 0);
             PlayerPrefs.SetInt("Index", PlayerPrefs.GetInt("Index")+1);
 
-            instantiated.GetComponent<BuildContent>().enabled = false;
-            if (instantiated.GetComponent<HouseGenerateResource>())
-                instantiated.GetComponent<HouseGenerateResource>().enabled = true;
-            if (instantiated.GetComponent<PopulationSave>())
-                instantiated.GetComponent<PopulationSave>().enabled = true;
-            // ��������� ��� ������� ���������
+            if (instantiated.TryGetComponent<BuildContent>(out var buildContent))
+            {
+                buildContent.enabled = false;
+            }
+
+            if (instantiated.TryGetComponent<HouseGenerateResource>(out var generateResource))
+            {
+                generateResource.enabled = true;
+            }
+
+            if (instantiated.TryGetComponent<PopulationSave>(out var populationSave))
+            {
+                populationSave.enabled = true;
+            }
+
+            var onPlaced = instantiated.GetComponents<IOnPlaced>();
+            if (onPlaced.Length > 0)
+            {
+                foreach (var building in onPlaced)
+                {
+                    building.OnPlaced();
+                }
+            }
+            
             Collider[] childColliders = instantiated.GetComponentsInChildren<Collider>();
             foreach (var collider in childColliders)
             {

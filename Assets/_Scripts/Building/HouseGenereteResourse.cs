@@ -3,19 +3,17 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(InteractShowBuildingStat))]
-[RequireComponent(typeof(InteractBuildingControl))]
 public class HouseGenerateResource : MonoBehaviour
 {
-    [Header("Рівні апгрейду")]
+    [Header("РіпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private List<UpgradeLevel> upgradeLevels;
 
-    [Header("Інтервал виробництва")]
-    [SerializeField] private float productionInterval = 5f; // Час між виробництвом (у секундах)
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
+    [SerializeField] private float productionInterval = 5f; // пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
 
     private float productionTimer;
-    private int currentLevel = 0; // Поточний рівень (0 - базовий рівень)
-    [SerializeField] private string buildingID; // Унікальний ідентифікатор будівлі
+    private int currentLevel = 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (0 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ)
+    [SerializeField] private string buildingID; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
     private void Start()
     {
@@ -114,11 +112,11 @@ public class HouseGenerateResource : MonoBehaviour
         {
             currentLevel++;
             SaveLevel();
-            Debug.Log("Рівень підвищено до: " + (currentLevel + 1));
+            Debug.Log("РіпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ: " + (currentLevel + 1));
         }
         else
         {
-            Debug.Log("Максимальний рівень досягнуто!");
+            Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!");
         }
     }
     public UpgradeLevel GetCurrentUpgradeLevel()
@@ -134,7 +132,7 @@ public class HouseGenerateResource : MonoBehaviour
     {
         PlayerPrefs.SetInt(buildingID, currentLevel);
         PlayerPrefs.Save();
-        Debug.Log("Рівень будівлі збережено: " + currentLevel);
+        Debug.Log("РіпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + currentLevel);
     }
 
     private void LoadLevel()
@@ -142,11 +140,11 @@ public class HouseGenerateResource : MonoBehaviour
         if (PlayerPrefs.HasKey(buildingID))
         {
             currentLevel = PlayerPrefs.GetInt(buildingID);
-            Debug.Log("Рівень будівлі завантажено: " + currentLevel);
+            Debug.Log("РіпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " + currentLevel);
         }
         else
         {
-            Debug.Log("Рівень будівлі не знайдено, використовується базовий рівень.");
+            Debug.Log("РіпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.");
         }
     }
 
@@ -173,12 +171,12 @@ public class ResourceData
     [SerializeField]
     public ResourceType Name;
 
-    public int Amount;   // Кількість ресурсу
+    public int Amount;   // КіпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 }
 
 [System.Serializable]
 public class UpgradeLevel
 {
-    public List<ResourceData> resourcesProduced; // Ресурси, які виробляються на цьому рівні
-    public List<ResourceData> resourcesRequired; // Ресурси, необхідні для виробництва на цьому рівні
+    public List<ResourceData> resourcesProduced; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+    public List<ResourceData> resourcesRequired; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
 }

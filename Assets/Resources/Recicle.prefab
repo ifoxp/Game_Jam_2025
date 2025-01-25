@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 3247475401439098406}
   - component: {fileID: 7734977640856061577}
   - component: {fileID: 422054127779114252}
+  - component: {fileID: 640044599190685943}
+  - component: {fileID: 1580456706213466289}
   m_Layer: 10
   m_Name: Recicle
   m_TagString: Untagged
@@ -22993,6 +22995,36 @@ MonoBehaviour:
       Amount: 15
   productionInterval: 5
   buildingID: 
+--- !u!114 &640044599190685943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707263669767223038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ae0c66e28c451e98cdf7c8fe9dc19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlesPlayer:
+    _particleToPlay: {fileID: 7389544761063645505}
+--- !u!114 &1580456706213466289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707263669767223038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75205e090384e1ebe0f93bbba37a07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelTransform: {fileID: 4846674971742887871}
+  _timeToScale: 0.4
+  _ease: 30
+  _startScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &4819947063162622956
 GameObject:
   m_ObjectHideFlags: 0

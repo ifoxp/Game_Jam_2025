@@ -13,9 +13,10 @@ namespace _Scripts.Controllers
             _particleToPlay = particleToPlay;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public void Play()
         {
-            if (_particleToPlay == null)
+            if (!_particleToPlay)
             {
                 Debug.LogWarning("Particles are null");
                 return;
@@ -27,7 +28,7 @@ namespace _Scripts.Controllers
 
         public void Stop()
         {
-            if (_particleToPlay == null)
+            if (!_particleToPlay)
             {
                 Debug.LogWarning("Particles are null");
                 return;

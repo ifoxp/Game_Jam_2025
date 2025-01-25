@@ -5124,6 +5124,8 @@ GameObject:
   - component: {fileID: -6703824087167560456}
   - component: {fileID: -2453939951319363955}
   - component: {fileID: 1859876637112619094}
+  - component: {fileID: 7400352227369422429}
+  - component: {fileID: 7846676490479447563}
   m_Layer: 10
   m_Name: BasicHouse
   m_TagString: Untagged
@@ -13698,6 +13700,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   population: 20
+--- !u!114 &7400352227369422429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ae0c66e28c451e98cdf7c8fe9dc19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlesPlayer:
+    _particleToPlay: {fileID: 7081852698258385800}
+--- !u!114 &7846676490479447563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75205e090384e1ebe0f93bbba37a07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelTransform: {fileID: 5943383777217478754}
+  _timeToScale: 0.4
+  _ease: 30
+  _startScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1001 &3538281948924806228
 PrefabInstance:
   m_ObjectHideFlags: 0

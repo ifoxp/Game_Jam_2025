@@ -145,8 +145,8 @@ GameObject:
   - component: {fileID: 8162607555169470748}
   - component: {fileID: 4997591779931904456}
   - component: {fileID: 2093961115068565278}
-  - component: {fileID: 2916978475491664425}
-  - component: {fileID: 2106462969611599911}
+  - component: {fileID: 2523009876793824977}
+  - component: {fileID: 970107779223224934}
   m_Layer: 10
   m_Name: Farm
   m_TagString: Untagged
@@ -23125,7 +23125,7 @@ MonoBehaviour:
       Amount: 15
   productionInterval: 5
   buildingID: 
---- !u!114 &2916978475491664425
+--- !u!114 &2523009876793824977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23134,11 +23134,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6355424026884192871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a43b6cbb4be6c45b82b7d7484c136c, type: 3}
+  m_Script: {fileID: 11500000, guid: 42ae0c66e28c451e98cdf7c8fe9dc19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textContainers: []
---- !u!114 &2106462969611599911
+  _particlesPlayer:
+    _particleToPlay: {fileID: 6869754804726083817}
+--- !u!114 &970107779223224934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23147,12 +23148,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6355424026884192871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1866264260b8641b97d54b2780129f, type: 3}
+  m_Script: {fileID: 11500000, guid: c75205e090384e1ebe0f93bbba37a07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyBuildingButton: {fileID: 0}
-  _upgradeBuildingButton: {fileID: 0}
-  _buildingController: {fileID: 0}
+  _modelTransform: {fileID: 7385864099919110468}
+  _timeToScale: 0.4
+  _ease: 30
+  _startScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &9025127196193386938
 GameObject:
   m_ObjectHideFlags: 0

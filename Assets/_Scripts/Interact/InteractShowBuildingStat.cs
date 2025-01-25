@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace _Scripts.Interact
 {
-    [RequireComponent(typeof(HouseGenerateResource))]
     public class InteractShowBuildingStat : MonoBehaviour, IInteractableByPointer
     {
         [SerializeField] private TextContainer[] _textContainers;

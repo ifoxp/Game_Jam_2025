@@ -145,8 +145,8 @@ GameObject:
   - component: {fileID: 4332223937321503642}
   - component: {fileID: 2873026683992653345}
   - component: {fileID: 6086060999748873204}
-  - component: {fileID: 4374990295046283135}
-  - component: {fileID: 310806188718572449}
+  - component: {fileID: 3867417587563948595}
+  - component: {fileID: -6230174663133804268}
   m_Layer: 10
   m_Name: ElertroFarm
   m_TagString: Untagged
@@ -23125,7 +23125,7 @@ MonoBehaviour:
       Amount: 15
   productionInterval: 5
   buildingID: 
---- !u!114 &4374990295046283135
+--- !u!114 &3867417587563948595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23134,11 +23134,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7558335327024701907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a43b6cbb4be6c45b82b7d7484c136c, type: 3}
+  m_Script: {fileID: 11500000, guid: 42ae0c66e28c451e98cdf7c8fe9dc19e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textContainers: []
---- !u!114 &310806188718572449
+  _particlesPlayer:
+    _particleToPlay: {fileID: 326582278926424028}
+--- !u!114 &-6230174663133804268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23147,12 +23148,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7558335327024701907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1866264260b8641b97d54b2780129f, type: 3}
+  m_Script: {fileID: 11500000, guid: c75205e090384e1ebe0f93bbba37a07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyBuildingButton: {fileID: 0}
-  _upgradeBuildingButton: {fileID: 0}
-  _buildingController: {fileID: 0}
+  _modelTransform: {fileID: 5613527580940046457}
+  _timeToScale: 0.4
+  _ease: 30
+  _startScale: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &8975883151424782049
 GameObject:
   m_ObjectHideFlags: 0
@@ -29048,6 +29050,10 @@ PrefabInstance:
     - target: {fileID: 2526309259280160756, guid: aacd30e0df1d36b4b8fa217e74e0fd45, type: 3}
       propertyPath: m_Name
       value: Farm2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526309259280160756, guid: aacd30e0df1d36b4b8fa217e74e0fd45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2901602726538169678, guid: aacd30e0df1d36b4b8fa217e74e0fd45, type: 3}
       propertyPath: m_LocalScale.x
