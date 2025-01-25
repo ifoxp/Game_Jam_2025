@@ -1,30 +1,3 @@
 {
-    "objects": [
-        {
-            "prefabName": "Flugel",
-            "position": {
-                "x": 9.5367431640625e-7,
-                "y": 1.9299988746643067,
-                "z": -7.595001220703125
-            },
-            "rotation": {
-                "x": 0.5,
-                "y": -0.5,
-                "z": -0.5,
-                "w": -0.5
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "Flugel(Clone)0"
-        }
-    ]
+    "objects": []
 }

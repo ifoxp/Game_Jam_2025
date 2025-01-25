@@ -1,6 +1,7 @@
 ﻿using _Scripts._BuildingsEarn;
 using _Scripts.DataModel;
 using System.Collections.Generic;
+using _Scripts.Building.WhenPlaced;
 using UnityEngine;
 using Zenject;
 
@@ -329,11 +330,35 @@ namespace _Scripts.Building
             instantiated.gameObject.name = instantiated.gameObject.name + PlayerPrefs.GetInt("Index", 0);
             PlayerPrefs.SetInt("Index", PlayerPrefs.GetInt("Index")+1);
 
-            instantiated.GetComponent<BuildContent>().enabled = false;
-            if (instantiated.GetComponent<HouseGenerateResource>())
-                instantiated.GetComponent<HouseGenerateResource>().enabled = true;
-            if (instantiated.GetComponent<PopulationSave>())
-                instantiated.GetComponent<PopulationSave>().enabled = true;
+            if (instantiated.TryGetComponent<INTERACT>(out var interact))
+            {
+                interact.enabled = true;
+            }
+            
+            if (instantiated.TryGetComponent<BuildContent>(out var buildContent))
+            {
+                buildContent.enabled = false;
+            }
+
+            if (instantiated.TryGetComponent<HouseGenerateResource>(out var houseGenerateResource))
+            {
+                houseGenerateResource.enabled = true;
+            }
+
+            if (instantiated.TryGetComponent<PopulationSave>(out var populationSave))
+            {
+                populationSave.enabled = true;
+            }
+
+            var onPlacedComponents = instantiated.GetComponents<IOnPlaced>();
+            if (onPlacedComponents.Length > 0)
+            {
+                foreach (var onPlaced in onPlacedComponents)
+                {
+                    onPlaced.OnPlaced();
+                }
+            }
+            
             // ��������� ��� ������� ���������
             Collider[] childColliders = instantiated.GetComponentsInChildren<Collider>();
             foreach (var collider in childColliders)
