@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8234214091146074048}
   - component: {fileID: 2774418630995660075}
   - component: {fileID: 2427787106870427370}
+  - component: {fileID: -8935567481015301921}
   m_Layer: 10
   m_Name: Flugel
   m_TagString: Untagged
@@ -1855,6 +1856,28 @@ MonoBehaviour:
   _timeToScale: 0.4
   _ease: 30
   _startScale: {x: 0.2, y: 0.2, z: 0.2}
+--- !u!114 &-8935567481015301921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779719218279962242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d6be70321c472db235a8b317992cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioPlayer:
+    _audioClips:
+    - {fileID: 8300000, guid: fc9f7c954466c594cb8623123a2797c5, type: 3}
+    - {fileID: 8300000, guid: 61a0ae05de7bb1b44ace42071125f76f, type: 3}
+    - {fileID: 8300000, guid: cd282661d5071a147862b7e24f7890df, type: 3}
+    - {fileID: 8300000, guid: a3f064b9d9bbd7840a3115c4d77f39e3, type: 3}
+    - {fileID: 8300000, guid: 0a93e908dde170e498c6b6718e42f8e1, type: 3}
+    _audioSource: {fileID: 4582643850865982003}
+    _volume: 1
+    _pitchRange: {x: 0.95, y: 1.05}
 --- !u!1 &4066239413388177621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,7 +1932,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 500
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -2271,7 +2294,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 0.05
       maxCurve:
         serializedVersion: 2

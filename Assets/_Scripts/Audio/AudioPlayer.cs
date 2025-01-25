@@ -11,7 +11,7 @@ namespace _Scripts.Audio
         [SerializeField] private AudioSource _audioSource;
         
         [Space]
-        [SerializeField] private float _volume;
+        [SerializeField] private float _volume = 1;
         
         [Tooltip("x - min pitch; y = max pitch")]
         [SerializeField] private Vector2 _pitchRange = Vector2.one;
@@ -22,7 +22,11 @@ namespace _Scripts.Audio
                 return;
             
             SetupAudioSource();
-            _audioSource.PlayOneShot(GetRandomClip());
+
+            var clip = GetRandomClip();
+            _audioSource.PlayOneShot(clip);
+            
+            Debug.Log(clip.name);
         }
 
         private void SetupAudioSource()

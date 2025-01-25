@@ -3,7 +3,7 @@
         {
             "prefabName": "Balka",
             "position": {
-                "x": 7.59499979019165,
+                "x": 11.585000038146973,
                 "y": -1.0850000381469727,
                 "z": -5.0149993896484379
             },
@@ -29,14 +29,14 @@
         {
             "prefabName": "Balka",
             "position": {
-                "x": 9.59000015258789,
-                "y": -1.0850000381469727,
-                "z": -5.0149993896484379
+                "x": 11.585000991821289,
+                "y": -1.0850005149841309,
+                "z": -12.773000717163086
             },
             "rotation": {
-                "x": 0.0,
+                "x": -1.3027009916142109e-15,
                 "y": 1.0,
-                "z": 0.0,
+                "z": -2.980232594040899e-8,
                 "w": -4.371138828673793e-8
             },
             "scale": {
@@ -55,7 +55,7 @@
         {
             "prefabName": "Balka",
             "position": {
-                "x": 11.585000038146973,
+                "x": 7.59499979019165,
                 "y": -1.0850000381469727,
                 "z": -5.0149993896484379
             },
@@ -81,14 +81,14 @@
         {
             "prefabName": "Balka",
             "position": {
-                "x": 13.579999923706055,
-                "y": -1.0850000381469727,
-                "z": -5.0149993896484379
+                "x": 7.594998836517334,
+                "y": -1.0850005149841309,
+                "z": -12.773000717163086
             },
             "rotation": {
-                "x": 0.0,
+                "x": -1.3027009916142109e-15,
                 "y": 1.0,
-                "z": 0.0,
+                "z": -2.980232594040899e-8,
                 "w": -4.371138828673793e-8
             },
             "scale": {
@@ -103,6 +103,110 @@
                 "HouseGenerateResource"
             ],
             "objectName": "Balka(Clone)3"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 7.594998836517334,
+                "y": 3.8549983501434328,
+                "z": -7.754999160766602
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource"
+            ],
+            "objectName": "Balka(Clone)4"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 7.594998836517334,
+                "y": 3.8549983501434328,
+                "z": -11.607000350952149
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 3.684595014622101e-15,
+                "z": 3.684595014622101e-15,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource"
+            ],
+            "objectName": "Balka(Clone)5"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 11.585000991821289,
+                "y": 3.8549983501434328,
+                "z": -9.63700008392334
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 3.684595014622101e-15,
+                "z": 3.684595014622101e-15,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource"
+            ],
+            "objectName": "Balka(Clone)6"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 11.585000038146973,
+                "y": 3.854998826980591,
+                "z": -1.8789989948272706
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource"
+            ],
+            "objectName": "Balka(Clone)7"
         },
         {
             "prefabName": "Balka",
@@ -128,14 +232,66 @@
             "scriptsToSetTrue": [
                 "HouseGenerateResource"
             ],
-            "objectName": "Balka(Clone)4"
+            "objectName": "Balka(Clone)8"
         },
         {
-            "prefabName": "BasicHouse",
+            "prefabName": "Balka",
             "position": {
-                "x": 9.59000015258789,
-                "y": -0.1450008749961853,
-                "z": -3.848999500274658
+                "x": 19.565000534057618,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource"
+            ],
+            "objectName": "Balka(Clone)9"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 21.559999465942384,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource"
+            ],
+            "objectName": "Balka(Clone)10"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 21.559999465942384,
+                "y": 3.9299988746643068,
+                "z": 3.5762786865234377e-7
             },
             "rotation": {
                 "x": 0.7071068286895752,
@@ -154,319 +310,7 @@
             "scriptsToSetTrue": [
                 "HouseGenerateResource"
             ],
-            "objectName": "BasicHouse(Clone)5"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 11.585000038146973,
-                "y": -0.1450008749961853,
-                "z": -3.848999500274658
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)6"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 13.579999923706055,
-                "y": -0.1450008749961853,
-                "z": -3.848999261856079
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)7"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 15.57499885559082,
-                "y": -0.1450008749961853,
-                "z": -3.848999500274658
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)8"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 15.575000762939454,
-                "y": -0.1450008749961853,
-                "z": -5.818999290466309
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)9"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 13.580000877380371,
-                "y": -0.1450008749961853,
-                "z": -5.818999290466309
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)10"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 11.585000991821289,
-                "y": -0.1450008749961853,
-                "z": -5.818999290466309
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)11"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 7.59499979019165,
-                "y": -0.1450008749961853,
-                "z": -5.818999290466309
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)12"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 9.590001106262207,
-                "y": -0.1450008749961853,
-                "z": -5.818999290466309
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)13"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 7.59499979019165,
-                "y": -0.1450008749961853,
-                "z": -3.848999261856079
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)14"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 7.594998836517334,
-                "y": -0.14500117301940919,
-                "z": -7.754999160766602
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)15"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 9.590001106262207,
-                "y": -0.14500117301940919,
-                "z": -7.754999160766602
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)16"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 0.0000017881393432617188,
-                "y": -0.07000076770782471,
-                "z": -15.575000762939454
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": 0.0,
-                "z": 0.0,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)"
+            "objectName": "Balka(Clone)"
         }
     ]
 }

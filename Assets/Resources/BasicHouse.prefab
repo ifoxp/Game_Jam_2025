@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 0.05
       maxCurve:
         serializedVersion: 2
@@ -5033,7 +5033,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 500
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -5126,6 +5126,7 @@ GameObject:
   - component: {fileID: 1859876637112619094}
   - component: {fileID: 7400352227369422429}
   - component: {fileID: 7846676490479447563}
+  - component: {fileID: -1755370255902306043}
   m_Layer: 10
   m_Name: BasicHouse
   m_TagString: Untagged
@@ -13730,6 +13731,28 @@ MonoBehaviour:
   _timeToScale: 0.4
   _ease: 30
   _startScale: {x: 0.2, y: 0.2, z: 0.2}
+--- !u!114 &-1755370255902306043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d6be70321c472db235a8b317992cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioPlayer:
+    _audioClips:
+    - {fileID: 8300000, guid: fc9f7c954466c594cb8623123a2797c5, type: 3}
+    - {fileID: 8300000, guid: 61a0ae05de7bb1b44ace42071125f76f, type: 3}
+    - {fileID: 8300000, guid: cd282661d5071a147862b7e24f7890df, type: 3}
+    - {fileID: 8300000, guid: a3f064b9d9bbd7840a3115c4d77f39e3, type: 3}
+    - {fileID: 8300000, guid: 0a93e908dde170e498c6b6718e42f8e1, type: 3}
+    _audioSource: {fileID: 5902903738277601908}
+    _volume: 1
+    _pitchRange: {x: 0.95, y: 1.05}
 --- !u!1001 &3538281948924806228
 PrefabInstance:
   m_ObjectHideFlags: 0
