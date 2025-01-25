@@ -1,17 +1,17 @@
 {
     "objects": [
         {
-            "prefabName": "Balka",
+            "prefabName": "Flugel",
             "position": {
-                "x": 5.014999866485596,
-                "y": -1.0850005149841309,
+                "x": 9.5367431640625e-7,
+                "y": 1.9299988746643067,
                 "z": -7.595001220703125
             },
             "rotation": {
-                "x": 4.214685134229512e-8,
-                "y": 0.7071068286895752,
-                "z": -4.214685134229512e-8,
-                "w": 0.7071068286895752
+                "x": 0.5,
+                "y": -0.5,
+                "z": -0.5,
+                "w": -0.5
             },
             "scale": {
                 "x": 2.0,
@@ -24,85 +24,7 @@
             "scriptsToSetTrue": [
                 "HouseGenerateResource"
             ],
-            "objectName": "Balka(Clone)0"
-        },
-        {
-            "prefabName": "Balka",
-            "position": {
-                "x": 1.8789987564086915,
-                "y": 3.854998826980591,
-                "z": -7.595002174377441
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": -8.429370268459025e-8,
-                "z": -8.429370268459025e-8,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "Balka(Clone)1"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 5.819000244140625,
-                "y": -2.0250000953674318,
-                "z": -7.595001220703125
-            },
-            "rotation": {
-                "x": 0.4999999701976776,
-                "y": -0.5000000596046448,
-                "z": -0.5000000596046448,
-                "w": -0.4999999701976776
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)"
-        },
-        {
-            "prefabName": "BasicHouse",
-            "position": {
-                "x": 7.755001068115234,
-                "y": -0.14500176906585694,
-                "z": -7.595000267028809
-            },
-            "rotation": {
-                "x": 0.7071068286895752,
-                "y": -8.429370268459025e-8,
-                "z": -8.429370268459025e-8,
-                "w": -0.7071068286895752
-            },
-            "scale": {
-                "x": 2.0,
-                "y": 2.0,
-                "z": 2.0
-            },
-            "scriptsToSetFalse": [
-                "BuildContent"
-            ],
-            "scriptsToSetTrue": [
-                "HouseGenerateResource"
-            ],
-            "objectName": "BasicHouse(Clone)13"
+            "objectName": "Flugel(Clone)0"
         }
     ]
 }

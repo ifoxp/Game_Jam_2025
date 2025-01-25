@@ -1821,7 +1821,23 @@ MonoBehaviour:
   - resourcesProduced:
     - Name: 3
       Amount: 20
+    resourcesRequired:
+    - Name: 1
+      Amount: 13
+  - resourcesProduced:
+    - Name: 3
+      Amount: 15
     resourcesRequired: []
+  - resourcesProduced:
+    - Name: 3
+      Amount: 20
+    resourcesRequired:
+    - Name: 0
+      Amount: 0
+    - Name: 0
+      Amount: 0
+    - Name: 0
+      Amount: 0
   productionInterval: 5
   buildingID: 
 --- !u!114 &-995667471980988223

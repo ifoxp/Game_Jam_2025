@@ -152,32 +152,39 @@ public class HouseGenerateResource : MonoBehaviour
         PlayerPrefs.Save();
         Debug.Log("Рівень будівлі збережено: " + currentLevel);
     }
-    public List<ResourceData> GetResourcesForCurrentLevel()
+    public void GetResourcesForCurrentAndNextLevel(out List<ResourceData> currentLevelResources, out List<ResourceData> nextLevelResources)
     {
-        List<ResourceData> resources = new List<ResourceData>();
+        currentLevelResources = new List<ResourceData>();
+        nextLevelResources = new List<ResourceData>();
 
+        // Отримуємо ресурси поточного рівня
         if (currentLevel >= 0 && currentLevel < upgradeLevels.Count)
         {
-            // Отримуємо ресурси, які виробляються на поточному рівні
-            resources.AddRange(upgradeLevels[currentLevel].resourcesProduced);
-
-            // Отримуємо ресурси, необхідні для виробництва на поточному рівні
-            resources.AddRange(upgradeLevels[currentLevel].resourcesRequired);
+            currentLevelResources.AddRange(upgradeLevels[currentLevel].resourcesProduced);
+            currentLevelResources.AddRange(upgradeLevels[currentLevel].resourcesRequired);
         }
 
-        return resources;
+        // Якщо наступний рівень існує, додаємо ресурси наступного рівня
+        if (currentLevel + 1 < upgradeLevels.Count)
+        {
+            nextLevelResources.AddRange(upgradeLevels[currentLevel + 1].resourcesProduced);
+            nextLevelResources.AddRange(upgradeLevels[currentLevel + 1].resourcesRequired);
+        }
     }
+
+
+
 
     private void LoadLevel()
     {
         if (PlayerPrefs.HasKey(buildingID))
         {
             currentLevel = PlayerPrefs.GetInt(buildingID);
-            Debug.Log("Рівень будівлі завантажено: " + currentLevel);
+            //Debug.Log("Рівень будівлі завантажено: " + currentLevel);
         }
         else
         {
-            Debug.Log("Рівень будівлі не знайдено, використовується базовий рівень.");
+            //Debug.Log("Рівень будівлі не знайдено, використовується базовий рівень.");
         }
     }
 

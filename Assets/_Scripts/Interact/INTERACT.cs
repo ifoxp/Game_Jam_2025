@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Collections.Generic;
 
 public class INTERACT : MonoBehaviour, IInteractableByPointer
 {
@@ -13,7 +12,6 @@ public class INTERACT : MonoBehaviour, IInteractableByPointer
     private GameObject spawnedUI; // Посилання на створений UI
     private Canvas canvas; // Посилання на Canvas
     private bool isHouseClick=true;
-    [SerializeField] private GameObject uiElementPrefab; // Префаб елемента, який буде додаватись до UI
     private void Start()
     {
         // Знаходимо Canvas у сцені
@@ -33,7 +31,15 @@ public class INTERACT : MonoBehaviour, IInteractableByPointer
         {
             // Спавнимо UI як дочірній елемент Canvas
             spawnedUI = Instantiate(uiPrefab, canvas.transform);
+            GameObject ui = spawnedUI;
+            HouseGenerateResource houseGenerateResource=GetComponent<HouseGenerateResource>();
 
+            if (houseGenerateResource != null)
+            {
+                UIGridManager uIGridManager= ui.GetComponentInChildren<UIGridManager>();
+                uIGridManager.houseGenerateResource = houseGenerateResource;
+                uIGridManager.SetResources();
+            }
             // Встановлюємо позицію, яка визначена у префабі
             RectTransform uiRectTransform = spawnedUI.GetComponent<RectTransform>();
             if (uiRectTransform != null)
@@ -41,29 +47,11 @@ public class INTERACT : MonoBehaviour, IInteractableByPointer
                 uiRectTransform.anchoredPosition = uiPrefab.GetComponent<RectTransform>().anchoredPosition;
             }
 
-            // Знаходимо TextMeshProUGUI і встановлюємо текст для імені об'єкта
+            // Знаходимо TextMeshProUGUI і встановлюємо текст
             TextMeshProUGUI nameText = spawnedUI.GetComponentInChildren<TextMeshProUGUI>();
             if (nameText != null)
             {
                 nameText.text = objectName; // Встановлюємо ім'я
-            }
-
-            // Отримуємо дані про ресурси для поточного рівня будівлі
-            HouseGenerateResource houseGenerateResource = GetComponent<HouseGenerateResource>();
-            if (houseGenerateResource != null)
-            {
-                List<ResourceData> resources = houseGenerateResource.GetResourcesForCurrentLevel();
-
-                // Тепер передаємо ці ресурси в UIGridManager
-                UIGridManager gridManager = spawnedUI.GetComponentInChildren<UIGridManager>();
-                if (gridManager != null)
-                {
-                    // Встановлюємо загальну кількість елементів (totalElements)
-                    gridManager.SetTotalElements(resources.Count);
-
-                    // Передаємо список ресурсів для створення елементів
-                    gridManager.SetResources(resources);
-                }
             }
 
             // Знаходимо кнопки і прив'язуємо до них функції
@@ -81,8 +69,6 @@ public class INTERACT : MonoBehaviour, IInteractableByPointer
             }
         }
     }
-
-
 
     public void OnStopInteractByPointer()
     {

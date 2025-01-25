@@ -81,7 +81,7 @@ public class SceneObjectsStateManager : MonoBehaviour
                 }
             }
 
-            Debug.Log("Scene objects state loaded from: " + saveFilePath);
+            //Debug.Log("Scene objects state loaded from: " + saveFilePath);
         }
     }
 

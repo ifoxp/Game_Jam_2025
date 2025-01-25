@@ -23,6 +23,9 @@ public class UIGridManager : MonoBehaviour
 
     private List<ResourceData> resources = new List<ResourceData>(); // Список ресурсів
 
+    // Додано змінну для зберігання посилання на HouseGenerateResource
+    public HouseGenerateResource houseGenerateResource;
+
     void Start()
     {
         // Отримуємо розміри елемента для правильного розташування
@@ -49,9 +52,8 @@ public class UIGridManager : MonoBehaviour
         resources.Clear();
     }
 
-    public void SetResources(List<ResourceData> resourceList)
+    public void SetResources()
     {
-        resources = resourceList;
         CreateElements();
     }
 
@@ -62,6 +64,11 @@ public class UIGridManager : MonoBehaviour
         int maxElements = columnsCount * rowsCount;
         int elementsToSpawn = Mathf.Min(resources.Count, maxElements);
 
+        // Отримуємо ресурси поточного і наступного рівня
+        List<ResourceData> currentLevelResources, nextLevelResources;
+        houseGenerateResource.GetResourcesForCurrentAndNextLevel(out currentLevelResources, out nextLevelResources);
+
+        // Створюємо елементи для кожного ресурсу
         for (int i = 0; i < elementsToSpawn; i++)
         {
             // Створюємо новий елемент з префабу
@@ -84,7 +91,25 @@ public class UIGridManager : MonoBehaviour
             if (resourceText != null)
             {
                 ResourceData resource = resources[i];
-                resourceText.text = $"{resource.Name}: {resource.Amount}";
+
+                // Поточний рівень ресурсів
+                int currentAmount = resource.Amount;
+
+                // Шукаємо ресурс на наступному рівні
+                int nextAmount = currentAmount; // Спочатку рівно поточному значенню
+
+                // Шукаємо ресурс у списку для наступного рівня
+                ResourceData nextLevelResource = nextLevelResources.Find(r => r.Name == resource.Name);
+                if (nextLevelResource != null)
+                {
+                    nextAmount = nextLevelResource.Amount;
+                }
+
+                // Формуємо текст у вигляді "Food: 10->15" або "Food: 10", якщо зміни немає
+                string resourceName = resource.Name.ToString(); // Отримуємо ім'я ресурсу
+                resourceText.text = (currentAmount != nextAmount)
+                    ? $"{resourceName}: {currentAmount}->{nextAmount}"
+                    : $"{resourceName}: {currentAmount}";
             }
         }
     }
