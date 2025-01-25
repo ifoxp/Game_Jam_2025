@@ -58,7 +58,7 @@ namespace _Scripts.DataModel
             {
                 sceneObjectsStateManager.DeleteObjectStates();
                 File.Delete(saveFilePath);
-                Debug.Log("Save file deleted: " + saveFilePath);
+                //Debug.Log("Save file deleted: " + saveFilePath);
                 // Видаляємо всі дочірні об'єкти у parent
                 foreach (Transform child in parent)
                 {
@@ -73,7 +73,7 @@ namespace _Scripts.DataModel
             }
             else
             {
-                Debug.Log("No save file found to delete.");
+                //Debug.Log("No save file found to delete.");
             }
         }
         // Додати об'єкт до списку
@@ -111,7 +111,7 @@ namespace _Scripts.DataModel
             string json = JsonUtility.ToJson(new SaveDataWrapper { objects = saveDataList }, true);
             File.WriteAllText(saveFilePath, json);
             sceneObjectsStateManager.SaveObjectStates();
-            Debug.Log("Game saved to: " + saveFilePath);
+            //Debug.Log("Game saved to: " + saveFilePath);
         }
 
         // Завантажити об'єкти з файлу
@@ -145,7 +145,7 @@ namespace _Scripts.DataModel
                     }
                 }
 
-                Debug.Log("Game loaded from: " + saveFilePath);
+               // Debug.Log("Game loaded from: " + saveFilePath);
             }
         }
 

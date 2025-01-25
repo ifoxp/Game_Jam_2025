@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour
     public int Energy = 50;
     public int Population = 40;
     public int PopulationActive = 0;
+
+    // Максимальні значення для сховищ
+    public int FoodSave = 200;
+    public int JunkSave = 300;
+    public int MaterialSave = 400;
+    public int EnergySave = 150;
     private void Start()
     {
         if (PlayerPrefs.GetInt("Population") == 0)
@@ -28,6 +34,12 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Energy", Energy);
         PlayerPrefs.SetInt("Population", Population);
         PlayerPrefs.SetInt("PopulationActive", PopulationActive);
+        // Встановлення максимальних значень для сховищ
+        PlayerPrefs.SetInt("FoodSave", FoodSave);
+        PlayerPrefs.SetInt("JunkSave", JunkSave);
+        PlayerPrefs.SetInt("MaterialSave", MaterialSave);
+        PlayerPrefs.SetInt("EnergySave", EnergySave);
+
     }
     [Button]
     private void GiveAllResources()
@@ -41,6 +53,13 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Energy", 1000);
         PlayerPrefs.SetInt("Population", 1000);
         PlayerPrefs.SetInt("PopulationActive", 0);
+
+
+        // Встановлення максимальних значень для сховищ
+        PlayerPrefs.SetInt("FoodSave", FoodSave);
+        PlayerPrefs.SetInt("JunkSave", JunkSave);
+        PlayerPrefs.SetInt("MaterialSave", MaterialSave);
+        PlayerPrefs.SetInt("EnergySave", EnergySave);
 
         // Не забудьте зберегти PlayerPrefs після змін
         PlayerPrefs.Save();

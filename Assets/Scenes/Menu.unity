@@ -4929,6 +4929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 320145510}
   resourceType: 4
+  saveSee: 0
 --- !u!1 &322656330
 GameObject:
   m_ObjectHideFlags: 0
@@ -13990,6 +13991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 781969520}
   resourceType: 1
+  saveSee: 1
 --- !u!1 &782376747
 GameObject:
   m_ObjectHideFlags: 0
@@ -16660,6 +16662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 893730140}
   resourceType: 0
+  saveSee: 1
 --- !u!1 &894860393
 GameObject:
   m_ObjectHideFlags: 0
@@ -22765,6 +22768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1129774171}
   resourceType: 2
+  saveSee: 1
 --- !u!1 &1131965162
 GameObject:
   m_ObjectHideFlags: 0
@@ -23744,6 +23748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1205593085}
   resourceType: 5
+  saveSee: 0
 --- !u!222 &1205593087
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30541,6 +30546,10 @@ MonoBehaviour:
   Energy: 50
   Population: 40
   PopulationActive: 0
+  FoodSave: 200
+  JunkSave: 300
+  MaterialSave: 400
+  EnergySave: 150
 --- !u!4 &1515733343
 Transform:
   m_ObjectHideFlags: 0
@@ -74049,6 +74058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 2008689055}
   resourceType: 3
+  saveSee: 1
 --- !u!1 &2008967407
 GameObject:
   m_ObjectHideFlags: 0

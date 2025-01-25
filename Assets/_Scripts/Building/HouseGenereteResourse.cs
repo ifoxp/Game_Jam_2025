@@ -55,6 +55,12 @@ public class HouseGenerateResource : MonoBehaviour
                 {
                     PlayerPrefs.SetInt(resource.Name.ToString(), 0);
                 }
+
+                // Ініціалізуємо сховище ресурсу
+                if (!PlayerPrefs.HasKey(resource.Name.ToString() + "Save"))
+                {
+                    PlayerPrefs.SetInt(resource.Name.ToString() + "Save", 100); // 100 - стандартний розмір сховища
+                }
             }
 
             foreach (var resource in level.resourcesRequired)
@@ -66,6 +72,7 @@ public class HouseGenerateResource : MonoBehaviour
             }
         }
     }
+
 
     private bool CanProduceResources()
     {
@@ -84,18 +91,37 @@ public class HouseGenerateResource : MonoBehaviour
 
     private void ProduceResources()
     {
+        // Віднімаємо ресурси, необхідні для виробництва
         foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
         {
             int currentAmount = PlayerPrefs.GetInt(requirement.Name.ToString());
             PlayerPrefs.SetInt(requirement.Name.ToString(), currentAmount - requirement.Amount);
         }
 
+        // Додаємо ресурси, які виробляються
         foreach (var production in upgradeLevels[currentLevel].resourcesProduced)
         {
             int currentAmount = PlayerPrefs.GetInt(production.Name.ToString());
-            PlayerPrefs.SetInt(production.Name.ToString(), currentAmount + production.Amount);
+            int maxStorage = PlayerPrefs.GetInt(production.Name.ToString() + "Save", 0); // Максимальний об'єм сховища
+
+            // Перевірка, чи є місце в сховищі
+            if (currentAmount + production.Amount <= maxStorage)
+            {
+                PlayerPrefs.SetInt(production.Name.ToString(), currentAmount + production.Amount);
+            }
+            else
+            {
+                // Якщо сховище заповнене, додаємо тільки те, що залишилось до максимального об'єму
+                int availableSpace = maxStorage - currentAmount;
+                if (availableSpace > 0)
+                {
+                    PlayerPrefs.SetInt(production.Name.ToString(), currentAmount + availableSpace);
+                }
+                Debug.Log($"Сховище для ресурсу {production.Name} заповнене!");
+            }
         }
     }
+
 
     private void DisplayResources()
     {

@@ -5124,6 +5124,7 @@ GameObject:
   - component: {fileID: -6703824087167560456}
   - component: {fileID: -2453939951319363955}
   - component: {fileID: 1859876637112619094}
+  - component: {fileID: -235748548228187389}
   m_Layer: 10
   m_Name: BasicHouse
   m_TagString: Untagged
@@ -13698,6 +13699,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   population: 20
+--- !u!114 &-235748548228187389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e6260f058270c4db54e2c933e47bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3538281948924806228
 PrefabInstance:
   m_ObjectHideFlags: 0

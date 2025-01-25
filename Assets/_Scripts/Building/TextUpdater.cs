@@ -9,7 +9,7 @@ public class TextUpdater : MonoBehaviour
 
     // якщо 'ResourceType' вже ≥снуЇ, використовуйте його без зм≥н
     [SerializeField] private ResourceType resourceType;
-
+    public bool saveSee;
     private int lastResourceValue;
     private void Start()
     {
@@ -39,8 +39,12 @@ public class TextUpdater : MonoBehaviour
 
     private void UpdateText()
     {
+        if (saveSee)
+            textMesh.text = $"{resourceType}: {lastResourceValue}" + "/" + PlayerPrefs.GetInt($"{resourceType}" + "Save");
         // ќновленн€ тексту TextMeshProUGUI
-        textMesh.text = $"{resourceType}: {lastResourceValue}";
+        else
+            textMesh.text = $"{resourceType}: {lastResourceValue}";
+        //Debug.Log((PlayerPrefs.GetInt($"{resourceType}" + "Save")) + "\t"+$"{resourceType}" + "Save");
     }
 }
 

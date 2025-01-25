@@ -240,7 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 1.7
   isBuild: 1
-  box: {fileID: 0}
+  box: {fileID: 8465251308504706484}
   currentCollider: {fileID: 0}
   sizeBuild:
   - {fileID: 9065854707899464645}
