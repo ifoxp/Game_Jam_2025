@@ -13725,15 +13725,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8945693231805750458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a2016ecd5e78a94b92a222a7730db89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeLevels:
-  - resourcesProduced:
-    - Name: 4
-      Amount: 20
+  - resourcesProduced: []
     resourcesRequired:
     - Name: 0
       Amount: 5

@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
     public int PopulationActive = 0;
 
     // Максимальні значення для сховищ
-    public int FoodSave = 200;
-    public int JunkSave = 300;
-    public int MaterialSave = 400;
-    public int EnergySave = 150;
+    public int FoodSave = 500;
+    public int JunkSave = 10000;
+    public int MaterialSave = 1000;
+    public int EnergySave = 750;
     private void Start()
     {
         if (PlayerPrefs.GetInt("Population") == 0)

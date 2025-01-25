@@ -10,6 +10,8 @@ TagManager:
   - DeleteMeteorite
   - Beam
   - UI
+  - GameOver
+  - Building
   layers:
   - Default
   - TransparentFX

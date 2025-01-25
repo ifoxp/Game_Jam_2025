@@ -16,6 +16,7 @@ public class HouseGenerateResource : MonoBehaviour
     [SerializeField] private string buildingID; // Унікальний ідентифікатор будівлі
     private Dictionary<ResourceType, float> resourceProgress = new Dictionary<ResourceType, float>();
 
+
     private void Start()
     {
         buildingID = gameObject.name + "_Level";
@@ -24,6 +25,7 @@ public class HouseGenerateResource : MonoBehaviour
         InitializeResourceProgress();
 
         InitializePlayerPrefs();
+        productionTimer = productionInterval;
 
         productionTimer = productionInterval;
     }
@@ -36,52 +38,79 @@ public class HouseGenerateResource : MonoBehaviour
                 resourceProgress[resource.Name] = 0f;
             }
         }
+
+        foreach (var resource in upgradeLevels[currentLevel].resourcesRequired)
+        {
+            if (!resourceProgress.ContainsKey(resource.Name))
+            {
+                resourceProgress[resource.Name] = 0f;
+            }
+        }
     }
+
 
     private void Update()
     {
-        if (currentLevel >= 0 && CanProduceResources())
+        if (currentLevel >= 0 && CanUseRequiredResources())
         {
-            float deltaTime = Time.deltaTime;
+            float deltaTime = Time.deltaTime; // Час між кадрами
 
+            // Процес виробництва ресурсів
             foreach (var production in upgradeLevels[currentLevel].resourcesProduced)
             {
-                // Розрахунок кількості ресурсу за секунду
-                float resourcePerSecond = (float)production.Amount / 60f;
+                float resourcePerSecond = (float)production.Amount / 60f; // Кількість на секунду
 
-                // Додаємо прогрес до ресурсу
+                // Оновлюємо прогрес для ресурсу
                 resourceProgress[production.Name] += resourcePerSecond * deltaTime;
 
-                // Додаємо цілу кількість ресурсу, якщо прогрес >= 1
+                // Якщо прогрес досяг 1 або більше, додаємо ресурс
                 if (resourceProgress[production.Name] >= 1f)
                 {
                     int integerResource = Mathf.FloorToInt(resourceProgress[production.Name]);
-                    AddResource(production.Name, integerResource);
-                    resourceProgress[production.Name] -= integerResource;
+                    AddResource(production.Name, integerResource); // Додаємо ресурси
+                    resourceProgress[production.Name] -= integerResource; // Залишок прогресу
+                }
+            }
+
+            // Процес віднімання необхідних ресурсів
+            foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
+            {
+                float resourcePerSecond = (float)requirement.Amount / 60f; // Кількість на секунду для віднімання
+
+                // Оновлюємо прогрес для віднімання ресурсу
+                resourceProgress[requirement.Name] -= resourcePerSecond * deltaTime;
+
+                // Якщо прогрес досяг 1 або більше, віднімаємо ресурс
+                if (resourceProgress[requirement.Name] <= -1f)
+                {
+                    int integerResource = Mathf.FloorToInt(-resourceProgress[requirement.Name]);
+                    SubtractResource(requirement.Name, integerResource); // Віднімаємо ресурси
+                    resourceProgress[requirement.Name] += integerResource; // Залишок прогресу
                 }
             }
         }
-        if (currentLevel + 1 < upgradeLevels.Count)
-        {
-            currentLevel++;
-            SaveLevel();
-            InitializeResourceProgress();
-            Debug.Log("Рівень підвищено до: " + (currentLevel + 1));
-        }
-        else
-        {
-            //Debug.Log("Максимальний рівень досягнуто!");
-        }
 
         DisplayResources();
-        
     }
+
+    private bool CanUseRequiredResources()
+{
+    foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
+    {
+        int currentAmount = PlayerPrefs.GetInt(requirement.Name.ToString(), 0);
+        if (currentAmount<= 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
     private void AddResource(ResourceType resourceType, int amount)
     {
         int currentAmount = PlayerPrefs.GetInt(resourceType.ToString());
         int maxStorage = PlayerPrefs.GetInt(resourceType.ToString() + "Save", 0); // Максимальний об'єм сховища
 
-        // Перевірка, чи є місце в сховищі
         if (currentAmount + amount <= maxStorage)
         {
             PlayerPrefs.SetInt(resourceType.ToString(), currentAmount + amount);
@@ -96,6 +125,34 @@ public class HouseGenerateResource : MonoBehaviour
             Debug.Log($"Сховище для ресурсу {resourceType} заповнене!");
         }
     }
+
+    private void SubtractResource(ResourceType resourceType, int amount)
+    {
+        // Перевірка, чи є сховище для цього ресурсу
+        int maxStorage = PlayerPrefs.GetInt(resourceType.ToString() + "Save", 0);
+
+        // Якщо сховище не порожнє, можна віднімати
+        if (maxStorage >= 0)
+        {
+            int currentAmount = PlayerPrefs.GetInt(resourceType.ToString());
+            int newAmount = currentAmount - amount;
+
+            if (newAmount < 0)
+            {
+                PlayerPrefs.SetInt(resourceType.ToString(), 0); // Якщо ресурсів менше, ніж потрібно, скидаємо до 0
+            }
+            else
+            {
+                PlayerPrefs.SetInt(resourceType.ToString(), newAmount);
+            }
+        }
+        else
+        {
+            Debug.Log($"Не можна віднімати ресурси {resourceType}, оскільки сховище для цього ресурсу порожнє.");
+        }
+    }
+
+
 
     private void InitializePlayerPrefs()
     {
@@ -143,36 +200,46 @@ public class HouseGenerateResource : MonoBehaviour
 
     private void ProduceResources()
     {
-        // Віднімаємо ресурси, необхідні для виробництва
-        foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
+        // Перевіряємо, чи є необхідні ресурси для виробництва
+        if (CanUseRequiredResources())
         {
-            int currentAmount = PlayerPrefs.GetInt(requirement.Name.ToString());
-            PlayerPrefs.SetInt(requirement.Name.ToString(), currentAmount - requirement.Amount);
-        }
-
-        // Додаємо ресурси, які виробляються
-        foreach (var production in upgradeLevels[currentLevel].resourcesProduced)
-        {
-            int currentAmount = PlayerPrefs.GetInt(production.Name.ToString());
-            int maxStorage = PlayerPrefs.GetInt(production.Name.ToString() + "Save", 0); // Максимальний об'єм сховища
-
-            // Перевірка, чи є місце в сховищі
-            if (currentAmount + production.Amount <= maxStorage)
+            // Віднімаємо ресурси, необхідні для виробництва
+            foreach (var requirement in upgradeLevels[currentLevel].resourcesRequired)
             {
-                PlayerPrefs.SetInt(production.Name.ToString(), currentAmount + production.Amount);
+                int currentAmount = PlayerPrefs.GetInt(requirement.Name.ToString());
+                int newAmount = currentAmount - requirement.Amount;
+                PlayerPrefs.SetInt(requirement.Name.ToString(), newAmount);
             }
-            else
+
+            // Додаємо ресурси, які виробляються
+            foreach (var production in upgradeLevels[currentLevel].resourcesProduced)
             {
-                // Якщо сховище заповнене, додаємо тільки те, що залишилось до максимального об'єму
-                int availableSpace = maxStorage - currentAmount;
-                if (availableSpace > 0)
+                int currentAmount = PlayerPrefs.GetInt(production.Name.ToString());
+                int maxStorage = PlayerPrefs.GetInt(production.Name.ToString() + "Save", 0); // Максимальний об'єм сховища
+
+                // Перевірка, чи є місце в сховищі
+                if (currentAmount + production.Amount <= maxStorage)
                 {
-                    PlayerPrefs.SetInt(production.Name.ToString(), currentAmount + availableSpace);
+                    PlayerPrefs.SetInt(production.Name.ToString(), currentAmount + production.Amount);
                 }
-                Debug.Log($"Сховище для ресурсу {production.Name} заповнене!");
+                else
+                {
+                    // Якщо сховище заповнене, додаємо тільки те, що залишилось до максимального об'єму
+                    int availableSpace = maxStorage - currentAmount;
+                    if (availableSpace > 0)
+                    {
+                        PlayerPrefs.SetInt(production.Name.ToString(), currentAmount + availableSpace);
+                    }
+                    Debug.Log($"Сховище для ресурсу {production.Name} заповнене!");
+                }
             }
+        }
+        else
+        {
+            Debug.Log("Недостатньо ресурсів для виробництва!");
         }
     }
+
 
 
     private void DisplayResources()

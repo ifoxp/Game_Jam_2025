@@ -1,8 +1,10 @@
 using _Scripts._BuildingsEarn;
 using NaughtyAttributes;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using Zenject;
 
@@ -20,6 +22,7 @@ namespace _Scripts.DataModel
         private List<SavableObject> savableObjects = new List<SavableObject>();
         public SceneObjectsStateManager sceneObjectsStateManager;
         public GameManager gameManager;
+        public GameObject gameOverUI;
         private void Awake()
         {
             gameManager = FindAnyObjectByType<GameManager>();
@@ -52,7 +55,12 @@ namespace _Scripts.DataModel
             // Автозбереження кожні 2 хвилини
             InvokeRepeating(nameof(SaveAllObjects), saveTime, saveTime);
         }
-        public void DeleteSave()
+        private void FixedUpdate()
+        {
+            if (PlayerPrefs.GetInt("Food") <= 0)
+                DeleteSave(true);
+        }
+        public void DeleteSave(bool gameOver)
         {
             if (File.Exists(saveFilePath))
             {
@@ -68,8 +76,19 @@ namespace _Scripts.DataModel
                 PlayerPrefs.DeleteAll();
                 PlayerPrefs.Save(); // Зберігає зміни
                 saveLoadJson.DeleteSave();
-                
+
                 gameManager.SetDefaultPrefs();
+
+
+                
+                    // Перезавантаження поточної сцени
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    if (gameOver)
+                        gameOverUI.SetActive(true);
+
+
+
+                
             }
             else
             {
@@ -151,6 +170,7 @@ namespace _Scripts.DataModel
 
 
 
+
         [System.Serializable]
         private class SaveDataWrapper
         {
@@ -164,7 +184,7 @@ namespace _Scripts.DataModel
         [Button]
         void DeleteSaveButtone()
         {
-            DeleteSave();
+            DeleteSave(false);
         }
     }
 }
