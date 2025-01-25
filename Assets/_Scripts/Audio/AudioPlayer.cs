@@ -11,15 +11,15 @@ namespace _Scripts.Audio
         [SerializeField] private AudioSource _audioSource;
         
         [Space]
-        [SerializeField] private float _volume;
+        [SerializeField] private float _volume = 1;
         
         [Tooltip("x - min pitch; y = max pitch")]
         [SerializeField] private Vector2 _pitchRange = Vector2.one;
 
         public void PlayShot()
         {
-            if (_audioSource == null)
-                return;
+            if (!_audioSource || _audioClips.Length == 0) return;
+            
             SetupAudioSource();
             _audioSource.PlayOneShot(GetRandomClip());
         }
