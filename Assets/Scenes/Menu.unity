@@ -3014,6 +3014,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8223960138890295436, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
+      propertyPath: _ignoreLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 8582958760384113911, guid: 5d741e5279eecfd44abfba8d0b052e95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -81044,6 +81048,10 @@ PrefabInstance:
     - target: {fileID: 7063203607685282693, guid: b2ee29252268f3448a1459e956db2dd5, type: 3}
       propertyPath: m_Name
       value: FrostPunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 7063203607685282693, guid: b2ee29252268f3448a1459e956db2dd5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

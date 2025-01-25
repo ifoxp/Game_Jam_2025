@@ -8,12 +8,7 @@ namespace _Scripts.Behaviours
     {
         public Drone targetedDrone;
         public Vector2Int price;
-        private GameResourcesInventory _inventory;
-        [Inject]
-        private void Construct(GameResourcesInventory inventory)
-        {
-            _inventory = inventory;
-        }
+     
         private void Start()
         {
 
@@ -23,9 +18,9 @@ namespace _Scripts.Behaviours
             // Перевіряємо, чи тригер має тег DeleteMeteorite
             if (other.CompareTag("DeleteMeteorite"))
             {
-                Debug.Log(_inventory);
-                if(_inventory!=null)
-                _inventory.AddResource(GameResourcesType.Junk, (Random.Range(price.x,price.y)));
+              
+         
+                PlayerPrefs.SetInt("Junk", PlayerPrefs.GetInt("Junk")+ (Random.Range(price.x, price.y)));
                 // Видаляємо метеорит
                 Destroy(gameObject);
             }

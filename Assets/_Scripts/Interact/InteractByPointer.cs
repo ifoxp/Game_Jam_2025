@@ -8,6 +8,7 @@ namespace _Scripts.Interact
 {
     public class InteractByPointer : MonoBehaviour
     {
+        [SerializeField] private LayerMask _ignoreLayer;
         private CastersAdditional _pointerCaster;
         
         private IInput _input;
@@ -43,7 +44,8 @@ namespace _Scripts.Interact
 
         private void CheckInteractComponentByPointer()
         {
-            var objectInRay = _pointerCaster.GetGameObjectByPointer(_input.GetPointerPosition(), _playerCamera, RAY_DISTANCE);
+            var objectInRay = _pointerCaster.GetGameObjectByPointer(_input.GetPointerPosition(), _playerCamera, 
+                RAY_DISTANCE, _ignoreLayer);
 
             var newInteractable = objectInRay?.GetComponents<IInteractableByPointer>();
 

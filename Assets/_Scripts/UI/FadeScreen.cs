@@ -9,7 +9,7 @@ namespace _Scripts.UI
         [SerializeField] private Image _imageToFade;
         [SerializeField] private bool _fadeOutOnStart = true;
 
-        private const float FADE_DURATION = 2.5f;
+        private const float FADE_DURATION = 1f;
 
         private const float FADED = 1;
         private const float UN_FADED = 0;
