@@ -1,6 +1,32 @@
 {
     "objects": [
         {
+            "prefabName": "Recicle",
+            "position": {
+                "x": 100.0,
+                "y": 2.4100000858306886,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource"
+            ],
+            "objectName": "Recicle"
+        },
+        {
             "prefabName": "Balka",
             "position": {
                 "x": -5.600000381469727,

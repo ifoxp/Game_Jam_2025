@@ -2,6 +2,7 @@ using _Scripts.Inputs.Reader;
 using _Scripts.Utilities;
 using UnityEngine;
 using Zenject;
+using System.Collections.Generic;
 
 namespace _Scripts.Interact
 {
@@ -12,8 +13,8 @@ namespace _Scripts.Interact
         private IInput _input;
         private Camera _playerCamera;
 
-        private IInteractableByPointer _currentInteractable;
-        
+        private HashSet<IInteractableByPointer> _currentInteractable;
+
         private const int RAY_DISTANCE = 100;
         
         [Inject]
@@ -32,33 +33,55 @@ namespace _Scripts.Interact
             _input.OnInteract += CheckInteractComponentByPointer;
             
             _pointerCaster = new CastersAdditional();
+            _currentInteractable = new HashSet<IInteractableByPointer>();
         }
 
         private void OnDestroy()
         {
-            if(_input != null) _input.OnInteract -= CheckInteractComponentByPointer;
+            if (_input != null) _input.OnInteract -= CheckInteractComponentByPointer;
         }
 
         private void CheckInteractComponentByPointer()
         {
-            var objectInRay = _pointerCaster.GetGameObjectByPointer(_input.GetPointerPosition(), _playerCamera, 
-                RAY_DISTANCE);
-           // print(objectInRay);
-            var newInteractable = objectInRay?.GetComponent<IInteractableByPointer>();
+            var objectInRay = _pointerCaster.GetGameObjectByPointer(_input.GetPointerPosition(), _playerCamera, RAY_DISTANCE);
 
-            if (newInteractable == null)
+            var newInteractable = objectInRay?.GetComponents<IInteractableByPointer>();
+
+            if (newInteractable == null || newInteractable.Length == 0)
             {
-                _currentInteractable?.OnStopInteractByPointer();
+                if (_currentInteractable.Count > 0)
+                {
+                    foreach (var interactable in _currentInteractable)
+                    {
+                        interactable.OnStopInteractByPointer();
+                    }
+                    _currentInteractable.Clear();
+                }
             }
             else
             {
-                if (_currentInteractable != newInteractable)
+                var newInteractableSet = new HashSet<IInteractableByPointer>(newInteractable);
+
+                if (!newInteractableSet.SetEquals(_currentInteractable))
                 {
-                    _currentInteractable?.OnStopInteractByPointer();
+                    foreach (var interactable in _currentInteractable)
+                    {
+                        if (!newInteractableSet.Contains(interactable))
+                        {
+                            interactable.OnStopInteractByPointer();
+                        }
+                    }
+
+                    foreach (var interactable in newInteractableSet)
+                    {
+                        if (!_currentInteractable.Contains(interactable))
+                        {
+                            interactable.OnInteractByPointer();
+                        }
+                    }
+
+                    _currentInteractable = newInteractableSet;
                 }
-                
-                newInteractable.OnInteractByPointer();
-                _currentInteractable = newInteractable;
             }
         }
     }

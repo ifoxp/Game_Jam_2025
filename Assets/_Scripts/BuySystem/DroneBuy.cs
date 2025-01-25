@@ -76,7 +76,9 @@ public class DroneBuy : MonoBehaviour
 
         if (currentMaterials >= _prices[currentLevel])
         {
-            PlayerPrefs.SetInt("Material", PlayerPrefs.GetInt("Material")- (int)_prices[currentLevel]);
+            currentMaterials = PlayerPrefs.GetInt("Material") - (int)_prices[currentLevel];
+            Debug.Log(currentMaterials + "+=" + (int)_prices[currentLevel]);
+            PlayerPrefs.SetInt("Material", currentMaterials);
 
             // Підвищуємо рівень прокачки
             currentLevel++;
