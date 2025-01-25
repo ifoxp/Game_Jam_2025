@@ -54,7 +54,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 250
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -146,6 +146,9 @@ GameObject:
   - component: {fileID: 4997591779931904456}
   - component: {fileID: 2093961115068565278}
   - component: {fileID: 2722532637925441593}
+  - component: {fileID: 1861502623450416166}
+  - component: {fileID: 7545413273880277498}
+  - component: {fileID: 8362524682778205742}
   m_Layer: 10
   m_Name: Farm
   m_TagString: Untagged
@@ -23133,6 +23136,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 6846028352580642840, guid: 2070cf0038084f5448d55c47cff87c4e, type: 3}
   objectName: Solor farm
+--- !u!114 &1861502623450416166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355424026884192871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c0d69f833739a4ab6c9e0b5340203c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelToScale: {fileID: 7385864099919110468}
+  _startScale: {x: 0.2, y: 0.2, z: 0.2}
+  _duration: 0.4
+  _easeType: 30
+--- !u!114 &7545413273880277498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355424026884192871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5578a67db704c28b823532a0714d672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlesPlayer:
+    _particleToPlay: {fileID: 6869754804726083817}
+--- !u!114 &8362524682778205742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6355424026884192871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075df000bffa4155a2d509298b4c1dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioPlayer:
+    _audioClips:
+    - {fileID: 8300000, guid: 7b2f5ef67f24a6d42b7799fb00ded0c7, type: 3}
+    - {fileID: 8300000, guid: e152e3547e918ac4580121ae82b1e428, type: 3}
+    - {fileID: 8300000, guid: a4db799f505545f44bf46a9808cfd8f1, type: 3}
+    - {fileID: 8300000, guid: d244f03d836bb0b48b474f2b5102f3a6, type: 3}
+    - {fileID: 8300000, guid: 17d5f7dd7566fdb4e86924a443ab9084, type: 3}
+    _audioSource: {fileID: 2900470024008864641}
+    _volume: 1
+    _pitchRange: {x: 0.95, y: 1.05}
 --- !u!1 &9025127196193386938
 GameObject:
   m_ObjectHideFlags: 0
@@ -23420,7 +23475,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 0.05
       maxCurve:
         serializedVersion: 2

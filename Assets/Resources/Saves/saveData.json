@@ -1,3 +1,604 @@
 {
-    "objects": []
+    "objects": [
+        {
+            "prefabName": "Flugel",
+            "position": {
+                "x": 9.59000015258789,
+                "y": 1.9299991130828858,
+                "z": 2.384185791015625e-7
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "Flugel(Clone)0"
+        },
+        {
+            "prefabName": "Flugel",
+            "position": {
+                "x": 13.579999923706055,
+                "y": 1.9299991130828858,
+                "z": 2.384185791015625e-7
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource",
+                "INTERACT"
+            ],
+            "objectName": "Flugel(Clone)1"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 11.585000038146973,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)2"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 13.579999923706055,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)3"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 15.57499885559082,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)4"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 15.57499885559082,
+                "y": 3.854998826980591,
+                "z": -3.848999261856079
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)5"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 9.59000015258789,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)6"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 7.59499979019165,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)7"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": 7.595000267028809,
+                "y": 3.854998826980591,
+                "z": -1.8789987564086915
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)8"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -7.595000743865967,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)9"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -9.59000015258789,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)10"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -11.585000038146973,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)11"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -13.579999923706055,
+                "y": -1.0850000381469727,
+                "z": -5.0149993896484379
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)12"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -13.579999923706055,
+                "y": 3.9299986362457277,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)13"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -11.585000038146973,
+                "y": 3.9299986362457277,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)14"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -9.59000015258789,
+                "y": 3.9299986362457277,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)15"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -7.595000267028809,
+                "y": 3.9299986362457277,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)16"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -13.579999923706055,
+                "y": 6.670000076293945,
+                "z": -4.939998626708984
+            },
+            "rotation": {
+                "x": 1.302700779855974e-15,
+                "y": 1.0,
+                "z": 2.9802318834981635e-8,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)17"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -11.585000038146973,
+                "y": 6.670000076293945,
+                "z": -4.939998626708984
+            },
+            "rotation": {
+                "x": 1.302700779855974e-15,
+                "y": 1.0,
+                "z": 2.9802318834981635e-8,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)18"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -7.595000743865967,
+                "y": 6.670000076293945,
+                "z": -4.939998626708984
+            },
+            "rotation": {
+                "x": 1.302700779855974e-15,
+                "y": 1.0,
+                "z": 2.9802318834981635e-8,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)19"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -9.59000015258789,
+                "y": 6.670000076293945,
+                "z": -4.939998626708984
+            },
+            "rotation": {
+                "x": 1.302700779855974e-15,
+                "y": 1.0,
+                "z": 2.9802318834981635e-8,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)20"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -7.595001697540283,
+                "y": -1.0850003957748414,
+                "z": -12.773000717163086
+            },
+            "rotation": {
+                "x": -1.3027009916142109e-15,
+                "y": 1.0,
+                "z": -2.980232594040899e-8,
+                "w": -4.371138828673793e-8
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)21"
+        },
+        {
+            "prefabName": "Balka",
+            "position": {
+                "x": -9.59000015258789,
+                "y": 11.609999656677246,
+                "z": -3.773998498916626
+            },
+            "rotation": {
+                "x": 0.7071068286895752,
+                "y": -3.684594591105627e-15,
+                "z": -3.684594591105627e-15,
+                "w": -0.7071068286895752
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                ""
+            ],
+            "objectName": "Balka(Clone)"
+        }
+    ]
 }
