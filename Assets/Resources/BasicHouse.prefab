@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.1
+      scalar: 0.5
       minScalar: 0.05
       maxCurve:
         serializedVersion: 2
@@ -5033,7 +5033,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 150
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -5125,6 +5125,10 @@ GameObject:
   - component: {fileID: -2453939951319363955}
   - component: {fileID: 1859876637112619094}
   - component: {fileID: -235748548228187389}
+  - component: {fileID: 1740719056158180054}
+  - component: {fileID: 5114540672850778756}
+  - component: {fileID: 5716802717576494146}
+  - component: {fileID: 2129774893595574766}
   m_Layer: 10
   m_Name: BasicHouse
   m_TagString: Untagged
@@ -13714,6 +13718,79 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 6846028352580642840, guid: a809655fe48b47e45a6862cdd082cfe0, type: 3}
   objectName: Barracks
+--- !u!114 &1740719056158180054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2016ecd5e78a94b92a222a7730db89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeLevels:
+  - resourcesProduced:
+    - Name: 0
+      Amount: 0
+    resourcesRequired:
+    - Name: 0
+      Amount: 5
+  productionInterval: 1
+  buildingID: 
+--- !u!114 &5114540672850778756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5578a67db704c28b823532a0714d672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particlesPlayer:
+    _particleToPlay: {fileID: 7081852698258385800}
+--- !u!114 &5716802717576494146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075df000bffa4155a2d509298b4c1dca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioPlayer:
+    _audioClips:
+    - {fileID: 8300000, guid: 7b2f5ef67f24a6d42b7799fb00ded0c7, type: 3}
+    - {fileID: 8300000, guid: e152e3547e918ac4580121ae82b1e428, type: 3}
+    - {fileID: 8300000, guid: a4db799f505545f44bf46a9808cfd8f1, type: 3}
+    - {fileID: 8300000, guid: d244f03d836bb0b48b474f2b5102f3a6, type: 3}
+    - {fileID: 8300000, guid: 17d5f7dd7566fdb4e86924a443ab9084, type: 3}
+    _audioSource: {fileID: 5902903738277601908}
+    _volume: 1
+    _pitchRange: {x: 0.95, y: 1.05}
+--- !u!114 &2129774893595574766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945693231805750458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c0d69f833739a4ab6c9e0b5340203c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modelToScale: {fileID: 5943383777217478754}
+  _startScale: {x: 0.3, y: 0.3, z: 0.3}
+  _duration: 0.4
+  _easeType: 30
 --- !u!1001 &3538281948924806228
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ namespace _Scripts.Audio
         [SerializeField] private float _volume = 1;
         
         [Tooltip("x - min pitch; y = max pitch")]
-        [SerializeField] private Vector2 _pitchRange = Vector2.one;
+        [SerializeField] private Vector2 _pitchRange = new(0.95f, 1.05f);
 
         public void PlayShot()
         {
