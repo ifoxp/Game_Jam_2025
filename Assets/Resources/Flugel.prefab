@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1689882721650025597}
   - component: {fileID: -915448001326803107}
   - component: {fileID: 8234214091146074048}
+  - component: {fileID: -995667471980988223}
   m_Layer: 10
   m_Name: Flugel
   m_TagString: Untagged
@@ -1823,6 +1824,21 @@ MonoBehaviour:
     resourcesRequired: []
   productionInterval: 5
   buildingID: 
+--- !u!114 &-995667471980988223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779719218279962242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e6260f058270c4db54e2c933e47bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 6846028352580642840, guid: 2070cf0038084f5448d55c47cff87c4e, type: 3}
+  objectName: Fluger
+  uiElementPrefab: {fileID: 3386216793834041139, guid: 1e2cf1eeeafe8cf4a99b10473f8cd01b, type: 3}
 --- !u!1 &4066239413388177621
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,8 +56,34 @@
             "prefabName": "BasicHouse",
             "position": {
                 "x": 5.819000244140625,
-                "y": -0.14500123262405396,
+                "y": -2.0250000953674318,
                 "z": -7.595001220703125
+            },
+            "rotation": {
+                "x": 0.4999999701976776,
+                "y": -0.5000000596046448,
+                "z": -0.5000000596046448,
+                "w": -0.4999999701976776
+            },
+            "scale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "scriptsToSetFalse": [
+                "BuildContent"
+            ],
+            "scriptsToSetTrue": [
+                "HouseGenerateResource"
+            ],
+            "objectName": "BasicHouse(Clone)"
+        },
+        {
+            "prefabName": "BasicHouse",
+            "position": {
+                "x": 7.755001068115234,
+                "y": -0.14500176906585694,
+                "z": -7.595000267028809
             },
             "rotation": {
                 "x": 0.7071068286895752,
@@ -76,7 +102,7 @@
             "scriptsToSetTrue": [
                 "HouseGenerateResource"
             ],
-            "objectName": "BasicHouse(Clone)2"
+            "objectName": "BasicHouse(Clone)13"
         }
     ]
 }

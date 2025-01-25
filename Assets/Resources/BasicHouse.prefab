@@ -13711,6 +13711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e6260f058270c4db54e2c933e47bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 6846028352580642840, guid: 2070cf0038084f5448d55c47cff87c4e, type: 3}
+  objectName: BaseHouse
 --- !u!1001 &3538281948924806228
 PrefabInstance:
   m_ObjectHideFlags: 0

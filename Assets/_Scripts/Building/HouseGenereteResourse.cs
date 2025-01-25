@@ -3,8 +3,6 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(InteractShowBuildingStat))]
-[RequireComponent(typeof(InteractBuildingControl))]
 public class HouseGenerateResource : MonoBehaviour
 {
     [Header("Рівні апгрейду")]
@@ -147,20 +145,27 @@ public class HouseGenerateResource : MonoBehaviour
             Debug.Log("Максимальний рівень досягнуто!");
         }
     }
-    public UpgradeLevel GetCurrentUpgradeLevel()
-    {
-        return upgradeLevels[currentLevel];
-    }
 
-    public UpgradeLevel GetNextUpgradeLevel()
-    {
-        return currentLevel + 1 < upgradeLevels.Count ? upgradeLevels[currentLevel + 1] : null;
-    }
     private void SaveLevel()
     {
         PlayerPrefs.SetInt(buildingID, currentLevel);
         PlayerPrefs.Save();
         Debug.Log("Рівень будівлі збережено: " + currentLevel);
+    }
+    public List<ResourceData> GetResourcesForCurrentLevel()
+    {
+        List<ResourceData> resources = new List<ResourceData>();
+
+        if (currentLevel >= 0 && currentLevel < upgradeLevels.Count)
+        {
+            // Отримуємо ресурси, які виробляються на поточному рівні
+            resources.AddRange(upgradeLevels[currentLevel].resourcesProduced);
+
+            // Отримуємо ресурси, необхідні для виробництва на поточному рівні
+            resources.AddRange(upgradeLevels[currentLevel].resourcesRequired);
+        }
+
+        return resources;
     }
 
     private void LoadLevel()
