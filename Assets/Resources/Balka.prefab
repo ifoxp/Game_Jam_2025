@@ -6093,7 +6093,7 @@ MonoBehaviour:
   scriptsToSetFalse:
   - BuildContent
   scriptsToSetTrue:
-  - HouseGenerateResource
+  - 
 --- !u!1 &8703565038984659586
 GameObject:
   m_ObjectHideFlags: 0

@@ -1805,6 +1805,7 @@ MonoBehaviour:
   - BuildContent
   scriptsToSetTrue:
   - HouseGenerateResource
+  - INTERACT
 --- !u!114 &8234214091146074048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,17 +1821,9 @@ MonoBehaviour:
   upgradeLevels:
   - resourcesProduced:
     - Name: 3
-      Amount: 22
-    - Name: 1
-      Amount: 20
-    resourcesRequired:
-    - Name: 0
-      Amount: 131
-    - Name: 4
-      Amount: 14
-    - Name: 2
-      Amount: 13
-  productionInterval: 5
+      Amount: 15
+    resourcesRequired: []
+  productionInterval: 1
   buildingID: 
 --- !u!114 &-995667471980988223
 MonoBehaviour:
@@ -1839,7 +1832,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779719218279962242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53e6260f058270c4db54e2c933e47bbf, type: 3}
   m_Name: 

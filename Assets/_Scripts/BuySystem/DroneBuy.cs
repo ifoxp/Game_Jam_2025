@@ -15,11 +15,14 @@ public class DroneBuy : MonoBehaviour
     [SerializeField] private uint[] _prices; // Масив цін для кожного рівня прокачки
     private int currentLevel; // Поточний рівень прокачки дрона
     private GameResourcesInventory _inventory;
+    private float lastUpgradeTime = -1f; // Час останнього апгрейду
+
     [Inject]
     private void Construct(GameResourcesInventory inventory)
     {
         _inventory = inventory;
     }
+
     private void Start()
     {
         // Завантаження поточного рівня прокачки з PlayerPrefs
@@ -66,24 +69,36 @@ public class DroneBuy : MonoBehaviour
 
     private void OnBuyButtonClick()
     {
+        // Перевірка на мінімальний інтервал між натисканнями (1 секунда)
+        if (Time.time - lastUpgradeTime < 1f)
+        {
+            Debug.Log("Upgrade attempt too soon. Please wait.");
+            return;
+        }
+
+        // Перевірка, чи досягнуто максимального рівня
         if (currentLevel >= _prices.Length)
         {
             Debug.Log("Drone is already at max level.");
             return;
         }
 
-        int currentMaterials=PlayerPrefs.GetInt("Material");
+        int currentMaterials = PlayerPrefs.GetInt("Material");
 
+        // Перевірка наявності достатньої кількості матеріалів
         if (currentMaterials >= _prices[currentLevel])
         {
-            currentMaterials = PlayerPrefs.GetInt("Material") - (int)_prices[currentLevel];
-            Debug.Log(currentMaterials + "+=" + (int)_prices[currentLevel]);
+            // Оновлення матеріалів
+            currentMaterials -= (int)_prices[currentLevel];
             PlayerPrefs.SetInt("Material", currentMaterials);
 
-            // Підвищуємо рівень прокачки
+            // Підвищення рівня прокачки
             currentLevel++;
             PlayerPrefs.SetInt("DroneBuyLevel", currentLevel);
             PlayerPrefs.Save();
+
+            // Оновлення часу останнього апгрейду
+            lastUpgradeTime = Time.time;
 
             // Активуємо дрон
             Drone.SetActive(true);

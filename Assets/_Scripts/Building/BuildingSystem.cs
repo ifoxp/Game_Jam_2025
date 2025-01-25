@@ -334,6 +334,8 @@ namespace _Scripts.Building
                 instantiated.GetComponent<HouseGenerateResource>().enabled = true;
             if (instantiated.GetComponent<PopulationSave>())
                 instantiated.GetComponent<PopulationSave>().enabled = true;
+            if(instantiated.GetComponent<INTERACT>())
+                instantiated.GetComponent<INTERACT>().enabled = true;
             // ��������� ��� ������� ���������
             Collider[] childColliders = instantiated.GetComponentsInChildren<Collider>();
             foreach (var collider in childColliders)

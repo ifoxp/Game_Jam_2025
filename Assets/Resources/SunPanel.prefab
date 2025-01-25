@@ -5123,6 +5123,7 @@ GameObject:
   - component: {fileID: 2038678789345708752}
   - component: {fileID: 6895066931186083157}
   - component: {fileID: -8356953779921734173}
+  - component: {fileID: 8861999312186653982}
   m_Layer: 10
   m_Name: SunPanel
   m_TagString: Untagged
@@ -16510,6 +16511,7 @@ MonoBehaviour:
   - BuildContent
   scriptsToSetTrue:
   - HouseGenerateResource
+  - INTERACT
 --- !u!114 &-8356953779921734173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16529,6 +16531,20 @@ MonoBehaviour:
     resourcesRequired: []
   productionInterval: 1
   buildingID: 
+--- !u!114 &8861999312186653982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954264946004855640}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e6260f058270c4db54e2c933e47bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 6846028352580642840, guid: 2070cf0038084f5448d55c47cff87c4e, type: 3}
+  objectName: Sun panel
 --- !u!1001 &6178016377075894981
 PrefabInstance:
   m_ObjectHideFlags: 0

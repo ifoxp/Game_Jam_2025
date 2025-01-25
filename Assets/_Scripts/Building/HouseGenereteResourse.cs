@@ -14,32 +14,87 @@ public class HouseGenerateResource : MonoBehaviour
     private float productionTimer;
     private int currentLevel = 0; // Поточний рівень (0 - базовий рівень)
     [SerializeField] private string buildingID; // Унікальний ідентифікатор будівлі
+    private Dictionary<ResourceType, float> resourceProgress = new Dictionary<ResourceType, float>();
 
     private void Start()
     {
         buildingID = gameObject.name + "_Level";
 
         LoadLevel();
+        InitializeResourceProgress();
 
         InitializePlayerPrefs();
 
         productionTimer = productionInterval;
     }
+    private void InitializeResourceProgress()
+    {
+        foreach (var resource in upgradeLevels[currentLevel].resourcesProduced)
+        {
+            if (!resourceProgress.ContainsKey(resource.Name))
+            {
+                resourceProgress[resource.Name] = 0f;
+            }
+        }
+    }
 
     private void Update()
     {
-        productionTimer -= Time.deltaTime;
 
-        if (productionTimer <= 0f)
+        if (currentLevel >= 0 && CanProduceResources())
         {
-            productionTimer = productionInterval;
+            float deltaTime = Time.deltaTime;
 
-            if (currentLevel >= 0 && CanProduceResources())
+            foreach (var production in upgradeLevels[currentLevel].resourcesProduced)
             {
-                ProduceResources();
-            }
+                // Розрахунок кількості ресурсу за секунду
+                float resourcePerSecond = (float)production.Amount / 60f;
 
-            DisplayResources();
+                // Додаємо прогрес до ресурсу
+                resourceProgress[production.Name] += resourcePerSecond * deltaTime;
+
+                // Додаємо цілу кількість ресурсу, якщо прогрес >= 1
+                if (resourceProgress[production.Name] >= 1f)
+                {
+                    int integerResource = Mathf.FloorToInt(resourceProgress[production.Name]);
+                    AddResource(production.Name, integerResource);
+                    resourceProgress[production.Name] -= integerResource;
+                }
+            }
+        }
+        if (currentLevel + 1 < upgradeLevels.Count)
+        {
+            currentLevel++;
+            SaveLevel();
+            InitializeResourceProgress();
+            Debug.Log("Рівень підвищено до: " + (currentLevel + 1));
+        }
+        else
+        {
+            //Debug.Log("Максимальний рівень досягнуто!");
+        }
+
+        DisplayResources();
+        
+    }
+    private void AddResource(ResourceType resourceType, int amount)
+    {
+        int currentAmount = PlayerPrefs.GetInt(resourceType.ToString());
+        int maxStorage = PlayerPrefs.GetInt(resourceType.ToString() + "Save", 0); // Максимальний об'єм сховища
+
+        // Перевірка, чи є місце в сховищі
+        if (currentAmount + amount <= maxStorage)
+        {
+            PlayerPrefs.SetInt(resourceType.ToString(), currentAmount + amount);
+        }
+        else
+        {
+            int availableSpace = maxStorage - currentAmount;
+            if (availableSpace > 0)
+            {
+                PlayerPrefs.SetInt(resourceType.ToString(), currentAmount + availableSpace);
+            }
+            Debug.Log($"Сховище для ресурсу {resourceType} заповнене!");
         }
     }
 

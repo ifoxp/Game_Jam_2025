@@ -56,6 +56,7 @@ public class UIGridManager : MonoBehaviour
 
     public void SetResources()
     {
+        if (houseGenerateResource == null) return;
         houseGenerateResource.GetResourcesForCurrentAndNextLevel(
             out List<ResourceData> currentLevelProduced,
             out List<ResourceData> currentLevelRequired,
@@ -114,13 +115,13 @@ public class UIGridManager : MonoBehaviour
             }
 
             // Створюємо елементи для поточного та наступного рівня
-            CreateElements(currentLevelProduced, currentLevelRequired, nextLevelProduced, nextLevelRequired);
+           /* CreateElements(currentLevelProduced, currentLevelRequired, nextLevelProduced, nextLevelRequired);*/
         }
     }
 
 
     // Метод для створення елементів
-    private void CreateElements(
+   /* private void CreateElements(
      List<ResourceData> currentLevelProduced,
      List<ResourceData> currentLevelRequired,
      List<ResourceData> nextLevelProduced,
@@ -200,7 +201,7 @@ public class UIGridManager : MonoBehaviour
             }
         }
     }
-
+   */
     private void CreateElementsForSingleLevel(
     List<ResourceData> currentLevelProduced,
     List<ResourceData> currentLevelRequired)
