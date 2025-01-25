@@ -1,9 +1,9 @@
 using System;
+using System.Collections;
 using _Scripts.Audio;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 namespace _Scripts._Intro
 {
@@ -11,23 +11,48 @@ namespace _Scripts._Intro
     {
         [SerializeField] private TextMeshProUGUI _textPlace;
         [SerializeField] private TypeTextContainer[] _textContainers;
-        
         [SerializeField] private AudioPlayer _characterAudioPlayer;
-        
+
         private int _currentContainerIndex;
         private int _currentCharacterIndex;
         private bool _isDeleting;
 
         [SerializeField] private bool _canType = true;
+        [SerializeField] private bool _autoType = false; // Додаємо автоматичний режим
+        [SerializeField] private float _autoTypeSpeed = 0.05f; // Швидкість автоматичного набору
+        private float _nextAutoTypeTime = 0f;
+
+        private bool _isWaitingForKeyPress = false;
 
         public void SetCanType(bool canType)
         {
-            _canType = canType;
+            // Якщо ми вже чекаємо, то не дозволяємо змінювати
+            if (_isWaitingForKeyPress)
+            {
+                Debug.LogWarning("Already waiting for key press.");
+                return;
+            }
+
+            StartCoroutine(WaitUntilCanTypeChange(canType));
         }
-        
+
+        private IEnumerator WaitUntilCanTypeChange(bool canType)
+        {
+            // Очікуємо завершення набору чи видалення тексту
+            while (_isDeleting || _currentCharacterIndex < _textContainers[_currentContainerIndex].TextToType.Length)
+            {
+                yield return null; // Продовжуємо перевіряти кожен кадр
+            }
+
+            // Тепер змінюємо _canType, коли можна
+            _canType = canType;
+            Debug.Log($"_canType set to: {_canType}");
+        }
+
         private void Update()
         {
-            if(!_canType) return;
+            if (!_canType) return;
+
             if (_isDeleting)
             {
                 HandleTextDeletion();
@@ -38,7 +63,6 @@ namespace _Scripts._Intro
             }
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
         private void HandleTextTyping()
         {
             if (_textContainers == null || _textContainers.Length == 0)
@@ -63,59 +87,66 @@ namespace _Scripts._Intro
                 return;
             }
 
+            // Перевірка, чи потрібно блокувати набір тексту після натискання кнопки
+            if (currentContainer.BlockTypingAfterKeyPress && Input.anyKeyDown)
+            {
+                Debug.Log("Typing is blocked after key press.");
+                return;
+            }
+
             if (_currentCharacterIndex < currentContainer.TextToType.Length)
             {
                 int typeAmount = currentContainer.TypeAmount;
 
-                if (Keyboard.current.anyKey.wasPressedThisFrame)
+                // Автоматичний набір тексту
+                if (_autoType && Time.time >= _nextAutoTypeTime)
+                {
+                    _nextAutoTypeTime = Time.time + _autoTypeSpeed;
+                    typeAmount = Mathf.Min(typeAmount, currentContainer.TextToType.Length - _currentCharacterIndex);
+                }
+                // Введення з клавіатури
+                else if (!_autoType && Input.anyKeyDown)
                 {
                     typeAmount = Mathf.Min(typeAmount, currentContainer.TextToType.Length - _currentCharacterIndex);
+                }
+                else
+                {
+                    return;
+                }
 
-                    for (int i = 0; i < typeAmount; i++)
-                    {
-                        if (_currentCharacterIndex >= currentContainer.TextToType.Length)
-                        {
-                            Debug.LogWarning($"Character index {_currentCharacterIndex} is out of bounds for container {_currentContainerIndex}.");
-                            break;
-                        }
-
-                        char currentChar = currentContainer.TextToType[_currentCharacterIndex];
-
-                        if (currentChar == '<')
-                        {
-                            int endIndex = currentContainer.TextToType.IndexOf('>', _currentCharacterIndex);
-                            if (endIndex != -1)
-                            {
-                                _textPlace.text += currentContainer.TextToType.Substring(_currentCharacterIndex,
-                                    endIndex - _currentCharacterIndex + 1);
-                                _currentCharacterIndex = endIndex + 1;
-                                continue;
-                            }
-                        }
-
-                        if (currentChar is ' ' or ',' or '\n' or '\r' or '\t')
-                        {
-                            _textPlace.text += currentChar;
-                        }
-                        else
-                        {
-                            _textPlace.text += currentChar;
-                            _characterAudioPlayer?.PlayShot();
-                        }
-
-                        _currentCharacterIndex++;
-                    }
-
+                for (int i = 0; i < typeAmount; i++)
+                {
                     if (_currentCharacterIndex >= currentContainer.TextToType.Length)
                     {
-                        Debug.Log($"Text in container {_currentContainerIndex} ended.");
-                        HandleContainerCompletion();
+                        break;
                     }
+
+                    char currentChar = currentContainer.TextToType[_currentCharacterIndex];
+
+                    if (currentChar == '<')
+                    {
+                        int endIndex = currentContainer.TextToType.IndexOf('>', _currentCharacterIndex);
+                        if (endIndex != -1)
+                        {
+                            _textPlace.text += currentContainer.TextToType.Substring(_currentCharacterIndex,
+                                endIndex - _currentCharacterIndex + 1);
+                            _currentCharacterIndex = endIndex + 1;
+                            continue;
+                        }
+                    }
+
+                    _textPlace.text += currentChar;
+                    _characterAudioPlayer?.PlayShot();
+                    _currentCharacterIndex++;
+                }
+
+                if (_currentCharacterIndex >= currentContainer.TextToType.Length)
+                {
+                    HandleContainerCompletion();
                 }
             }
             else
             {
-                Debug.LogWarning($"Character index {_currentCharacterIndex} is out of bounds for container {_currentContainerIndex}.");
                 HandleContainerCompletion();
             }
         }
@@ -129,10 +160,11 @@ namespace _Scripts._Intro
                 return;
             }
 
-            if (Keyboard.current.anyKey.wasPressedThisFrame)
+            if (Input.anyKeyDown || (_autoType && Time.time >= _nextAutoTypeTime))
             {
-                int deleteAmount = _textContainers[_currentContainerIndex].DeleteAmount;
+                _nextAutoTypeTime = Time.time + _autoTypeSpeed;
 
+                int deleteAmount = _textContainers[_currentContainerIndex].DeleteAmount;
                 deleteAmount = Mathf.Min(deleteAmount, _textPlace.text.Length);
 
                 if (_textPlace.text.Length > 0)
@@ -156,6 +188,15 @@ namespace _Scripts._Intro
 
         private void HandleContainerCompletion()
         {
+            StartCoroutine(WaitForKeyPressBeforeDeleting());
+        }
+
+        private IEnumerator WaitForKeyPressBeforeDeleting()
+        {
+            Debug.Log("Waiting for key press...");
+            yield return new WaitUntil(() => Input.anyKeyDown); // Очікуємо, поки буде натиснута будь-яка клавіша
+
+            Debug.Log("Key pressed. Proceeding...");
             if (_textContainers[_currentContainerIndex].DeTypeAfter)
             {
                 _isDeleting = true;
@@ -187,10 +228,9 @@ namespace _Scripts._Intro
         private void StartTextTyping()
         {
             _textContainers[_currentContainerIndex].OnTextStarted?.Invoke();
-    
             _isDeleting = false;
         }
-        
+
         [Serializable]
         public class TypeTextContainer
         {
@@ -205,10 +245,13 @@ namespace _Scripts._Intro
             [SerializeField] private UnityEvent _onTextEnded;
             [SerializeField] private UnityEvent _onTextStarted;
 
+            [SerializeField] private bool _blockTypingAfterKeyPress = false; // Нове поле для блокування набору тексту після натискання клавіші
+
             public bool DeTypeAfter => _deTypeAfter;
             public string TextToType => _textToType;
             public int TypeAmount => _typeAmount;
             public int DeleteAmount => _deleteAmount;
+            public bool BlockTypingAfterKeyPress => _blockTypingAfterKeyPress; // Геттер для нового поля
 
             public UnityEvent OnTextEnded => _onTextEnded;
             public UnityEvent OnTextStarted => _onTextStarted;

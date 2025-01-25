@@ -1304,6 +1304,8 @@ MonoBehaviour:
     _volume: 1
     _pitchRange: {x: 0.95, y: 1.05}
   _canType: 1
+  _autoType: 1
+  _autoTypeSpeed: 0.1
 --- !u!4 &1119749247
 Transform:
   m_ObjectHideFlags: 0
