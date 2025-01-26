@@ -1365,11 +1365,12 @@ MonoBehaviour:
     _onTextStarted:
       m_PersistentCalls:
         m_Calls: []
-  - _textToType: "Recently, at the moment when humanity realized that it could no
-      longer live on such a polluted planet, one that was almost impossible to clean
-      \u2013 humanity decided to flee the planet. But, unfortunately, creating rockets
-      turned out to be very expensive. People invented a very cheap alternative \u2013
-      <color=red>'bubbles'</color>........"
+  - _textToType: "Recently, when humanity realized that <color=green>Earth</color>
+      had become so <color=red>polluted</color> it was nearly <color=red>impossible</color>
+      to clean, people understood they could no longer live on the planet. However,
+      building rockets to escape proved far <color=red>too expensive</color>. As
+      a result, people devised a much <color=green>cheaper</color> alternative \u2013
+      <color=red>'bubbles'</color>..."
     _deTypeAfter: 0
     _onTextEnded:
       m_PersistentCalls:

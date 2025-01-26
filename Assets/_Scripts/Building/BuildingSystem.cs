@@ -127,6 +127,11 @@ namespace _Scripts.Building
             {
                 renderer.material.color = new Color(0, 1, 0, 0.5f);
             }
+            WindZone[] windZones = previewBeam.GetComponentsInChildren<WindZone>();
+            foreach (var windZone in windZones)
+            {
+                windZone.enabled = false; // Вимикаємо скрипт WindZone
+            }
         }
 
 

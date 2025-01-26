@@ -11,7 +11,7 @@ namespace _Scripts._Intro
         private bool _pressedKey;
 
         private const float FADE_DURATION = 2f;
-        private const string HELP_TEXT = "Start pressing any keys on keyboard";
+        private const string HELP_TEXT = "Press any key to continue";
 
         private void Start()
         {

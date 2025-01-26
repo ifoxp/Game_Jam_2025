@@ -31,7 +31,7 @@ namespace _Scripts._Intro
         private bool _isTyping;
 
         private Coroutine _currentCoroutine;
-
+        bool Del = false;
         private void Awake()
         {
             _hintHelp = FindAnyObjectByType<HintHelp>();
@@ -108,15 +108,24 @@ namespace _Scripts._Intro
                 }
             }
             else
+            {
+                Del = true;
                 StartCoroutine(_DeTypeText());
+            }
         }
 
         private IEnumerator _DeTypeText()
         {
+            while (!Keyboard.current.anyKey.wasPressedThisFrame || !Del)
+            {
+                Del = false;
+                yield return null;  // Очікуємо на натискання кнопки
+            }
+            Del = false;
             var currentContainer = _textContainers[_currentContainerIndex];
             currentContainer.OnTextStarted?.Invoke();
 
-            _isTyping = true;
+            
 
             while (_textPlace.text.Length > 0)
             {
@@ -127,17 +136,20 @@ namespace _Scripts._Intro
                 {
                     _characterAudioPlayer.PlayShot();
                 }
-        
+
                 yield return new WaitForSeconds(_typeDelay);
             }
-EndCoroutine();
-            
+            _isTyping = true;
+            EndCoroutine();
+
             if (_currentContainerIndex < _textContainers.Length)
             {
                 _hintHelp.MustPressKeyAgain();
             }
+
             AddToNextContainer();
         }
+
 
         private void EndCoroutine()
         {
