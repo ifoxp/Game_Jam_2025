@@ -22988,7 +22988,7 @@ MonoBehaviour:
   upgradeLevels:
   - resourcesProduced:
     - Name: 2
-      Amount: 10
+      Amount: 25
     resourcesRequired:
     - Name: 3
       Amount: 5
@@ -28199,15 +28199,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.404
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.778
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.144
+      value: 1.076
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28240,6 +28240,10 @@ PrefabInstance:
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -28588,7 +28592,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.405
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28596,7 +28600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.393
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28629,6 +28633,10 @@ PrefabInstance:
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -28843,15 +28851,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.297
+      value: 0.278
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.321
+      value: -0.237
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.05
+      value: 1.018
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28884,6 +28892,10 @@ PrefabInstance:
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -29031,11 +29043,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.862
+      value: 0.989
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.949
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29068,6 +29080,10 @@ PrefabInstance:
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -29318,15 +29334,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.329
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.201
+      value: -0.239
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.977
+      value: 0.966
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29359,6 +29375,10 @@ PrefabInstance:
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive

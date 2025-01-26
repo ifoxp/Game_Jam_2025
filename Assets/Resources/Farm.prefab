@@ -28298,7 +28298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -28318,7 +28322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: obstacleLayers.m_Bits
@@ -28470,7 +28474,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -28490,7 +28498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: obstacleLayers.m_Bits
@@ -28650,7 +28658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -28670,7 +28682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: obstacleLayers.m_Bits
@@ -28851,7 +28863,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -28871,7 +28887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: obstacleLayers.m_Bits
@@ -29417,7 +29433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windForce
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
@@ -29437,7 +29457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: obstacleLayers.m_Bits

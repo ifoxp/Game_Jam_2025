@@ -15,14 +15,10 @@ public class FirstStart : MonoBehaviour
             SetActiveForAllObjects(true);
 
             // ¬становлюЇмо значенн€, щоб позначити, що гра була запущена
-            PlayerPrefs.SetInt(FirstLaunchKey, 0);
+            PlayerPrefs.SetInt(FirstLaunchKey,1);
             PlayerPrefs.Save();
         }
-        else
-        {
-            // якщо це не перший запуск, деактивуЇмо вс≥ об'Їкти
-            SetActiveForAllObjects(false);
-        }
+
     }
 
     private bool IsFirstLaunch()
