@@ -11985,7 +11985,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1272932327, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
+  m_Sprite: {fileID: 446450840, guid: 3f88fe7fe8ac83f459c79217b777325d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -80723,8 +80723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3671050ae0aaa074c98b74bc2f724fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junk: 0
-  materials: 50
+  junk: 50
+  materials: 0
   population: 20
   indexBuild: 3
   buildingSystem: {fileID: 1786955511}
@@ -83147,7 +83147,7 @@ RectTransform:
   m_GameObject: {fileID: 4150582554551987381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2108245285675815413}

@@ -59,7 +59,7 @@ public class DroneBuy : MonoBehaviour
         // Оновлюємо текст ціни відповідно до поточного рівня
         if (currentLevel < _prices.Length)
         {
-            priceText.text = _prices[currentLevel].ToString();
+            priceText.text = $"Materials:{_prices[currentLevel].ToString()}";
         }
         else
         {
