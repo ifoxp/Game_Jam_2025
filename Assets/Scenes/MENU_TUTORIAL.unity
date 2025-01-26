@@ -4071,7 +4071,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 265909688}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1480263022}
+        m_TargetAssemblyTypeName: _Scripts.UI.TutorialChanger, Assembly-CSharp
+        m_MethodName: PreviousGuide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &265909688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7089,7 +7101,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial text
+  m_text: The game has resources gathered by buildings. Some buildings require people.
+    The 'active people' indicator shows how many 'people' are already occupied.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a9757f32380b9f4abaec104e04c3705, type: 2}
   m_sharedMaterial: {fileID: -3941174356370310762, guid: 9a9757f32380b9f4abaec104e04c3705, type: 2}
@@ -7116,7 +7129,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.25
+  m_fontSize: 15.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9039,7 +9052,7 @@ RectTransform:
   m_Children:
   - {fileID: 1069907888}
   - {fileID: 265909686}
-  - {fileID: 1891265257}
+  - {fileID: 1461928523}
   - {fileID: 411037153}
   m_Father: {fileID: 1480263021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18571,7 +18584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.994934, y: -15.084961}
+  m_AnchoredPosition: {x: 8.994873, y: -15.084961}
   m_SizeDelta: {x: 34.550083, y: 203.83002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &922232311
@@ -31275,6 +31288,138 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.05, y: 0, z: 1.1}
   m_Center: {x: 0, y: 0.00000047683696, z: 0.000000089406896}
+--- !u!1 &1461928522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1461928523}
+  - component: {fileID: 1461928526}
+  - component: {fileID: 1461928525}
+  - component: {fileID: 1461928524}
+  m_Layer: 5
+  m_Name: NextButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1461928523
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461928522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -1.2758, y: 1.2758, z: 1.2758}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 478920598}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 249, y: -26.052105}
+  m_SizeDelta: {x: 20, y: 27}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1461928524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461928522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1461928525}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1480263022}
+        m_TargetAssemblyTypeName: _Scripts.UI.TutorialChanger, Assembly-CSharp
+        m_MethodName: NextGuide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1461928525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461928522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e46543dd30ef9c4409ae7b65ee6f7e9a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1461928526
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461928522}
+  m_CullTransparentMesh: 1
 --- !u!1 &1463155091
 GameObject:
   m_ObjectHideFlags: 0
@@ -31542,13 +31687,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1480263021}
+  - component: {fileID: 1480263022}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1480263021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31569,6 +31715,84 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1480263022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480263020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a8d05c30c1f8e4f8edcb7332d6ef31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guides:
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 99a896cee5444194fb633de22c7b903d, type: 3}
+    <TutorialText>k__BackingField: The game has resources gathered by buildings.
+      Some buildings require people. The 'active people' indicator shows how many
+      'people' are already occupied.
+    PicturePosition: {x: 12, y: -9, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 04503c6fa8514fc468b64bbee86729ad, type: 3}
+    <TutorialText>k__BackingField: Hold E to open the menu and choose what you want
+      to build
+    PicturePosition: {x: -100, y: 91, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 15989388aedb17f42a3aa999bdbb04b4, type: 3}
+    <TutorialText>k__BackingField: To build a structure, you need resources. They
+      are shown next to each building in the build menu
+    PicturePosition: {x: -100, y: 91, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 09e2c743ec4efbf40ac6d5e25575fdbd, type: 3}
+    <TutorialText>k__BackingField: The Barracks gives you 20 people and gradually
+      consumes food (because people need it).
+    PicturePosition: {x: -18, y: -24, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 1222b3ebd2620594295a965b3e61ea7c, type: 3}
+    <TutorialText>k__BackingField: Beams allow you to expand the area where you can
+      build
+    PicturePosition: {x: -18, y: -24, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 892e45e7a6c965c4fa345961e1055351, type: 3}
+    <TutorialText>k__BackingField: The Farm provides food
+    PicturePosition: {x: -9, y: 43, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: be260e53ee8b631479a8cec17992e01b, type: 3}
+    <TutorialText>k__BackingField: Fans inflate the bubble but provide energy
+    PicturePosition: {x: -13, y: -27, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: e59cd15842494f64291c39c1cfdc66a1, type: 3}
+    <TutorialText>k__BackingField: Recycle turns junk into materials
+    PicturePosition: {x: 35, y: 10, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: d38c6f70fa0e2c4408e7696af38fe368, type: 3}
+    <TutorialText>k__BackingField: Solar panels provide energy
+    PicturePosition: {x: 35, y: 10, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: f990aa8f1145b90488d1e3747b6cc403, type: 3}
+    <TutorialText>k__BackingField: This is an upgraded farm
+    PicturePosition: {x: 35, y: 10, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: efc5f0dbaef86824db60a1d6df58ee96, type: 3}
+    <TutorialText>k__BackingField: Hover over a building with the mouse and click
+      the left mouse button to view information about the object and remove it
+    PicturePosition: {x: 43, y: 91, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: d6d6c0d381661ac44831faee338f6c3c, type: 3}
+    <TutorialText>k__BackingField: While building, press 'R' to rotate the structure
+    PicturePosition: {x: -79, y: 67, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: dbd91b50aafa48048801663507f3cede, type: 3}
+    <TutorialText>k__BackingField: Press E while building to stop construction
+    PicturePosition: {x: -79, y: 67, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 075a9025e53a96e4e8d9da2653357295, type: 3}
+    <TutorialText>k__BackingField: The game has drones that mine junk from meteorites.
+      You start with one drone
+    PicturePosition: {x: -28, y: 35, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: fa36359bdc305554199fb4834cbe8077, type: 3}
+    <TutorialText>k__BackingField: Hover over the yellow window and click the left
+      mouse button to buy another drone for materials
+    PicturePosition: {x: -16, y: 104, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 620a3613506d4bd4a9cf2d1968ca1ff8, type: 3}
+    <TutorialText>k__BackingField: Watch the bubble deformation in the game. If it
+      reaches 100, you lose
+    PicturePosition: {x: -16, y: 21, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: a6489e7461ae36247934990434a27c9f, type: 3}
+    <TutorialText>k__BackingField: Some buildings emit gases, causing the bubble
+      to inflate
+    PicturePosition: {x: -41, y: -66, z: 0}
+  _image: {fileID: 1488095671}
+  _tutorialText: {fileID: 411037154}
+  _index: 0
 --- !u!1 &1481780588
 GameObject:
   m_ObjectHideFlags: 0
@@ -31824,15 +32048,15 @@ RectTransform:
   m_GameObject: {fileID: 1488095668}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1639675, y: 1.1639675, z: 1.1639675}
+  m_LocalScale: {x: 0.6211471, y: 0.6211471, z: 0.6211471}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1069907888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 745, y: 759}
+  m_AnchoredPosition: {x: 12, y: -9}
+  m_SizeDelta: {x: 1920, y: 906}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1488095670
 MonoBehaviour:
@@ -31867,7 +32091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1f83d59c8c9c11e46bbb1c3f90cb58cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99a896cee5444194fb633de22c7b903d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -72642,126 +72866,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.05, y: 0, z: 1.1}
   m_Center: {x: 0, y: 0.00000047683696, z: 0.000000089406896}
---- !u!1 &1891265256
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1891265257}
-  - component: {fileID: 1891265260}
-  - component: {fileID: 1891265259}
-  - component: {fileID: 1891265258}
-  m_Layer: 5
-  m_Name: NextButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1891265257
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891265256}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2758, y: 1.2758, z: 1.2758}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 478920598}
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 253.50702, y: -26.052105}
-  m_SizeDelta: {x: 20, y: 27}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1891265258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891265256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1891265259}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1891265259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891265256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e46543dd30ef9c4409ae7b65ee6f7e9a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1891265260
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891265256}
-  m_CullTransparentMesh: 1
 --- !u!1 &1892824634
 GameObject:
   m_ObjectHideFlags: 0
