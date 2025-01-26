@@ -1346,7 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7346640c9d244fbbbca8c03777b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeDelay: 0.05
+  _typeDelay: 0.03
   _textPlace: {fileID: 1789484082}
   _textContainers:
   - _textToType: A long time ago...

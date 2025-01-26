@@ -109,19 +109,15 @@ namespace _Scripts._Intro
             }
             else
             {
-                Del = true;
                 StartCoroutine(_DeTypeText());
             }
         }
 
         private IEnumerator _DeTypeText()
         {
-            while (!Keyboard.current.anyKey.wasPressedThisFrame || !Del)
-            {
-                Del = false;
-                yield return null;  // Очікуємо на натискання кнопки
-            }
-            Del = false;
+            _isTyping = true;
+            yield return new WaitUntil(() => Keyboard.current.anyKey.wasPressedThisFrame);
+
             var currentContainer = _textContainers[_currentContainerIndex];
             currentContainer.OnTextStarted?.Invoke();
 
@@ -139,7 +135,7 @@ namespace _Scripts._Intro
 
                 yield return new WaitForSeconds(_typeDelay);
             }
-            _isTyping = true;
+           
             EndCoroutine();
 
             if (_currentContainerIndex < _textContainers.Length)
