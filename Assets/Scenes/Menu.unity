@@ -79235,6 +79235,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guides:
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 63c638c358d28a84fa06b5bc4ca33114, type: 3}
+    <TutorialText>k__BackingField: Scroll the mouse wheel to zoom the camera in or
+      out
+    PicturePosition: {x: -15.17, y: 15.4, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 3af8f545aa92bcd4d8f003d0c155432c, type: 3}
+    <TutorialText>k__BackingField: Hold the left mouse button and move the mouse
+      to rotate camera around the bubble
+    PicturePosition: {x: -14.8, y: 11.9, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 188db514521f317489d3bbc75f05a3b4, type: 3}
+    <TutorialText>k__BackingField: Hold the mouse wheel and move the mouse to move
+      the camera.
+    PicturePosition: {x: -139.61, y: 0, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: d8480f1908f5caf448c24a685a42eeea, type: 3}
+    <TutorialText>k__BackingField: Double-click the mouse wheel to center the camera
+      view
+    PicturePosition: {x: -41, y: 0, z: 0}
   - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 99a896cee5444194fb633de22c7b903d, type: 3}
     <TutorialText>k__BackingField: The game has resources gathered by buildings.
       Some buildings require people. The 'active people' indicator shows how many
@@ -79297,10 +79313,17 @@ MonoBehaviour:
     <TutorialText>k__BackingField: Some buildings emit gases, causing the bubble
       to inflate
     PicturePosition: {x: -41, y: -66, z: 0}
-  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 9a4a193fb6797f94e942b4d18fd2a242, type: 3}
-    <TutorialText>k__BackingField: Balka can block air flows and reflect them. With
-      this, you can reduce the stress on the sphere.
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 904b4f01dd99812439d12c282f59a70d, type: 3}
+    <TutorialText>k__BackingField: Press V or click the curved stick icon on the
+      left side of the screen to see which direction each building inflates the bubble
     PicturePosition: {x: -41, y: 0, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 31d5db45bf476394281f6add18d4df53, type: 3}
+    <TutorialText>k__BackingField: Beams can reflect certain air flow streams
+    PicturePosition: {x: -41, y: 0, z: 0}
+  - <TutorialPicture>k__BackingField: {fileID: 21300000, guid: 7f76b0fb666767d438f988876286eb2e, type: 3}
+    <TutorialText>k__BackingField: You can always check the controls and revisit
+      this tutorial in the left panel in-game
+    PicturePosition: {x: 139.89, y: -61, z: 0}
   _image: {fileID: 4940656927996808904}
   _tutorialText: {fileID: 8270456543449485459}
   _index: 0
@@ -83499,7 +83522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 99a896cee5444194fb633de22c7b903d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63c638c358d28a84fa06b5bc4ca33114, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -85724,7 +85747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7714073131843705832
 GameObject:
   m_ObjectHideFlags: 0
@@ -86172,8 +86195,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The game has resources gathered by buildings. Some buildings require people.
-    The 'active people' indicator shows how many 'people' are already occupied.
+  m_text: Scroll the mouse wheel to zoom the camera in or out
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a9757f32380b9f4abaec104e04c3705, type: 2}
   m_sharedMaterial: {fileID: -3941174356370310762, guid: 9a9757f32380b9f4abaec104e04c3705, type: 2}
@@ -86200,7 +86222,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.05
+  m_fontSize: 22.6
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
