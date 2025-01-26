@@ -1,0 +1,37 @@
+using PrimeTween;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace _Scripts.UI
+{
+    public class FadeScreenMenu : MonoBehaviour
+    {
+        [SerializeField] private Image _imageToFade;
+        [SerializeField] private bool _fadeOutOnStart = true;
+
+        private const float FADE_DURATION = 1f;
+
+        private const float FADED = 1;
+        private const float UN_FADED = 0;
+
+        private void Start()
+        {
+            if (!_fadeOutOnStart) return;
+
+            _imageToFade.gameObject.SetActive(true);
+            FadeOut();
+        }
+
+        public void FadeIn()
+        {
+            _imageToFade.gameObject.SetActive(true);
+            Tween.Alpha(_imageToFade, FADED, FADE_DURATION);
+        }
+
+        public void FadeOut()
+        {
+            Tween.Alpha(_imageToFade, UN_FADED, FADE_DURATION)
+                .OnComplete(() => _imageToFade.gameObject.SetActive(false));
+        }
+    }
+}

@@ -1346,12 +1346,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb7346640c9d244fbbbca8c03777b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _typeDelay: 0.05
   _textPlace: {fileID: 1789484082}
   _textContainers:
   - _textToType: A long time ago...
     _deTypeAfter: 1
-    _typeAmount: 3
-    _deleteAmount: 3
     _onTextEnded:
       m_PersistentCalls:
         m_Calls: []
@@ -1360,8 +1359,6 @@ MonoBehaviour:
         m_Calls: []
   - _textToType: A few years ago..
     _deTypeAfter: 1
-    _typeAmount: 3
-    _deleteAmount: 3
     _onTextEnded:
       m_PersistentCalls:
         m_Calls: []
@@ -1374,8 +1371,6 @@ MonoBehaviour:
       turned out to be very expensive. People invented a very cheap alternative \u2013
       <color=red>'bubbles'</color>........"
     _deTypeAfter: 0
-    _typeAmount: 5
-    _deleteAmount: 5
     _onTextEnded:
       m_PersistentCalls:
         m_Calls:
@@ -1409,8 +1404,6 @@ MonoBehaviour:
   - _textToType: I'm the first person to test this. I must build the city and succeed
       in this experiment, or i'll <color=red>DIE</color>.
     _deTypeAfter: 0
-    _typeAmount: 4
-    _deleteAmount: 4
     _onTextEnded:
       m_PersistentCalls:
         m_Calls:
@@ -1437,7 +1430,6 @@ MonoBehaviour:
     _audioSource: {fileID: 1119749245}
     _volume: 1
     _pitchRange: {x: 0.95, y: 1.05}
-  _canType: 1
 --- !u!4 &1119749247
 Transform:
   m_ObjectHideFlags: 0

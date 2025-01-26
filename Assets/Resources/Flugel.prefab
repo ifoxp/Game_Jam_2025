@@ -6924,15 +6924,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.64
+      value: -0.485
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.41
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.27
+      value: -0.162
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6968,7 +6968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: showWindVisual
@@ -6984,11 +6984,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 51.32
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: obstacleLayers.m_Bits
+      value: 328
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_Name
       value: WindZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7108,11 +7116,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.64
+      value: -0.161
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.40999997
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7152,7 +7160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: showWindVisual
@@ -7168,11 +7176,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 51.32
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: obstacleLayers.m_Bits
+      value: 328
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_Name
       value: WindZone (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7383,15 +7399,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.64
+      value: -0.403
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.368
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.27
+      value: 0.093
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7427,7 +7443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: showWindVisual
@@ -7443,11 +7459,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 51.32
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: obstacleLayers.m_Bits
+      value: 328
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_Name
       value: WindZone (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7674,11 +7698,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.64
+      value: -0.957
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.354
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7718,7 +7742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: showWindVisual
@@ -7734,11 +7758,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 51.32
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: obstacleLayers.m_Bits
+      value: 328
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_Name
       value: WindZone (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7764,15 +7796,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.64
+      value: -0.442
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.474
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.27
+      value: -0.508
       objectReference: {fileID: 0}
     - target: {fileID: 1546236102842711608, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7808,7 +7840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: bounveActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: showWindVisual
@@ -7824,11 +7856,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: windAreaSize.z
-      value: 51.32
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357145692123179865, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: obstacleLayers.m_Bits
+      value: 328
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_Name
       value: WindZone (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4922015812103091271, guid: 6f1626502d98f3c4abf4b5b77d880a96, type: 3}
       propertyPath: m_StaticEditorFlags

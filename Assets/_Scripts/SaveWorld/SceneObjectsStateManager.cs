@@ -52,7 +52,7 @@ public class SceneObjectsStateManager : MonoBehaviour
         string json = JsonUtility.ToJson(new ObjectStatesWrapper { objectStates = states }, true);
         File.WriteAllText(saveFilePath, json);
 
-        Debug.Log("Scene objects state saved to: " + saveFilePath);
+        //Debug.Log("Scene objects state saved to: " + saveFilePath);
     }
 
     // Завантажує стан об'єктів із файлу

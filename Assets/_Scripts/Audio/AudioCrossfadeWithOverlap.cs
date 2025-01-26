@@ -14,6 +14,11 @@ namespace _Scripts.Audio
         private bool _isPlayingSource1 = true;
         
         private Coroutine _currentCoroutine;
+        private void Start()
+        {
+            _audioSource1.clip.LoadAudioData();
+            _audioSource2.clip.LoadAudioData();
+        }
 
         [Button]
         public void _StartCrossfade()
@@ -37,17 +42,31 @@ namespace _Scripts.Audio
 
         private IEnumerator Crossfade(AudioSource fromSource, AudioSource toSource)
         {
+            // Завантажуємо аудіо, якщо воно не готове
+            if (!fromSource.clip.preloadAudioData)
+            {
+                fromSource.clip.LoadAudioData();
+            }
+
+            if (!toSource.clip.preloadAudioData)
+            {
+                toSource.clip.LoadAudioData();
+            }
+
+            // Ініціалізація
             var timer = 0f;
 
             toSource.volume = 0;
             toSource.Play();
 
+            // Фаза перекриття
             while (timer < _overlapTime)
             {
                 timer += Time.deltaTime;
                 yield return null;
             }
 
+            // Фаза плавного кросфейду
             timer = 0f;
 
             while (timer < _crossfadeDuration)
@@ -66,5 +85,6 @@ namespace _Scripts.Audio
 
             fromSource.Stop();
         }
+
     }
 }
